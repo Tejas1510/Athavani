@@ -102,7 +102,12 @@ npm start
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
 
-<p align = "center">
+## 🔔 Credits
+
+The project is built by learning from [JavaScript Mastery](https://www.youtube.com/watch?v=ngc9gnGgUdA) and various resource available on the internet.
+
+
 
 <a href="https://github.com/Tejas1510"><img src="http://ForTheBadge.com/images/badges/built-by-developers.svg" alt="built by developers"></a>
 [![built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/Tejas1510/Athavani)
+

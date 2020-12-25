@@ -15,9 +15,6 @@ ability
 - Like a Particular Memory
 - Fetch all Memory at a Time
 
-The Frontend has been deployed on Netlify
-The Backend has been deployed on Herroku
-
 ## ⭐ Getting Started
 
 Refer to the following articles on the basics of Git and Github and can also contact the Project Mentors, in case you are stuck:

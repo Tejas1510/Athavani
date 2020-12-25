@@ -15,6 +15,21 @@ ability
 - Like a Particular Memory
 - Fetch all Memory at a Time
 
+## A sneek peek into what we have here🙈 :
+
+### Creation of Memory
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/creation.gif"></p>
+
+### Updation of Memory
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/updation.gif"></p>
+
+### Like a  Memory
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/likePost.gif"></p>
+
+### Delete a Memory
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/Delete.gif"></p>
+
+
 ## ⭐ Getting Started
 
 Refer to the following articles on the basics of Git and Github and can also contact the Project Mentors, in case you are stuck:

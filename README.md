@@ -1,5 +1,7 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
+## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/pQbVQqu7)
+
 ## 📌 Motive of the Project
 
 <b>Athavani or Memories</b> is a full-stack MERN tool built in order to save all your memories in a single place and rejoice them through the year.

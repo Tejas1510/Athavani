@@ -126,7 +126,7 @@ npm start / yarn start
 **3.** Navigate to the Server directory.
 
 ```bash
-cd Athavani
+cd server
 npm install
 npm start 
 ```

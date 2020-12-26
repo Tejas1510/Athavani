@@ -2,6 +2,7 @@ import react from 'react'
 import useStyles from './style';
 import{Card,CardActions,CardContent, CardMedia, Button, Typography} from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
@@ -36,6 +37,11 @@ const Post = ({post,setCurrentId}) =>{
                     <ThumbUpAltIcon fontSize="small" style={{paddingRight:'5'}}/>
                      LIKE &nbsp; 
                     {post.likeCount}
+                </Button>
+               <Button size="small" color="primary" onClick={() =>dispatch(dislikePost(post._id))}>
+                    <ThumbDownAltIcon fontSize="small" style={{paddingRight:'10'}}/>
+                     DISLIKE &nbsp; 
+                    {post.dislikeCount}
                 </Button>
                 <Button size="small" color="primary" onClick={() =>dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small"/>

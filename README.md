@@ -1,5 +1,7 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
+## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/pQbVQqu7)
+
 ## 📌 Motive of the Project
 
 <b>Athavani or Memories</b> is a full-stack MERN tool built in order to save all your memories in a single place and rejoice them through the year.
@@ -14,6 +16,20 @@ ability
 - Delete a Memory
 - Like a Particular Memory
 - Fetch all Memory at a Time
+
+
+<center><h1 align="center">Technologies Used</h1></center>
+<div>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/react1.png"></img>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/nodejs.png"></img>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/express.png"></img>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/mongo.png"></img>
+</div>
+
+<div>
+<img margin="10px" align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/netlify.png"></img>
+<img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
+</div>
 
 ## A sneek peek into what we have here🙈 :
 

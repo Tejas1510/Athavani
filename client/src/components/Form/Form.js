@@ -49,39 +49,42 @@ const Form = ({currentId,setCurrentId}) =>{
     return(
        <Paper className={classes.paper}>
            <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
-            <Typography variant="h6">{currentId ? 'Editing': 'Creating' } a Memory</Typography>
+            <div className={classes.heading}><Typography variant="h6" 
+                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600'}}>
+                {currentId ? 'Editing': 'Creating' } A Memory</Typography></div>
+            <div className={classes.contents}>
             <TextField 
             name ="creator"
+             className={classes.inputBox}
              variant="outlined"
               label="Creator"
-              style={{marginBottom:10}}
               fullWidth
               value={postData.creator}
               onChange={(e)=> setPostData({...postData,creator:e.target.value})} />
 
            <TextField 
             name ="title"
+            className={classes.inputBox}
              variant="outlined"
               label="Title"
-              style={{marginBottom:10}}
               fullWidth
               value={postData.title}
               onChange={(e)=> setPostData({...postData,title:e.target.value})} />
 
            <TextField 
                 name ="message"
+                className={classes.inputBox}
                 variant="outlined"
                 label="Message"
-                style={{marginBottom:10}}
-               fullWidth
+                fullWidth
               value={postData.message}
               onChange={(e)=> setPostData({...postData,message:e.target.value})} />
 
             <TextField 
                 name ="tags"
+                className={classes.inputBox}
                 variant="outlined"
                 label="Tags"
-                style={{marginBottom:10}}
                 fullWidth
                 value={postData.tags}
                 onChange={(e)=> setPostData({...postData,tags:e.target.value.split(',')})} />
@@ -94,10 +97,12 @@ const Form = ({currentId,setCurrentId}) =>{
                 />
 
             </div>
-            <Button className={classes.buttonSubmit} variant="contained" style={{background:'#ffaa00',color:'white'}} size="large" type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
-            <Button  variant="contained" color="secondary" size="small" onClick={clear} fullWidth >Clear</Button>
+            
+            <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
+            <Button  className={classes.buttonSubmit} variant="contained" style={{background: '#E9713D'}} size="small" onClick={clear} fullWidth >Clear</Button>
+            </div>
            </form>
-
+           
        </Paper>
     )
 }

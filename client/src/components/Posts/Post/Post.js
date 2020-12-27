@@ -1,16 +1,73 @@
-import react from 'react'
+import React,{useState} from 'react'
 import useStyles from './style';
-import{Card,CardActions,CardContent, CardMedia, Button, Typography} from '@material-ui/core';
+import{Card,CardActions,CardContent, CardMedia, Button, Typography,Modal,TextField,Snackbar,IconButton} from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux';
 import {deletePost,likePost} from '../../../actions/posts';
+import dotenv from 'dotenv';
 const Post = ({post,setCurrentId}) =>{
+
+    dotenv.config();
+
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+      }
+      
+
+    const[password,setPassword] = useState('');
+
+    
     const classes = useStyles();
     const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+    const [open1, setOpen1] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+    const handleSubmit =() =>{
+        console.log(password)
+        if(password==='Tejas1510'){
+            dispatch(deletePost(post._id))
+            handleClose();
+        }
+        else{
+           return(
+            <Alert severity="error">This is an error alert — check it out!</Alert>
+           )
+        }
+    }
+
+    const body = (
+        <div className={classes.paper}>
+          <h2 id="simple-modal-title"><center>Please Enter Admin Password</center></h2>
+          <TextField 
+                name ="message"
+                variant="outlined"
+                label="Message"
+                type="password"
+                style={{marginBottom:10}}
+               fullWidth
+              onChange={(e) => setPassword(e.target.value)} />
+
+           <Button onClick={handleSubmit} >Submit</Button>   
+          
+        </div>
+      );
+
     return(
+        
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
             <div className={classes.overlay}>
@@ -37,12 +94,21 @@ const Post = ({post,setCurrentId}) =>{
                      LIKE &nbsp; 
                     {post.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() =>dispatch(deletePost(post._id))}>
+                <Button size="small" color="primary" onClick={handleOpen}>
                     <DeleteIcon fontSize="small"/>
                         Delete
                 </Button>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    >
+                    {body}
+                </Modal>
             </CardActions>
         </Card>
+        
     )
 }
 

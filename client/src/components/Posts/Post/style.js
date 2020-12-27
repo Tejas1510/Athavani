@@ -49,4 +49,13 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: 'white',
+    border: '2px solid #000',
+    padding:'10',
+    top:'30%',
+    left:'35%'
+  },
 });

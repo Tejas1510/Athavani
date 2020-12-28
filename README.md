@@ -23,17 +23,17 @@ ability
 
 
 <center><h1 align="center">Technologies Used</h1></center>
-<div>
+<p align="center">
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/react1.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/nodejs.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/express.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/mongo.png"></img>
-</div>
+</p>
 
-<div>
+<p align="center" margin="10px">
 <img margin="10px" align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/netlify.png"></img>
 <img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
-</div>
+</p>
 
 ## A sneek peek into what we have here🙈 :
 

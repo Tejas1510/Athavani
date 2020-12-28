@@ -50,7 +50,7 @@ const Form = ({currentId,setCurrentId}) =>{
        <Paper className={classes.paper}>
            <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
             <div className={classes.heading}><Typography variant="h6" 
-                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600'}}>
+                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600',color:'white'}}>
                 {currentId ? 'Editing': 'Creating' } A Memory</Typography></div>
             <div className={classes.contents}>
             <TextField 
@@ -67,6 +67,7 @@ const Form = ({currentId,setCurrentId}) =>{
             className={classes.inputBox}
              variant="outlined"
               label="Title"
+              style={{marginTop:'10px'}}
               fullWidth
               value={postData.title}
               onChange={(e)=> setPostData({...postData,title:e.target.value})} />
@@ -76,6 +77,8 @@ const Form = ({currentId,setCurrentId}) =>{
                 className={classes.inputBox}
                 variant="outlined"
                 label="Message"
+                
+                style={{marginTop:'10px'}}
                 fullWidth
               value={postData.message}
               onChange={(e)=> setPostData({...postData,message:e.target.value})} />
@@ -85,6 +88,7 @@ const Form = ({currentId,setCurrentId}) =>{
                 className={classes.inputBox}
                 variant="outlined"
                 label="Tags"
+                style={{marginTop:'10px'}}
                 fullWidth
                 value={postData.tags}
                 onChange={(e)=> setPostData({...postData,tags:e.target.value.split(',')})} />
@@ -98,8 +102,16 @@ const Form = ({currentId,setCurrentId}) =>{
 
             </div>
             
-            <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
-            <Button  className={classes.buttonSubmit} variant="contained" style={{background: '#E9713D'}} size="small" onClick={clear} fullWidth >Clear</Button>
+            <Button className={classes.buttonSubmit} style={{marginBottom: 10,
+    background:'#FFB800',
+    color:'white', 
+    borderRadius: '7px', 
+    width: '149px',
+     }} variant="contained"  type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
+            <Button  className={classes.buttonSubmit} variant="contained" style={{background: '#E9713D',color:'white', 
+    borderRadius: '7px', 
+    width: '149px',
+    alignContent:'center' }} size="small" onClick={clear} fullWidth >Clear</Button>
             </div>
            </form>
            

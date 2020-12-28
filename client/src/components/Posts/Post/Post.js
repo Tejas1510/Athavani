@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux';
 import {deletePost,likePost} from '../../../actions/posts';
 import dotenv from 'dotenv';
+import {password1} from './password';
 const Post = ({post,setCurrentId}) =>{
 
     dotenv.config();
@@ -38,14 +39,13 @@ const Post = ({post,setCurrentId}) =>{
 
     const handleSubmit =() =>{
         console.log(password)
-        if(password==='Tejas1510'){
+        if(password===password1){
             dispatch(deletePost(post._id))
+            
             handleClose();
         }
         else{
-           return(
-            <Alert severity="error">This is an error alert — check it out!</Alert>
-           )
+           handleClose();
         }
     }
 

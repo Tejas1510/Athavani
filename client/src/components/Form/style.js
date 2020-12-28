@@ -18,10 +18,11 @@ export default makeStyles((theme) => ({
   },
   contents: {
     padding: theme.spacing(2),
+    borderRadius:'10px'
   },
   inputBox: {
-    marginBottom: '10px',
     background: '#FFFFF1',
+    borderRadius:'10px'
   },
   form: {
     display: 'flex',

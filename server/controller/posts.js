@@ -1,5 +1,6 @@
 import mongoose  from 'mongoose';
 import PostMessage from '../modules/postMessage.js'
+import Signup from '../modules/signup.js';
 
 export const getPost = async (req,res) =>{
     try{
@@ -55,4 +56,17 @@ export const likePost = async(req,res) =>{
     const updatedPost = await PostMessage.findByIdAndUpdate(id,{likeCount : post.likeCount +1 },{new:true})
     res.json(updatedPost);
 
+}
+
+export const signup = async(req,res) =>{
+    const user = req.body;
+    const newUser = new Signup(user);
+    try{
+        await newUser.save()
+        res.status(201).json(newUser);
+    }
+    catch(error){
+        res.status(409).json({message:error.message});
+
+    }
 }

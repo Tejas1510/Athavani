@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home Page | Athavani</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link id="style1" rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "navbar">
+        <ul>
+          <li><a href="https://memoriestejastapas.netlify.app/">Sign In/ Sign Up</a></li>
+          <li><a href="#news">Contact Us</a></li>
+          <li><a href="#home">About Us</a></li>
+          <li style="float:left"><a class="active" href="https://memoriestejastapas.netlify.app/">Athavani</a></li>
+        </ul>
+      </div>
+    <div class="landing">
+        <div class="home-wrap">
+            <div class="home-inner"></div>
+        </div>
+    </div>
+    <div class="caption text-centre text-uppercase">
+        <h1 class="animate__animated animate__fadeInUp animate__fast">ATHAVANI</h1>
+        <h3 class="animate__animated animate__fadeInUp animate__slow">DARK MODE</h3>
+        <label class="animate__animated animate__fadeInUp animate__slower switch">
+            <input type="checkbox">
+            <span class="slider round" onclick="toggle()"></span>
+        </label>
+    </div>
+    <div class="container py-5">
+        <div class="row text-centre">
+            <div style = "left:80px; top:60px;text-align: center;">
+                <h3>ABOUT ATHAVANI</h3>
+                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim debitis ipsam labore ad impedit optio ullam odit, dignissimos maiores ducimus reprehenderit, repellat inventore dolorum non ipsum officia eius libero?</h4>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="legal">
+          <p>&copy; 2021. All rights reserved.</p>
+          
+          <div class="legal__links">
+            <span>Made with <span class="heart">♥</span> remotely</span>
+          </div>
+        </div>
+      </footer>
+<script>
+	function toggle() {
+		var a = document.getElementById("style1"); 
+		a.x = 'css/style2' == a.x ? 'css/style' : 'css/style2'; 
+		a.href = a.x + '.css'; 
+	}
+</script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

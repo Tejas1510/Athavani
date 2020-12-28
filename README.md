@@ -67,6 +67,7 @@ Refer to the following articles on the basics of Git and Github and can also con
 - Read the [Code of Conduct](https://github.com/Tejas1510/Hacking-Scripts/blob/main/CODE_OF_CONDUCT.md)
 - Create a Pull Request which will be promptly reviewed and suggestions would be added to improve it.
 - Add Screenshots to help us know what this Script is all about.
+- For more details visit the [Contribution Guide](https://github.com/Tejas1510/Athavani/blob/master/CONTRIBUTING.md)
 
 
 ## ⭐ Contribution:

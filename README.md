@@ -2,6 +2,10 @@
 
 ## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/pQbVQqu7)
 
+<p align="center">
+  <img width="400" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/athavani.gif"></img>
+</p>  
+
 ## 📌 Motive of the Project
 
 <b>Athavani or Memories</b> is a full-stack MERN tool built in order to save all your memories in a single place and rejoice them through the year.

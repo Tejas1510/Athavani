@@ -1,1 +1,1 @@
-export const password1='Swami@1510';
+export const password1='Athavani@1510';

@@ -123,7 +123,7 @@ cd Athavani
 **2.** Navigate to the Client directory.
 
 ```bash
-cd Client
+cd client
 npm install
 npm start / yarn start
 ```
@@ -131,7 +131,7 @@ npm start / yarn start
 **3.** Navigate to the Server directory.
 
 ```bash
-cd Athavani
+cd server
 npm install
 npm start 
 ```

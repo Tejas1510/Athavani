@@ -102,16 +102,8 @@ const Form = ({currentId,setCurrentId}) =>{
 
             </div>
             
-            <Button className={classes.buttonSubmit} style={{marginBottom: 10,
-    background:'#FFB800',
-    color:'white', 
-    borderRadius: '7px', 
-    width: '149px',
-     }} variant="contained"  type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
-            <Button  className={classes.buttonSubmit} variant="contained" style={{background: '#E9713D',color:'white', 
-    borderRadius: '7px', 
-    width: '149px',
-    alignContent:'center' }} size="small" onClick={clear} fullWidth >Clear</Button>
+            <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+            <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </div>
            </form>
            

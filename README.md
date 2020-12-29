@@ -136,6 +136,12 @@ npm install
 npm start 
 ```
 
+## Open Source Program
+
+### This Project is a part of following Open Source Program
+
+<img src ="https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt ="Devscript Winter of Code"></img>
+
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
 

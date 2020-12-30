@@ -145,6 +145,19 @@ npm start
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
 
+## ❤️ Project Admin
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/Tejas1510">
+            <img src="https://avatars0.githubusercontent.com/u/64543913?s=400&u=6468d71695b9ce8fc4a5704cfe7df32fdd28437a&v=4" width="200px;" alt="" style="border-radius:50%"/> <br />
+            <b>Tejas1510</b>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Awesome-Javascript-and-React-Project/commits?author=Tejas1510" title="Coding">💻</a>
+        </td>
+ </tr>
+ </table>
+
 ## 🔔 Credits
 
 The project is built by learning from [JavaScript Mastery](https://www.youtube.com/watch?v=ngc9gnGgUdA) and various resource available on the internet.

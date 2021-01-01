@@ -23,17 +23,17 @@ ability
 
 
 <center><h1 align="center">Technologies Used</h1></center>
-<div>
+<p align="center">
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/react1.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/nodejs.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/express.png"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/mongo.png"></img>
-</div>
+</p>
 
-<div>
+<p align="center" margin="10px">
 <img margin="10px" align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/netlify.png"></img>
 <img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
-</div>
+</p>
 
 ## A sneek peek into what we have here🙈 :
 
@@ -123,7 +123,7 @@ cd Athavani
 **2.** Navigate to the Client directory.
 
 ```bash
-cd Client
+cd client
 npm install
 npm start / yarn start
 ```
@@ -131,13 +131,32 @@ npm start / yarn start
 **3.** Navigate to the Server directory.
 
 ```bash
-cd Athavani
+cd server
 npm install
 npm start 
 ```
 
+## 📢  Open Source Program
+
+### This Project is a part of the following Open Source Program
+
+<img src ="https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt ="Devscript Winter of Code"></img>
+
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
+
+## ❤️ Project Admin
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/Tejas1510">
+            <img src="https://avatars0.githubusercontent.com/u/64543913?s=400&u=6468d71695b9ce8fc4a5704cfe7df32fdd28437a&v=4" width="200px;" alt="" style="border-radius:50%"/> <br />
+            <b>Tejas1510</b>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Awesome-Javascript-and-React-Project/commits?author=Tejas1510" title="Coding">💻</a>
+        </td>
+ </tr>
+ </table>
 
 ## 🔔 Credits
 

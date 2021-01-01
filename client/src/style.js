@@ -10,8 +10,9 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
   },
   heading: {
-    color: '#ffaa00',
-    
+    color: '#443f37',
+    fontWeight: '900',
+    fontFamily: 'cursive',
   },
   image: {
     marginLeft: '15px',

@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.get('/',getPost);
 router.post('/',createPost);
-router.patch('/:id',updatePost)
+router.patch('/:id',updatePost);
 router.delete('/:id',deletePost);
 router.patch('/:id/likePost',likePost);
-router.post('/',signup)
+router.post('/',signup);
 
 export default router;

@@ -1,121 +1,127 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import useStyles from './style';
-import {TextField,Button,Typography,Paper} from '@material-ui/core';
+import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
-import {useDispatch,useSelector} from 'react-redux';
-import {createPost,updatePost} from '../../actions/posts';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost } from '../../actions/posts';
 
-const Form = ({currentId,setCurrentId}) =>{
+const Form = ({ currentId, setCurrentId }) => {
 
-    const[postData,setPostData] = useState({
-        creator:'',
-        title:'',
-        message:'',
-        tags:'',
-        selectedFile:''
+    const [postData, setPostData] = useState({
+        creator: '',
+        title: '',
+        message: '',
+        tags: '',
+        selectedFile: ''
     });
 
-    const post = useSelector((state) =>currentId ? state.posts.find((p) => p._id === currentId):null);
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    useEffect(() =>{
-        if(post){
+    useEffect(() => {
+        if (post) {
             setPostData(post);
         }
-    },[post])
+    }, [post])
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(currentId){
-            dispatch(updatePost(currentId,postData))
+        if (currentId) {
+            dispatch(updatePost(currentId, postData))
         }
-        else{
+        else {
             dispatch(createPost(postData));
         }
         clear();
     }
 
-    const clear = () =>{
+    const clear = () => {
         setCurrentId(null);
-        setPostData( {creator:'',
-        title:'',
-        message:'',
-        tags:'',
-        selectedFile:''})
+        setPostData({
+            creator: '',
+            title: '',
+            message: '',
+            tags: '',
+            selectedFile: ''
+        })
 
-    } 
+    }
 
-    return(
-       <Paper className={classes.paper}>
-           <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
-            <div className={classes.heading}><Typography variant="h6" 
-                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600',color:'white'}}>
-                {currentId ? 'Editing': 'Creating' } A Memory</Typography></div>
-            <div className={classes.contents}>
-            <TextField 
-            name ="creator"
-             className={classes.inputBox}
-             variant="outlined"
-              label="Creator"
-              fullWidth
-              value={postData.creator}
-              onChange={(e)=> setPostData({...postData,creator:e.target.value})} />
+    return (
+        <Paper className={classes.paper}>
+            <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
+                <div className={classes.heading}><Typography variant="h6"
+                    style={{ fontFamily: 'Amaranth', fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600', color: 'white' }}>
+                    {currentId ? 'Editing' : 'Creating'} A Memory</Typography></div>
+                <div className={classes.contents}>
+                    <TextField
+                        name="creator"
+                        className={classes.inputBox}
+                        variant="outlined"
+                        label="Creator"
+                        fullWidth
+                        value={postData.creator}
+                        onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
 
-           <TextField 
-            name ="title"
-            className={classes.inputBox}
-             variant="outlined"
-              label="Title"
-              style={{marginTop:'10px'}}
-              fullWidth
-              value={postData.title}
-              onChange={(e)=> setPostData({...postData,title:e.target.value})} />
+                    <TextField
+                        name="title"
+                        className={classes.inputBox}
+                        variant="outlined"
+                        label="Title"
+                        style={{ marginTop: '10px' }}
+                        fullWidth
+                        value={postData.title}
+                        onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
 
-           <TextField 
-                name ="message"
-                className={classes.inputBox}
-                variant="outlined"
-                label="Message"
-                
-                style={{marginTop:'10px'}}
-                fullWidth
-              value={postData.message}
-              onChange={(e)=> setPostData({...postData,message:e.target.value})} />
+                    <TextField
+                        name="message"
+                        className={classes.inputBox}
+                        variant="outlined"
+                        label="Message"
 
-            <TextField 
-                name ="tags"
-                className={classes.inputBox}
-                variant="outlined"
-                label="Tags"
-                style={{marginTop:'10px'}}
-                fullWidth
-                value={postData.tags}
-                onChange={(e)=> setPostData({...postData,tags:e.target.value.split(',')})} />
+                        style={{ marginTop: '10px' }}
+                        fullWidth
+                        value={postData.message}
+                        onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
 
-            <div className={classes.fileInput}>
-                <FileBase
-                  type="file"
-                  multiple={false}
-                  onDone={({base64}) =>setPostData({...postData,selectedFile:base64})} 
-                />
+                    <TextField
+                        name="tags"
+                        className={classes.inputBox}
+                        variant="outlined"
+                        label="Tags"
+                        style={{ marginTop: '10px' }}
+                        fullWidth
+                        value={postData.tags}
+                        onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
 
-            </div>
-            
-            <Button className={classes.buttonSubmit} style={{marginBottom: 10,
-    background:'#FFB800',
-    color:'white', 
-    borderRadius: '7px', 
-    width: '149px',
-     }} variant="contained"  type="submit" fullWidth >{currentId?'Update':'Submit'}</Button>
-            <Button  className={classes.buttonSubmit} variant="contained" style={{background: '#E9713D',color:'white', 
-    borderRadius: '7px', 
-    width: '149px',
-    alignContent:'center' }} size="small" onClick={clear} fullWidth >Clear</Button>
-            </div>
-           </form>
-           
-       </Paper>
+                    <div className={classes.fileInput}>
+                        <FileBase
+                            type="file"
+                            multiple={false}
+                            onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
+                        />
+
+                    </div>
+
+                    <Button className={classes.buttonSubmit} style={{
+                        marginBottom: 10,
+                        background: '#FFB800',
+                        color: 'white',
+                        borderRadius: '7px',
+                        width: '149px',
+                    }} variant="contained" type="submit" fullWidth >{currentId ? 'Update' : 'Submit'}</Button>
+                   
+                    <Button className={classes.buttonSubmit} variant="contained" style={{
+                        background: '#E9713D', color: 'white',
+                        borderRadius: '7px',
+                        width: '149px',
+                        alignContent: 'center'
+                    }} size="small" onClick={clear} fullWidth >Clear</Button>
+                </div>
+            </form>
+
+        </Paper>
     )
 }
 

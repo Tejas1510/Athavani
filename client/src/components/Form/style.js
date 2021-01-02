@@ -30,8 +30,10 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
   },
   fileInput: {
-    width: '97%',
+    padding: '15px',
     margin: '10px 0',
+    background: '#FFFFF1',
+    borderRadius:'10px'
   },
   buttonSubmit: {
     marginBottom: 10,

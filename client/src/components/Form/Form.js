@@ -101,9 +101,10 @@ const Form = ({ currentId, setCurrentId }) => {
                 />
 
             </div>
-            
-            <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-            <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            <div style={{display:"flex"}}>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button> &nbsp; &nbsp; &nbsp;
+                <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            </div>
             </div>
            </form>
            

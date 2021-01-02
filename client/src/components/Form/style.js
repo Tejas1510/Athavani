@@ -39,8 +39,6 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
-    marginLeft: '28%', 
-    marginRight: '50px',
   },
   buttonClear: {
     marginBottom: 10,
@@ -48,7 +46,5 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
-    marginLeft: '28%', 
-    marginRight: '50px',
   },
 }));

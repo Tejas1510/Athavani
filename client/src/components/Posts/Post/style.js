@@ -83,4 +83,10 @@ export default makeStyles({
   ".MuiOutlinedInput-root.Mui-focused": {
     color: "#FFAA00",
   },
+  overlayerror :{
+    position:'fixed',
+    width: '100%',
+    height: '100%',
+    zIndex: '99'
+  }
 });

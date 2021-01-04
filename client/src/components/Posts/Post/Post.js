@@ -12,6 +12,7 @@ import {
   Snackbar,
   IconButton,
   withStyles,
+  Backdrop,
 } from "@material-ui/core";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -23,8 +24,10 @@ import {useDispatch} from 'react-redux';
 import {deletePost,likePost} from '../../../actions/posts';
 import dotenv from 'dotenv';
 import {password1} from './password';
+
 const Post = ({ post, setCurrentId }) => {
   dotenv.config();
+
 
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -36,23 +39,25 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+  const [isError,setIsError] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+      setOpen(false);
+      setIsError(false);
   };
 
   const handleSubmit = () => {
     console.log(password);
-    if (password === password1) {
-      dispatch(deletePost(post._id));
-
-      handleClose();
+    if (password === password1) { 
+     dispatch(deletePost(post._id));
+     handleClose();
     } else {
-      handleClose();
+      setOpen(false);
+      setIsError(true);
     }
   };
 
@@ -81,19 +86,15 @@ const Post = ({ post, setCurrentId }) => {
     </div>
   );
 
-  return (
-    <Card className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={post.selectedFile}
-        title={post.title}
-      />
-      <div className={classes.overlay}>
-        <Typography variant="h6">{post.creator}</Typography>
-        <Typography variant="body2">
-          {moment(post.createdAt).fromNow()}
-        </Typography>
-      </div>
+    return(
+      <>
+        <Card className={classes.card}>
+            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+            <div className={classes.overlay}>
+                <Typography variant="h6">{post.creator}</Typography>
+                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+            </div>
+
 
       <div className={classes.overlay2}>
         <Button
@@ -139,6 +140,13 @@ const Post = ({ post, setCurrentId }) => {
         </Modal>
       </CardActions>
     </Card>
+     { isError &&   
+      (
+        <Backdrop open={isError} onClick={handleClose} className={classes.overlayerror}>
+           <Alert severity="error" onClose={handleClose} className={classes.overlay2}> Incorrect Password, cannot delete memory</Alert>
+       </Backdrop>
+          )}
+       </>
   );
 };
 

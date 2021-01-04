@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useStyles from './style';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { Alert } from '@material-ui/lab'
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
@@ -15,6 +16,8 @@ const Form = ({ currentId, setCurrentId }) => {
         selectedFile: ''
     });
 
+    const [error, setError] = useState("");
+
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -27,6 +30,11 @@ const Form = ({ currentId, setCurrentId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (postData.creator === '' || postData.title === '' || postData.message === '' || postData.tags === '' || postData.selectedFile === '') {
+            return setError('All Fields are required.');
+        }
+
         if (currentId) {
             dispatch(updatePost(currentId, postData))
         }
@@ -51,7 +59,14 @@ const Form = ({ currentId, setCurrentId }) => {
            <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
             <div className={classes.heading}><Typography variant="h6" 
                 style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600',color:'white'}}>
-                {currentId ? 'Editing': 'Creating' } A Memory</Typography></div>
+                {currentId ? 'Editing': 'Creating' } A Memory</Typography>
+            </div>
+            {
+                error !== '' &&
+                <Alert onClose={() => setError('')} severity="error" className={classes.error}>
+                    {error}
+                </Alert>
+            }
             <div className={classes.contents}>
             <TextField 
             name ="creator"

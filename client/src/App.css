@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.mainHeading {
+  margin: 2rem;
+  transform: translate(10px, 10px);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

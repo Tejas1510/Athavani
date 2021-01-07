@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -59,6 +60,16 @@ const Post = ({ post, setCurrentId }) => {
       setOpen(false);
       setIsError(true);
     }
+  };
+  const toggleContent = () =>{
+    var x = document.getElementById("cardContent");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("Arrow").innerHTML = "Show Less";
+  } else {
+    x.style.display = "none";
+    document.getElementById("Arrow").innerHTML = "READ MORE";
+  }
   };
 
   const body = (
@@ -113,9 +124,13 @@ const Post = ({ post, setCurrentId }) => {
       <Typography className={classes.title} variant="h5" gutterBottom>
         {post.title}
       </Typography>
-      <CardContent>
+      <CardContent id="cardContent" className={classes.cardContent}>
         <Typography gutterBottom>{post.message}</Typography>
-      </CardContent>
+      </CardContent> 
+      <Button size="small" color="primary" onClick={toggleContent} id='Arrow'>
+          <ArrowDownwardIcon/>
+          Read more...
+        </Button>
       <CardActions className={classes.cardActions}>
         <Button
           size="small"
@@ -130,6 +145,7 @@ const Post = ({ post, setCurrentId }) => {
           <DeleteIcon fontSize="small" />
           Delete
         </Button>
+        
         <Modal
           open={open}
           onClose={handleClose}

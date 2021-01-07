@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import react, { useState, useEffect } from 'react';
+// import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import { Container, AppBar, Typography, Grid, Grow } from '@material-ui/core';
 import memories from './Images/memories.png'
 import Form from './components/Form/Form';
@@ -24,7 +24,7 @@ function App() {
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
-        <img className={classes.image} height="50" src={memories} ></img>
+        <img className={classes.image} height="50" src={memories} alt="Memories"></img>
       </AppBar>
       <Grow in>
         <Container>

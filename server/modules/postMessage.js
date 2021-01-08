@@ -10,6 +10,10 @@ const postSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
+    dislikeCount: {
+        type: Number,
+        default: 0,
+    },
     createdAt: {
         type: Date,
         default: new Date(),

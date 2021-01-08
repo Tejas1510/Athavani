@@ -15,6 +15,7 @@ import {
   Backdrop,
 } from "@material-ui/core";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -22,7 +23,7 @@ import moment from 'moment';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux';
-import {deletePost,likePost} from '../../../actions/posts';
+import {deletePost,likePost, dislikePost} from '../../../actions/posts';
 import dotenv from 'dotenv';
 import {password1} from './password';
 
@@ -140,6 +141,11 @@ const Post = ({ post, setCurrentId }) => {
           <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
           LIKE &nbsp;
           {post.likeCount}
+        </Button>
+        <Button size="small" color="primary" onClick={() => dispatch(dislikePost(post._id))}>
+          <ThumbDownAltIcon fontSize="small" style={{ paddingRight: '10' }} />
+                  DISLIKE &nbsp;
+                {post.dislikeCount}
         </Button>
         <Button size="small" color="primary" onClick={handleOpen}>
           <DeleteIcon fontSize="small" />

@@ -29,6 +29,9 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
+  error: {
+    marginTop: '11px'
+  },
   fileInput: {
     width: '97%',
     margin: '10px 0',

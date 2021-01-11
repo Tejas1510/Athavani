@@ -11,4 +11,15 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  filterBar: {
+    background: "radial-gradient(#FF7F50 40%,transparent)",
+    marginBottom: "21px",
+    padding: "3px 21px",
+    borderRadius: "15px",
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  filterButtons: {
+    backgroundColor: "tomato"
+  }
 }));

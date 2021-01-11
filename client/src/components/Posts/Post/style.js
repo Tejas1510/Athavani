@@ -49,6 +49,12 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
+  cardContent :{
+    display : "none",
+  } , 
+  bleh :{
+    
+  } ,
   paper: {
     position: "absolute",
     maxWidth: 400,
@@ -83,4 +89,10 @@ export default makeStyles({
   ".MuiOutlinedInput-root.Mui-focused": {
     color: "#FFAA00",
   },
+  overlayerror :{
+    position:'fixed',
+    width: '100%',
+    height: '100%',
+    zIndex: '99'
+  }
 });

@@ -57,6 +57,16 @@ export const likePost = async (req, res) => {
 
 }
 
+export const dislikePost = async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await PostMessage.findById(id);
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, { dislikeCount: post.dislikeCount + 1 }, { new: true })
+    res.json(updatedPost);
+
+}
+
 export const signup = async (req, res) => {
     const user = req.body;
     const newUser = new Signup(user);

@@ -12,15 +12,18 @@ import {
   Snackbar,
   IconButton,
   withStyles,
+  Backdrop,
 } from "@material-ui/core";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux';
-import {deletePost,likePost} from '../../../actions/posts';
+import {deletePost,likePost, dislikePost} from '../../../actions/posts';
 import dotenv from 'dotenv';
 import {password1} from './password';
 
@@ -38,24 +41,36 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+  const [isError,setIsError] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+      setOpen(false);
+      setIsError(false);
   };
 
   const handleSubmit = () => {
     console.log(password);
-    if (password === password1) {
-      dispatch(deletePost(post._id));
-
-      handleClose();
+    if (password === password1) { 
+     dispatch(deletePost(post._id));
+     handleClose();
     } else {
-      handleClose();
+      setOpen(false);
+      setIsError(true);
     }
+  };
+  const toggleContent = () =>{
+    var x = document.getElementById("cardContent");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("Arrow").innerHTML = "Show Less";
+  } else {
+    x.style.display = "none";
+    document.getElementById("Arrow").innerHTML = "READ MORE";
+  }
   };
 
   const body = (
@@ -84,6 +99,7 @@ const Post = ({ post, setCurrentId }) => {
   );
 
     return(
+      <>
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
             <div className={classes.overlay}>
@@ -109,9 +125,13 @@ const Post = ({ post, setCurrentId }) => {
       <Typography className={classes.title} variant="h5" gutterBottom>
         {post.title}
       </Typography>
-      <CardContent>
+      <CardContent id="cardContent" className={classes.cardContent}>
         <Typography gutterBottom>{post.message}</Typography>
-      </CardContent>
+      </CardContent> 
+      <Button size="small" color="primary" onClick={toggleContent} id='Arrow'>
+          <ArrowDownwardIcon/>
+          Read more...
+        </Button>
       <CardActions className={classes.cardActions}>
         <Button
           size="small"
@@ -122,10 +142,16 @@ const Post = ({ post, setCurrentId }) => {
           LIKE &nbsp;
           {post.likeCount}
         </Button>
+        <Button size="small" color="primary" onClick={() => dispatch(dislikePost(post._id))}>
+          <ThumbDownAltIcon fontSize="small" style={{ paddingRight: '10' }} />
+                  DISLIKE &nbsp;
+                {post.dislikeCount}
+        </Button>
         <Button size="small" color="primary" onClick={handleOpen}>
           <DeleteIcon fontSize="small" />
           Delete
         </Button>
+        
         <Modal
           open={open}
           onClose={handleClose}
@@ -136,6 +162,13 @@ const Post = ({ post, setCurrentId }) => {
         </Modal>
       </CardActions>
     </Card>
+     { isError &&   
+      (
+        <Backdrop open={isError} onClick={handleClose} className={classes.overlayerror}>
+           <Alert severity="error" onClose={handleClose} className={classes.overlay2}> Incorrect Password, cannot delete memory</Alert>
+       </Backdrop>
+          )}
+       </>
   );
 };
 

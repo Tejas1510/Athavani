@@ -3,6 +3,9 @@ import nodemailer from 'nodemailer';
 import MailSubscibers from '../modules/mailSubscribers.js';
 import dotenv from 'dotenv';
 import PostMessage from '../modules/postMessage.js';
+import handlebars from 'handlebars';
+import fs from 'fs';
+import path from 'path';
 
 // mailSender.js is loaded before index.js,
 // so we have to config env and connect to mongoose here.
@@ -34,6 +37,11 @@ const random = (min, max) => {
     return ~~(Math.random() * (max - min + 1) + min);
 }
 
+var htmlFile = fs.readFileSync(path.join(path.resolve(), '/html/mail.html'), { encoding: 'utf-8' }, (err, html) => {
+    if (err)
+        console.log(err);
+    return html;
+});
 
 export const sendMail = async () => {
     var postList = [];
@@ -44,7 +52,7 @@ export const sendMail = async () => {
     await getMails()
         .then((mails) => mailList = mails.map((mail) => mail.email));
 
-    var idx = random(0, postList.length-1);
+    var idx = random(0, postList.length - 1);
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -54,16 +62,31 @@ export const sendMail = async () => {
         }
     });
 
+    var post = postList[idx];
+    post.createdAt = new Date(post.createdAt).toDateString().slice(4);
+    var template = handlebars.compile(htmlFile);
+    var htmlSend = template(post);
+
     var mailOptions = {
         from: process.env.MAIL,
         to: mailList,
-        subject: 'Athavani - Weekly Memory',
-        html: '<h1>' + JSON.stringify(postList[idx]) + '</h1>'
+        subject: 'Time To Look In the Past',
+        attachments: [{
+            filename: 'memories.png',
+            path: path.join(path.resolve(), '../client/src/Images/memories.png'),
+            cid: 'memories'
+        },
+        {
+            filename: 'background.png',
+            path: post.selectedFile,
+            cid: 'postImg'
+        }],
+        html: htmlSend
     };
 
     return transporter.sendMail(mailOptions, function (error, info) {
         if (error)
             console.log(error);
-            console.log(info);
+        console.log(info);
     });
 }

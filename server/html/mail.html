@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athavani | memory</title>
+    <style>
+        .main {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(255, 79, 3, 1) 0%, rgba(7, 1, 83, 1) 95%) no-repeat;
+            margin: 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .header {
+            margin: 10px;
+            padding-top: 5px;
+            margin-top: 0;
+            font-size: x-large;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+
+            font-family: cursive;
+        }
+
+        .card {
+            background: white;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 24px;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        }
+
+        .card .memory-img {
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+
+        .creator {
+            position: absolute;
+            top: 50px;
+            text-align: left;
+            margin-left: 5%;
+            color: rebeccapurple;
+            text-shadow: -1px -1px 0 #000011, 1px -1px 0 #000011, -1px 1px 0 #000011, 1px 1px 0 #000011;
+            font-size: xx-large;
+            letter-spacing: 0.06rem;
+        }
+
+        .time {
+            letter-spacing: 0.1rem;
+            position: absolute;
+            top: 70px;
+            text-align: left;
+            margin-left: 5%;
+            color: rebeccapurple;
+            text-shadow: -1px -1px 0 #000011, 1px -1px 0 #000011, -1px 1px 0 #000011, 1px 1px 0 #000011;
+            font-size: x-large;
+        }
+
+        .sec-2 {
+            text-align: left;
+            padding-left: 5%;
+            padding-bottom: 2%;
+        }
+
+        .tag {
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        .title {
+            text-transform: capitalize;
+        }
+
+        .footer {
+            padding: 5px;
+            margin-top: 10px;
+            font-family: cursive;
+            color: orangered;
+            text-align: center;
+        }
+
+        .link {
+            color: white;
+            font-size: small;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .athavani {
+            font-weight: bold;
+            color: palevioletred;
+            text-decoration: none;
+            font-size: x-large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            A Memory From Past
+            <img src="cid:memories" height="30px">
+        </div>
+
+        <div class="section">
+            <div class="card">
+                <div class="sec-1">
+                    <img class="memory-img" src="cid:postImg" alt="" width="100%">
+                    <h2 class="creator">{{creator}}</h2>
+                    <h3 class="time">{{createdAt}}</h3>
+                </div>
+                <div class="sec-2">
+                    <p class="tag">
+                        {{#each tags}}
+                        #{{this}}
+                        {{/each}}
+                    </p>
+                    <h1 class="title">{{title}}</h1>
+                    <p class="message">
+                        {{message}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Let's Bring More Memories Together With
+                <br><a class="athavani" href="https://memoriestejastapas.netlify.app/">ATHAVANI</a>
+            </p>
+            <a class="link" href="#">unsubscribe</a>
+        </div>
+    </div>
+</body>
+</html>

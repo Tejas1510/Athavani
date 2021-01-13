@@ -5,3 +5,8 @@ background-position: center center;
 background-attachment: fixed;
 background-size: cover;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}

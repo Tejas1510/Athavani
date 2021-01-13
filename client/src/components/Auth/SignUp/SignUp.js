@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import styles from './SignUp.module.css';
 import * as validator from '../../../utils/validator';
+import * as api from '../../../api/index';
 
 function SignUp() {
+
+    const history = useHistory();
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
 
-    function submitHandle() {
+    async function submitHandle() {
         
         if(validator.empty(name)) {
             return toast.error("Name Field is Empty!");
@@ -36,8 +39,15 @@ function SignUp() {
             return toast.error("Password and Confirm Password are not matching!")
         }
 
-        toast.success("Validation Pass!");
-
+        try {
+            const {data} = await api.signUp({name, email, password});
+            console.log(data);
+            toast.success(data.message);
+            history.push('/signin');
+        } catch(error) {
+            toast.error(error.message);
+            console.log(error);
+        }
     }
 
     return (

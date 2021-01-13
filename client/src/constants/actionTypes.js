@@ -5,3 +5,5 @@ export const FETCH_ALL = 'FETECH_ALL';
 export const LIKE_POST = 'LIKE_POST';
 export const DISLIKE_POST = 'DISLIKE_POST';
 export const ADD_MAIL = 'ADD_MAIL';
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_UP = 'SIGN_UP';

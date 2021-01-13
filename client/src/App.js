@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, AppBar, Typography, Grid, Grow } from '@material-ui/core';
@@ -8,7 +8,7 @@ import memories from './Images/memories.png'
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
 import useStyles from './style';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from './actions/posts';
 import MailForm from './components/MailForm/MailForm';
 import SignUp from './components/Auth/SignUp/SignUp';
@@ -16,7 +16,11 @@ import SignIn from './components/Auth/SignIn/SignIn';
 
 function App() {
 
+  let history = useHistory();
   toast.configure();
+
+  const temp = useSelector(state => state);
+  console.log(temp);
 
   const classes = useStyles();
 
@@ -27,16 +31,22 @@ function App() {
     dispatch(getPosts())
   }, [dispatch])
 
+  useEffect(() => {
+    if(!localStorage.getItem('token')) {
+      toast.info("Login before accesing home page!");
+      history.push('/signin');
+    }
+  },[])
 
   return (
-    <Router>
-      <Container maxWidth="lg">
-        <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
-          <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
-          <img className={classes.image} height="50" src={memories} alt="Memories"></img>
-        </AppBar>
-        <Grow in>
-          <Container>
+    <Container maxWidth="lg">
+      <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
+        <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
+        <img className={classes.image} height="50" src={memories} alt="Memories"></img>
+      </AppBar>
+      <Grow in>
+        <Container>
+          <Switch>
             <Route path="/" exact>
               <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={7}>
@@ -54,10 +64,10 @@ function App() {
             <Route path="/signin" exact>
               <SignIn />
             </Route>
-          </Container>
-        </Grow>
-      </Container>
-    </Router>
+          </Switch>
+        </Container>
+      </Grow>
+    </Container>
   );
 }
 

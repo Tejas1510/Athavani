@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
+import * as api from '../../../api/index';
 
 function SignIn() {
+
+    const history = useHistory();
 
     const [passwordHide, setPasswordHide] = useState(false);
 
@@ -16,7 +20,7 @@ function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function submitHandle() {
+    async function submitHandle() {
 
         if(validator.empty(email)) {
             return toast.error("Email Field is Empty!");
@@ -29,7 +33,17 @@ function SignIn() {
             return toast.error("Invalid Email!");
         }
 
-        toast.success("Validation Pass!");
+        try {
+            const {data} = await api.signIn({email, password});
+            console.log(data);
+            toast.success(data.message);
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            history.push('/');
+        } catch(error) {
+            toast.error("Email and Password are not matching!");
+            console.log(error);
+        }
     }
 
     return (

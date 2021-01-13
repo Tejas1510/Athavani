@@ -9,7 +9,7 @@ import { createPost, updatePost } from '../../actions/posts';
 const Form = ({ currentId, setCurrentId }) => {
 
     useEffect(() => {
-        
+
     }, []);
 
     const [postData, setPostData] = useState({
@@ -79,8 +79,7 @@ const Form = ({ currentId, setCurrentId }) => {
               label="Creator"
               fullWidth
               value={postData.creator}
-            //   onChange={(e)=> setPostData({...postData,creator:e.target.value})}
-              />
+              onChange={(e)=> setPostData({...postData,creator:e.target.value})} />
 
            <TextField 
             name ="title"

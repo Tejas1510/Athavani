@@ -3,17 +3,25 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
     title: String,
     message: String,
-    creator: String,
+    creator: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'Creator is Required'],
+    },
     tags: [String],
     selectedFile: String,
-    likeCount: {
-        type: Number,
-        default: 0,
-    },
-    dislikeCount: {
-        type: Number,
-        default: 0,
-    },
+    likes: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+    dislikes: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
     createdAt: {
         type: Date,
         default: new Date(),

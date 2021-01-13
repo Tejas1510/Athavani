@@ -8,6 +8,10 @@ import { createPost, updatePost } from '../../actions/posts';
 
 const Form = ({ currentId, setCurrentId }) => {
 
+    useEffect(() => {
+
+    }, []);
+
     const [postData, setPostData] = useState({
         creator: '',
         title: '',

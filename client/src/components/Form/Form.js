@@ -1,19 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import * as api from '../../api/index';
 import useStyles from './style';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { Alert } from '@material-ui/lab'
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import { toast } from 'react-toastify';
 
 const Form = ({ currentId, setCurrentId }) => {
 
-    useEffect(() => {
+    const history = useHistory();
+    const [creatorID, setCreatorID] = useState("");
+    const [creatorName, setCreatorName] = useState("");
 
+    useEffect(async () => {
+        try {
+            const {data} = await api.verify({token : localStorage.getItem('token')});
+            // console.log(data);
+            setCreatorID(data.id);
+            setCreatorName(data.name);
+        } catch(error) {
+            toast.error("Token Expired or Invalid. Sign In again.");
+            localStorage.removeItem('token');
+            history.push('/signin');
+        }
     }, []);
 
     const [postData, setPostData] = useState({
-        creator: '',
         title: '',
         message: '',
         tags: '',
@@ -34,10 +49,15 @@ const Form = ({ currentId, setCurrentId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // console.log(postData);
 
-        if (postData.creator === '' || postData.title === '' || postData.message === '' || postData.tags === '' || postData.selectedFile === '') {
+        if (postData.title === '' || postData.message === '' || postData.tags === '' || postData.selectedFile === '') {
             return setError('All Fields are required.');
         }
+
+        let postdata = postData;
+        postdata.creator = { _id: creatorID, name: creatorName };
+        // console.log(postdata);
 
         if (currentId) {
             dispatch(updatePost(currentId, postData))
@@ -50,7 +70,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
     const clear = () => {
         setCurrentId(null);
-        setPostData( {creator:'',
+        setPostData( {
         title:'',
         message:'',
         tags:'',
@@ -78,8 +98,9 @@ const Form = ({ currentId, setCurrentId }) => {
              variant="outlined"
               label="Creator"
               fullWidth
-              value={postData.creator}
-              onChange={(e)=> setPostData({...postData,creator:e.target.value})} />
+              value={creatorName}
+              disabled={true}
+              />
 
            <TextField 
             name ="title"

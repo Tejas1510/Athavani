@@ -45,7 +45,7 @@ function SignUp() {
             toast.success(data.message);
             history.push('/signin');
         } catch(error) {
-            toast.error(error.message);
+            toast.error("Email already exist!");
             console.log(error);
         }
     }

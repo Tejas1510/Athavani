@@ -49,20 +49,34 @@ export const deletePost = async (req, res) => {
 
 export const likePost = async (req, res) => {
     const { id } = req.params;
+    const { userID } = req.body;
+    const { bool } = req.body;
+
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-
-    const post = await PostMessage.findById(id);
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true })
+    await PostMessage.findById(id);
+    let updatedPost = {}
+    if(bool) {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $pull: {likes: userID} }, { new: true })
+    } else {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $addToSet: {likes: userID} }, { new: true })
+    }
     res.json(updatedPost);
-
 }
 
 export const dislikePost = async (req, res) => {
     const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+    const { userID } = req.body;
+    const { bool } = req.body;
 
-    const post = await PostMessage.findById(id);
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { dislikeCount: post.dislikeCount + 1 }, { new: true })
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+    await PostMessage.findById(id);
+    let updatedPost ={}
+    if(bool) {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $pull: {dislikes: userID} }, { new: true })
+    } else {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $addToSet: {dislikes: userID} }, { new: true })
+    }
+    // console.log(updatedPost.dislikes)
     res.json(updatedPost);
 
 }
@@ -77,5 +91,14 @@ export const signup = async (req, res) => {
     catch (error) {
         res.status(409).json({ message: error.message });
 
+    }
+}
+
+export const test = async (req, res) => {
+    try {
+        const post = await PostMessage.find().populate('creator', 'name');
+        return res.json(post);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
 }

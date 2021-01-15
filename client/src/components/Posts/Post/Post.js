@@ -19,6 +19,8 @@ import {
 } from "@material-ui/core";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -26,7 +28,7 @@ import moment from 'moment';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux';
-import {deletePost,likePost, dislikePost} from '../../../actions/posts';
+import {deletePost,likePost,dislikePost,favoritePost} from '../../../actions/posts';
 import dotenv from 'dotenv';
 import {password1} from './password';
 
@@ -51,6 +53,8 @@ const Post = ({ post, setCurrentId }) => {
           history.push('/signin');
       }
   }, []);
+
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const [password, setPassword] = useState("");
 
@@ -164,19 +168,23 @@ const Post = ({ post, setCurrentId }) => {
           }}
         >
           <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
-          LIKE &nbsp;
           {post.likes.length}
         </Button>
         <Button size="small" color="primary" onClick={() =>{
           dispatch(dislikePost(post._id, {userID: creatorID, bool: post.dislikes.includes(creatorID)}))
         }}>
-          <ThumbDownAltIcon fontSize="small" style={{ paddingRight: '10' }} />
-                  DISLIKE &nbsp;
-                {post.dislikes.length}
+          <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "7" }} />
+          {post.dislikes.length}
+        </Button>
+        <Button color={`${post.favorites.includes(creatorID)?'secondary':'primary'}`}
+          onClick={() => {
+            dispatch(favoritePost(post._id, {userID: creatorID, bool: post.favorites.includes(creatorID)}))
+          }}
+        >
+          {post.favorites.includes(creatorID)? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
         <Button size="small" color="primary" onClick={handleOpen}>
           <DeleteIcon fontSize="small" />
-          Delete
         </Button>
         
         <Modal

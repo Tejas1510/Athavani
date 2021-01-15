@@ -11,6 +11,7 @@ export const updatePost = (id, updatePost) => axios.patch(`${postUrl}/${id}`, up
 export const deletePost = (id) => axios.delete(`${postUrl}/${id}`);
 export const likePost = (id, body) => axios.patch(`${postUrl}/${id}/likePost`, body);
 export const dislikePost = (id, body) => axios.patch(`${postUrl}/${id}/dislikePost`, body);
+export const favoritePost = (id, body) => axios.patch(`${postUrl}/${id}/favoritePost`, body);
 
 export const signIn = (user) => axios.post(`${userUrl}/signin`, user);
 export const signUp = (user) => axios.post(`${userUrl}/signup`, user);

@@ -20,6 +20,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'center'
   },
   filterButtons: {
-    backgroundColor: "tomato"
+    backgroundColor: "tomato",
+    margin: "0 3px",
+    color: "white"
   }
 }));

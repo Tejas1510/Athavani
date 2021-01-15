@@ -1,5 +1,5 @@
 import * as api from '../api/index';
-import {CREATE,FETCH_ALL,DELETE,UPDATE,LIKE_POST, DISLIKE_POST} from '../constants/actionTypes';
+import {CREATE,FETCH_ALL,DELETE,UPDATE,LIKE_POST, DISLIKE_POST, FAVORITE_POST} from '../constants/actionTypes';
 // Action Creators
 
 export const getPosts = () => async (dispatch) =>{
@@ -67,6 +67,17 @@ export const dislikePost = (id, body) => async (dispatch) => {
     try {
         const { data } = await api.dislikePost(id, body);
         dispatch({ type: DISLIKE_POST, payload: data })
+
+    }
+    catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const favoritePost = (id, body) => async (dispatch) => {
+    try {
+        const { data } = await api.favoritePost(id, body);
+        dispatch({ type: FAVORITE_POST, payload: data })
 
     }
     catch (error) {

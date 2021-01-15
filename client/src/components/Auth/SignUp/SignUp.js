@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {toast} from 'react-toastify';
 import {Link, useHistory} from 'react-router-dom';
 import styles from './SignUp.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
 
-function SignUp() {
+function SignUp(props) {
+
+    useEffect(() => {
+        props.setLogout(false);
+
+        return () => {
+            props.setLogout(true);
+        }
+    },[])
+
 
     const history = useHistory();
 

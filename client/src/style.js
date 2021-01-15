@@ -8,6 +8,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative'
   },
   heading: {
     color: '#443f37',
@@ -17,11 +18,18 @@ export default makeStyles((theme) => ({
   image: {
     marginLeft: '15px',
   },
+  logout: {
+    color: 'white',
+    fontFamily: 'cursive',
+    fontSize: '1.3rem',
+    position: 'absolute',
+    right: '25px',
+    textTransform: 'none',
+    borderRadius: '5px'
+  },
   [theme.breakpoints.down('sm')]:{
     mainContainer:{
       flexDirection:'column-reverse'
     },
-    
-
   }
 }));

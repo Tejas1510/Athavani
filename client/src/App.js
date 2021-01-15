@@ -8,7 +8,7 @@ import memories from './Images/memories.png'
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
 import useStyles from './style';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts';
 import MailForm from './components/MailForm/MailForm';
 import SignUp from './components/Auth/SignUp/SignUp';
@@ -18,9 +18,6 @@ function App() {
 
   let history = useHistory();
   toast.configure();
-
-  const temp = useSelector(state => state);
-  console.log(temp);
 
   const classes = useStyles();
 

@@ -35,14 +35,14 @@ function SignIn() {
 
         try {
             const {data} = await api.signIn({email, password});
-            console.log(data);
+            // console.log(data);
             toast.success(data.message);
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
             history.push('/');
         } catch(error) {
             toast.error("Email and Password are not matching!");
-            console.log(error);
+            // console.log(error);
         }
     }
 

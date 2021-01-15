@@ -4,9 +4,15 @@ const postSchema = mongoose.Schema({
     title: String,
     message: String,
     creator: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User',
-        required: [true, 'Creator is Required'],
+        _id: {
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            required: [true, 'Creator is Required']
+        },
+        name: {
+            type: String,
+            required: [true, 'Creator Name is Required']
+        }
     },
     tags: [String],
     selectedFile: String,

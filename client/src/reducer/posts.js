@@ -1,5 +1,5 @@
-import {CREATE,FETCH_ALL,DELETE,UPDATE,LIKE_POST,DISLIKE_POST} from '../constants/actionTypes';
-export default (posts=[],action) =>{
+import {CREATE,FETCH_ALL,DELETE,UPDATE,LIKE_POST,DISLIKE_POST,FAVORITE_POST} from '../constants/actionTypes';
+export default function postReducer(posts=[],action) {
     switch (action.type) {
         case FETCH_ALL:
             return action.payload;
@@ -11,6 +11,8 @@ export default (posts=[],action) =>{
                 return posts.map((post)=>post._id === action.payload._id ? action.payload:post);    
         case DISLIKE_POST:
             return posts.map((post)=>post._id === action.payload._id ? action.payload:post);
+        case FAVORITE_POST:
+            return posts.map((post) => post._id === action.payload._id ? action.payload:post);
         case CREATE:
             return [...posts,action.payload];
         default:

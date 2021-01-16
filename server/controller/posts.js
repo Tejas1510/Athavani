@@ -81,6 +81,23 @@ export const dislikePost = async (req, res) => {
 
 }
 
+export const favoritePost = async (req, res) => {
+    const { id } = req.params;
+    const { userID } = req.body;
+    const { bool } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+    await PostMessage.findById(id);
+    let updatedPost ={}
+    if(bool) {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $pull: {favorites: userID} }, { new: true })
+    } else {
+        updatedPost = await PostMessage.findByIdAndUpdate(id, { $addToSet: {favorites: userID} }, { new: true })
+    }
+    res.json(updatedPost);
+
+}
+
 export const signup = async (req, res) => {
     const user = req.body;
     const newUser = new Signup(user);

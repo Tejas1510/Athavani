@@ -1,10 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import Post from './Post/Post';
 import useStyles from './style';
+import {useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
+import * as api from '../../api/index';
 import {Grid,CircularProgress, Button, Menu, MenuItem} from '@material-ui/core';
 
 const Posts = ({setCurrentId}) =>{
+
+    const history = useHistory();
+    const [creatorID, setCreatorID] = useState("");
+    const [isFavoritePosts, setIsFavoritePosts] = useState(false);
+    
+    useEffect(async () => {
+        try {
+            const {data} = await api.verify({token : localStorage.getItem('token')});
+            setCreatorID(data.id);
+        } catch(error) {
+            localStorage.removeItem('token');
+            history.push('/signin');
+        }
+    }, [isFavoritePosts]);
+
     const posts = useSelector((state) => state.posts)
     const classes = useStyles();
 
@@ -27,7 +44,7 @@ const Posts = ({setCurrentId}) =>{
         }
     }
 
-    console.log("posts : ", posts)
+    // console.log("posts : ", posts)
     return(
         !posts.length ? <CircularProgress/> : (
             <>
@@ -51,13 +68,19 @@ const Posts = ({setCurrentId}) =>{
                             sort(true);
                             }}>By Oldest</MenuItem>
                     </Menu>
+                    <Button className={classes.filterButtons} onClick={() => setIsFavoritePosts(current => !current)}>
+                        {isFavoritePosts? 'All Posts' : 'My Favorite Posts'}
+                    </Button>
                 </div>
                 <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
-                {posts.slice(0).reverse().map((post)=>(
-                    <Grid key={post._id} item xs={12} sm={6}>
-                        <Post post={post} setCurrentId={setCurrentId}/>
-                    </Grid>
-                ))}
+                {posts.slice(0).reverse().map((post)=> {
+                    if(isFavoritePosts && !post.favorites.includes(creatorID)) {
+                        return (<></>)
+                    } else {
+                        return (<Grid key={post._id} item xs={12} sm={6}>
+                            <Post post={post} setCurrentId={setCurrentId}/>
+                        </Grid>)
+                    }})}
                 </Grid>
             </>
         )

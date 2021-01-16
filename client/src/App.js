@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container, AppBar, Typography, Grid, Grow } from '@material-ui/core';
+import { Container, AppBar, Typography, Grid, Grow, Button } from '@material-ui/core';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import memories from './Images/memories.png'
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
@@ -35,11 +36,25 @@ function App() {
     }
   },[])
 
+  const [logout, setLogout] = useState(true);
+
+  function logoutHandle() {
+    localStorage.removeItem('token');
+    history.push('/signin');
+    toast.success('Logged out successfully.');
+  }
+
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
         <img className={classes.image} height="50" src={memories} alt="Memories"></img>
+        {
+          logout &&
+          <Button className={classes.logout}
+            onClick={logoutHandle}
+          >Logout&nbsp;<ExitToAppIcon /></Button>
+        }
       </AppBar>
       <Grow in>
         <Container>
@@ -56,10 +71,10 @@ function App() {
               </Grid>
             </Route>
             <Route path="/signup" exact>
-              <SignUp />
+              <SignUp setLogout={setLogout}/>
             </Route>
             <Route path="/signin" exact>
-              <SignIn />
+              <SignIn setLogout={setLogout}/>
             </Route>
           </Switch>
         </Container>

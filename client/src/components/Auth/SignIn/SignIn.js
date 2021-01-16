@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
@@ -7,7 +7,15 @@ import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
 
-function SignIn() {
+function SignIn(props) {
+
+    useEffect(() => {
+        props.setLogout(false);
+
+        return () => {
+            props.setLogout(true);
+        }
+    },[])
 
     const history = useHistory();
 

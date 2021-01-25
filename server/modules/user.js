@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
     createdOn: {
         type: Date,
         default: Date.now
+    },
+    resetPassLink: {
+        data: String,
+        default: ''
     }
 });
 

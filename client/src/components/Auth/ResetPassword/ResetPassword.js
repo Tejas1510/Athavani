@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React, {useState,useEffect} from 'react';
+import styles from './ResetPassword.module.css';
 import {toast} from 'react-toastify';
-import {Link, useHistory} from 'react-router-dom';
-import styles from './SignUp.module.css';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
 
-function SignUp(props) {
+function ResetPassword(props) {
 
     useEffect(() => {
         props.setLogout(false);
@@ -15,32 +15,20 @@ function SignUp(props) {
         }
     },[props])
 
-
     const history = useHistory();
+    const params = useParams();
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
 
     async function submitHandle() {
-        
-        if(validator.empty(name)) {
-            return toast.error("Name Field is Empty!");
-        }
-        if(validator.empty(email)) {
-            return toast.error("Email Field is Empty!");
-        }
         if(validator.empty(password)) {
             return toast.error("Password Field is Empty!");
         }
         if(validator.empty(password2)) {
             return toast.error("Confirm Password Field is Empty!");
         }
-        
-        if(!validator.email(email)) {
-            return toast.error("Invalid Email!");
-        }
+
         if(!validator.password(password)) {
             return toast.error("Password length must be more than 6.")
         }
@@ -49,7 +37,7 @@ function SignUp(props) {
         }
 
         try {
-            const {data} = await api.signUp({name, email, password});
+            const {data} = await api.resetPassword({token: params.token, newPassword: password});
             // console.log(data);
             toast.success(data.message);
             history.push('/signin');
@@ -67,31 +55,28 @@ function SignUp(props) {
     }
 
     return (
-        <div className={styles.SignUp}>
-            <div className={styles.title}>Sign Up</div>
+        <div className={styles.ResetPassword}>
+            <div className={styles.title}>
+                Reset Password
+            </div>
             <div className={styles.body}>
-                <input type="text" name="name" placeholder="Your Name"
-                    value={name} onChange={(e) => setName(e.target.value)}
-                />
-                <input type="text" name="email" placeholder="Email Address"
-                    value={email} onChange={(e) => setEmail(e.target.value)}
-                />
-                <input type="password" name="password" placeholder="Enter Password"
+                <input type="password" name="password" placeholder="Enter new Password" className={styles.password}
                     value={password} onChange={(e) => setPassword(e.target.value)}
                 />
-                <input type="password" name="password2" placeholder="Confirm Password"
+                <input type="password" name="password2" placeholder="Enter Password Again" className={styles.password2}
                     value={password2} onChange={(e) => setPassword2(e.target.value)}
                 />
-                <button className={styles.signup}
+                <button className={styles.change}
                     onClick={submitHandle}
-                >Sign Up</button>
-                <div className={styles.already}>
-                    <div className={styles.text}>Already have an account?</div>
-                    <div className={styles.link}><Link to="/signin">Sign In</Link></div>
-                </div>
+                >
+                    Change Password
+                </button>
+                <Link to='/forgot' className={styles.back}>
+                    Back
+                </Link>
             </div>
         </div>
     )
 }
 
-export default SignUp
+export default ResetPassword

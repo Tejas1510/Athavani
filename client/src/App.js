@@ -14,6 +14,8 @@ import { getPosts } from './actions/posts';
 import MailForm from './components/MailForm/MailForm';
 import SignUp from './components/Auth/SignUp/SignUp';
 import SignIn from './components/Auth/SignIn/SignIn';
+import Forgot from './components/Auth/Forgot/Forgot';
+import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
 
 function App() {
 
@@ -30,11 +32,11 @@ function App() {
   }, [dispatch])
 
   useEffect(() => {
-    if(!localStorage.getItem('token')) {
+    if(!localStorage.getItem('token') && window.location.pathname === '/') {
       toast.info("Login before accesing home page!");
       history.push('/signin');
     }
-  },[])
+  },[history])
 
   const [logout, setLogout] = useState(true);
 
@@ -75,6 +77,12 @@ function App() {
             </Route>
             <Route path="/signin" exact>
               <SignIn setLogout={setLogout}/>
+            </Route>
+            <Route path="/forgot" exact>
+              <Forgot setLogout={setLogout}/>
+            </Route>
+            <Route path="/resetPassword/:token" exact>
+              <ResetPassword setLogout={setLogout}/>
             </Route>
           </Switch>
         </Container>

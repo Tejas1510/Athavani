@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
 import {Link, useHistory} from 'react-router-dom';
@@ -15,7 +14,7 @@ function SignIn(props) {
         return () => {
             props.setLogout(true);
         }
-    },[])
+    },[props])
 
     const history = useHistory();
 
@@ -49,8 +48,15 @@ function SignIn(props) {
             localStorage.setItem('user', JSON.stringify(data.user));
             history.push('/');
         } catch(error) {
-            toast.error("Email and Password are not matching!");
-            // console.log(error);
+            if(error.response) {
+                toast.error(error.response.data.message);
+            } else if(error.request) {
+                toast.error("Server is not Responding!");
+                // console.log(error.request);
+            } else {
+                toast.error(error.message);
+                // console.log(error.message);
+            }
         }
     }
 
@@ -71,7 +77,11 @@ function SignIn(props) {
                         }
                     </div>
                 </div>
-                <div className={styles.forgot}>Forgot your password?</div>
+                <div className={styles.forgot}>
+                    <Link to="/forgot">
+                        Forgot your password?
+                    </Link>
+                </div>
                 <button className={styles.login}
                     onClick={submitHandle}
                 >Log In</button>

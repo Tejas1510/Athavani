@@ -16,6 +16,8 @@ export const favoritePost = (id, body) => axios.patch(`${postUrl}/${id}/favorite
 export const signIn = (user) => axios.post(`${userUrl}/signin`, user);
 export const signUp = (user) => axios.post(`${userUrl}/signup`, user);
 export const verify = (token) => axios.post(`${userUrl}/verify`, token);
+export const forgot = (email) => axios.put(`${userUrl}/forgot`, email);
+export const resetPassword = (body) => axios.put(`${userUrl}/reset-password`, body);
 
 const mailUrl =  "https://memories-mern-stack.herokuapp.com/mails"
 // const mailUrl = "http://localhost:5000/mails";

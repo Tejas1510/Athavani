@@ -54,14 +54,14 @@ const Post = ({ post, setCurrentId }) => {
       }
   }, []);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
 
   const [password, setPassword] = useState("");
 
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
+  // const [open1, setOpen1] = useState(false);
   const [isError,setIsError] = useState(false);
 
   const handleOpen = () => {

@@ -135,6 +135,13 @@ cd server
 npm install
 npm start 
 ```
+🛈**IMPORTANT**🛈
+
+To open the webapp directly from CLI use:-
+```explorer "https://memoriestejastapas.netlify.app/"```
+
+if you have cloned this repo, then open git in this directory and use 
+``` ./script.sh ```
 
 ## 📢  Open Source Program
 
@@ -289,6 +296,15 @@ For major changes, you are welcomed to open an issue and discuss what you would 
             <sub><b>kenkirito</b></sub>
             </a><br />
             <a href="https://github.com/Tejas1510/Athavani/commits?author=kenkirito">
+            💻
+            </a>
+        </td>
+       <td align="center">
+            <a href="https://github.com/himanshu007-creator">
+            <img src="https://avatars.githubusercontent.com/u/65963997?s=460&u=da0f5f134520e08a42e768efb23942ecd9a25434&v=4" width="100px" alt=""/><br />
+            <sub><b>Himanshu</b></sub>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Athavani/commits?author=himanshu007-creator">
             💻
             </a>
         </td>

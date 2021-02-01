@@ -16,6 +16,7 @@ import SignUp from './components/Auth/SignUp/SignUp';
 import SignIn from './components/Auth/SignIn/SignIn';
 import Forgot from './components/Auth/Forgot/Forgot';
 import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
+import Profile from './components/Profile/Profile';
 
 function App() {
 
@@ -83,6 +84,9 @@ function App() {
             </Route>
             <Route path="/resetPassword/:token" exact>
               <ResetPassword setLogout={setLogout}/>
+            </Route>
+            <Route path="/profile" exact>
+              <Profile />
             </Route>
           </Switch>
         </Container>

@@ -19,6 +19,10 @@ export const verify = (token) => axios.post(`${userUrl}/verify`, token);
 export const forgot = (email) => axios.put(`${userUrl}/forgot`, email);
 export const resetPassword = (body) => axios.put(`${userUrl}/reset-password`, body);
 
+export const getProfileById = (id) => axios.get(`${userUrl}/get-profile-by-id/${id}`);
+export const updateProfileById = (id, body) => axios.put(`${userUrl}/update-profile-by-id/${id}`, body);
+
 const mailUrl =  "https://memories-mern-stack.herokuapp.com/mails"
 // const mailUrl = "http://localhost:5000/mails";
+
 export const addMail = (newMail) => axios.post(mailUrl, newMail);

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import Post from './Post/Post';
 import useStyles from './style';
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
 import {Grid,CircularProgress, Button, Menu, MenuItem} from '@material-ui/core';
@@ -49,6 +49,9 @@ const Posts = ({setCurrentId}) =>{
         !posts.length ? <CircularProgress/> : (
             <>
                 <div className={classes.filterBar}>
+                    <Link to='/profile'>
+                        <Button aria-controls="simple-menu" aria-haspopup="true" className={classes.filterButtons}>My Profile</Button>
+                    </Link>
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.filterButtons}>
                         Sort
                     </Button>

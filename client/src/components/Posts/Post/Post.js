@@ -32,7 +32,7 @@ import {deletePost,likePost,dislikePost,favoritePost} from '../../../actions/pos
 import dotenv from 'dotenv';
 import {password1} from './password';
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, setCurrentId, fromProfile }) => {
   dotenv.config();
 
 
@@ -129,21 +129,25 @@ const Post = ({ post, setCurrentId }) => {
             </div>
 
 
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => {
-            if(post.creator._id === creatorID) {
-              setCurrentId(post._id);
-            } else {
-              toast.warn("You can't edit other's post!");
-            }
-          }}
-        >
-          <MoreHorizIcon fontSize="default" />
-        </Button>
-      </div>
+      {
+        fromProfile ? <></> :
+        <div className={classes.overlay2}>
+          <Button
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => {
+              if(post.creator._id === creatorID) {
+                setCurrentId(post._id);
+              } else {
+                toast.warn("You can't edit other's post!");
+              }
+            }}
+          >
+            <MoreHorizIcon fontSize="default" />
+          </Button>
+        </div>
+      }
+
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
           {post.tags.map((tag) => `#${tag} `)}

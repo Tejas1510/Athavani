@@ -1,0 +1,72 @@
+.Error404 {
+    font-family: cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+}
+
+.text_404 {
+    color: white;
+    font-size: 10rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px black, -3px -3px 5px orange;
+    line-height: 1.2;
+}
+
+.number:hover {
+    color: orange;
+    text-shadow: 3px 3px 0 black, -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black;
+}
+
+.text_not_found {
+    color: purple;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px white;
+    animation: shake 2s ease infinite;
+    text-align: center;
+}
+
+.text_not_found:hover {
+    text-shadow: 1px 1px 10px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    5% {
+        transform: rotateZ(5deg);
+    }
+    10% {
+        transform: rotateZ(0deg);
+    }
+    15% {
+        transform: rotateZ(-5deg);
+    }
+    20% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+.button {
+    background-color: #ffa500;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-top: 2.5rem;
+    border-radius: 25px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #f59f00;
+}

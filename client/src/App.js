@@ -17,6 +17,7 @@ import SignIn from './components/Auth/SignIn/SignIn';
 import Forgot from './components/Auth/Forgot/Forgot';
 import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
 import Profile from './components/Profile/Profile';
+import Error404 from './components/404/Error404';
 
 function App() {
 
@@ -87,6 +88,9 @@ function App() {
             </Route>
             <Route path="/profile" exact>
               <Profile />
+            </Route>
+            <Route>
+              <Error404 />
             </Route>
           </Switch>
         </Container>

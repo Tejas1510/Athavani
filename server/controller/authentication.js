@@ -193,3 +193,23 @@ export const updateProfileById = async (req, res) => {
         return res.status(404).json({message: error.message});
     }
 }
+
+export const checkPassword = async (req, res) => {
+    try {
+        const {id, password} = req.body;
+
+        const user = await User.findById(id);
+
+        const matched = await bcrypt.compare(password, user.password);
+        // console.log(matched);
+
+        if(matched) {
+            return res.status(200).json({message: "Password Matched", status: matched});
+        } else {
+            return res.status(200).json({message: "Incorrect Password", status: matched});
+        }
+
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+}

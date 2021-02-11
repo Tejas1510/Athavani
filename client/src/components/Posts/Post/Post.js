@@ -1,8 +1,8 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import * as api from '../../../api/index.js';
 import useStyles from './style';
-import {useHistory} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import {
   Card,
   CardActions,
@@ -25,189 +25,240 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
-import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import {useDispatch} from 'react-redux';
-import {deletePost,likePost,dislikePost,favoritePost} from '../../../actions/posts';
+import { useDispatch } from 'react-redux';
+import { deletePost, likePost, dislikePost, favoritePost } from '../../../actions/posts';
 import dotenv from 'dotenv';
-import {password1} from './password';
+import { password1 } from './password';
 
 const Post = ({ post, setCurrentId, fromProfile }) => {
   dotenv.config();
-
-
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
 
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");
 
   useEffect(async () => {
-      try {
-          const {data} = await api.verify({token : localStorage.getItem('token')});
-          setCreatorID(data.id);
-      } catch(error) {
-          toast.error("Token Expired or Invalid. Sign In again.");
-          localStorage.removeItem('token');
-          history.push('/signin');
-      }
+    try {
+      const { data } = await api.verify({ token: localStorage.getItem('token') });
+      setCreatorID(data.id);
+    } catch (error) {
+      toast.error("Token Expired or Invalid. Sign In again.");
+      localStorage.removeItem('token');
+      history.push('/signin');
+    }
   }, []);
-
-  // const [isFavorite, setIsFavorite] = useState(false);
-
-  const [password, setPassword] = useState("");
 
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  // const [open1, setOpen1] = useState(false);
-  const [isError,setIsError] = useState(false);
 
+  const [openDelete, setOpenDelete] = useState(false); // for users
+  const [openDeleteAdmin, setOpenDeleteAdmin] = useState(false); // for admin
+
+  // function to open delete post option
   const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-      setOpen(false);
-      setIsError(false);
-  };
-
-  const handleSubmit = () => {
-    console.log(password);
-    if (password === password1) { 
-     dispatch(deletePost(post._id));
-     handleClose();
+    if (post.creator._id == creatorID) {
+      setOpenDelete(true);
     } else {
-      setOpen(false);
-      setIsError(true);
+      toast.info("You are trying to delete other's post!");
+      setOpenDeleteAdmin(true);
     }
   };
-  const toggleContent = () =>{
-    var x = document.getElementById("cardContent");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    document.getElementById("Arrow").innerHTML = "Show Less";
-  } else {
-    x.style.display = "none";
-    document.getElementById("Arrow").innerHTML = "READ MORE";
-  }
+
+  // function to close delete post option
+  const handleClose = () => {
+    setOpenDelete(false);
+    setOpenDeleteAdmin(false);
   };
 
-  const body = (
-    <div className={classes.paper}>
-      <h2 id="simple-modal-title">
-        <center>Please Enter Admin Password</center>
-      </h2>
-      <TextField
-        name="message"
-        variant="outlined"
-        label="Enter Password"
-        type="password"
-        style={{ marginBottom: "1.5rem" }}
-        className={classes.customInput}
-        fullWidth
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button
-        variant="contained"
-        className={classes.paperButton}
-        onClick={handleSubmit}
-      >
-        Submit
-      </Button>
-    </div>
-  );
+  // toggling the content of post
+  const toggleContent = () => {
+    var x = document.getElementById("cardContent");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      document.getElementById("Arrow").innerHTML = "Show Less";
+    } else {
+      x.style.display = "none";
+      document.getElementById("Arrow").innerHTML = "READ MORE";
+    }
+  };
 
-    return(
-      <>
-        <Card className={classes.card}>
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
-            <div className={classes.overlay}>
-                <Typography variant="h6">{post.creator.name}</Typography>
-                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
-            </div>
+  // Component of delete option popup
+  function DeleteBody({ name }) {
 
+    // input password
+    const [password, setPassword] = useState("");
 
-      {
-        fromProfile ? <></> :
-        <div className={classes.overlay2}>
-          <Button
-            style={{ color: "white" }}
-            size="small"
-            onClick={() => {
-              if(post.creator._id === creatorID) {
-                setCurrentId(post._id);
-              } else {
-                toast.warn("You can't edit other's post!");
-              }
-            }}
-          >
-            <MoreHorizIcon fontSize="default" />
-          </Button>
-        </div>
+    const handleSubmit = async () => {
+      if (openDelete) { // for user
+        let matched = false;
+        try {
+          const { data } = await api.checkPassword({ id: creatorID, password: password });
+          matched = data.status;
+        } catch (error) {
+          toast.error(error.message);
+        }
+        
+        if (matched) {
+          dispatch(deletePost(post._id)).then(() =>
+            toast.success("Post Deleted.")
+          );
+          handleClose();
+          toast.info("Deleting Post... It may take some seconds.");
+        } else {
+          setOpenDelete(false);
+          toast.error("You have entered wrong password!");
+        }
+      } else if (openDeleteAdmin) { // for admin
+        if (password === password1) {
+          dispatch(deletePost(post._id)).then(() =>
+            toast.success("Post Deleted.")
+          );
+          handleClose();
+          toast.info("Deleting Post... It may take some seconds.");
+        } else {
+          setOpenDeleteAdmin(false);
+          toast.error("You have entered wrong password!!!");
+        }
       }
+    };
 
-      <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => `#${tag} `)}
-        </Typography>
+    return (
+      <div className={classes.paper}>
+        <h2 id="simple-modal-title">
+          <center>Please Enter {name} Password</center>
+        </h2>
+        <TextField
+          name="message"
+          variant="outlined"
+          label="Enter Password"
+          type="password"
+          style={{ marginBottom: "1.5rem" }}
+          className={classes.customInput}
+          fullWidth
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button
+          variant="contained"
+          className={classes.paperButton}
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
       </div>
-      <Typography className={classes.title} variant="h5" gutterBottom>
-        {post.title}
-      </Typography>
-      <CardContent id="cardContent" className={classes.cardContent}>
-        <Typography gutterBottom>{post.message}</Typography>
-      </CardContent> 
-      <Button size="small" color="primary" onClick={toggleContent} id='Arrow'>
-          <ArrowDownwardIcon/>
+    );
+  }
+
+  return (
+    <>
+      <Card className={classes.card}>
+        <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+        <div className={classes.overlay}>
+          <Typography variant="h6">{post.creator.name}</Typography>
+          <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+        </div>
+
+        {
+          fromProfile ? <></> :
+            <div className={classes.overlay2}>
+              <Button
+                style={{ color: "white" }}
+                size="small"
+                onClick={() => {
+                  if (post.creator._id === creatorID) {
+                    setCurrentId(post._id);
+                  } else {
+                    toast.warn("You can't edit other's post!");
+                  }
+                }}
+              >
+                <MoreHorizIcon fontSize="default" />
+              </Button>
+            </div>
+        }
+
+        {/* ----- Post's Tags ----- */}
+        <div className={classes.details}>
+          <Typography variant="body2" color="textSecondary">
+            {post.tags.map((tag) => `#${tag} `)}
+          </Typography>
+        </div>
+
+        {/* ----- Post's Title ----- */}
+        <Typography className={classes.title} variant="h5" gutterBottom>
+          {post.title}
+        </Typography>
+
+        {/* ----- Post's text content ----- */}
+        <CardContent id="cardContent" className={classes.cardContent}>
+          <Typography gutterBottom>{post.message}</Typography>
+        </CardContent>
+
+        {/* ----- Post's toggle button ----- */}
+        <Button size="small" color="primary" onClick={toggleContent} id='Arrow'>
+          <ArrowDownwardIcon />
           Read more...
         </Button>
-      <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() =>{
-            dispatch(likePost(post._id, {userID: creatorID, bool: post.likes.includes(creatorID)}))
-          }}
-        >
-          <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
-          {post.likes.length}
-        </Button>
-        <Button size="small" color="primary" onClick={() =>{
-          dispatch(dislikePost(post._id, {userID: creatorID, bool: post.dislikes.includes(creatorID)}))
-        }}>
-          <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "7" }} />
-          {post.dislikes.length}
-        </Button>
-        <Button color={`${post.favorites.includes(creatorID)?'secondary':'primary'}`}
-          onClick={() => {
-            dispatch(favoritePost(post._id, {userID: creatorID, bool: post.favorites.includes(creatorID)}))
-          }}
-        >
-          {post.favorites.includes(creatorID)? <FavoriteIcon /> : <FavoriteBorderIcon />}
-        </Button>
-        <Button size="small" color="primary" onClick={handleOpen}>
-          <DeleteIcon fontSize="small" />
-        </Button>
-        
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          {body}
-        </Modal>
-      </CardActions>
-    </Card>
-     { isError &&   
-      (
-        <Backdrop open={isError} onClick={handleClose} className={classes.overlayerror}>
-           <Alert severity="error" onClose={handleClose} className={classes.overlay2}> Incorrect Password, cannot delete memory</Alert>
-       </Backdrop>
-          )}
-       </>
+
+        {/* ----- Post's Action Buttons ----- */}
+        <CardActions className={classes.cardActions}>
+
+          {/* ----- Like ----- */}
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              dispatch(likePost(post._id, { userID: creatorID, bool: post.likes.includes(creatorID) }))
+            }}
+          >
+            <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
+            {post.likes.length}
+          </Button>
+
+          {/* ----- Dislike ----- */}
+          <Button size="small" color="primary" onClick={() => {
+            dispatch(dislikePost(post._id, { userID: creatorID, bool: post.dislikes.includes(creatorID) }))
+          }}>
+            <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "7" }} />
+            {post.dislikes.length}
+          </Button>
+
+          {/* ----- Heart ----- */}
+          <Button color={`${post.favorites.includes(creatorID) ? 'secondary' : 'primary'}`}
+            onClick={() => {
+              dispatch(favoritePost(post._id, { userID: creatorID, bool: post.favorites.includes(creatorID) }))
+            }}
+          >
+            {post.favorites.includes(creatorID) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          </Button>
+
+          {/* ----- Delete ----- */}
+          <Button size="small" color="primary" onClick={handleOpen}>
+            <DeleteIcon fontSize="small" />
+          </Button>
+        </CardActions>
+      </Card>
+
+      {/* ----- Delete Popup for admin ----- */}
+      <Modal
+        open={openDeleteAdmin}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <DeleteBody name="Admin" />
+      </Modal>
+
+      {/* ----- Delete Popup for user ----- */}
+      <Modal
+        open={openDelete}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <DeleteBody name="your" />
+      </Modal>
+    </>
   );
 };
 

@@ -16,6 +16,7 @@ export const favoritePost = (id, body) => axios.patch(`${postUrl}/${id}/favorite
 export const signIn = (user) => axios.post(`${userUrl}/signin`, user);
 export const signUp = (user) => axios.post(`${userUrl}/signup`, user);
 export const verify = (token) => axios.post(`${userUrl}/verify`, token);
+export const checkPassword = (body) => axios.post(`${userUrl}/check-password`, body);
 export const forgot = (email) => axios.put(`${userUrl}/forgot`, email);
 export const resetPassword = (body) => axios.put(`${userUrl}/reset-password`, body);
 

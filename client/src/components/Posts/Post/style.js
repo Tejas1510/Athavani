@@ -49,9 +49,6 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
-  cardContent :{
-    display : "none",
-  } , 
   bleh :{
     
   } ,

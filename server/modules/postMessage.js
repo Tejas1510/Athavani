@@ -34,6 +34,24 @@ const postSchema = mongoose.Schema({
             ref: 'User'
         }
     ],
+    comments: [
+        {
+            _id: {
+                type: mongoose.Types.ObjectId,
+                ref: 'User'
+            },
+            img: {
+                type: String
+            },
+            name: {
+                type: String,
+                required: [true, 'Creator Name is Required']
+            },
+            message: {
+                type: String
+            }
+        }
+    ],
     createdAt: {
         type: Date,
         default: new Date(),

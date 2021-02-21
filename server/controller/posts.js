@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import PostMessage from '../modules/postMessage.js'
+import User from '../modules/user.js'
 import Signup from '../modules/signup.js';
 
 export const getPost = async (req, res) => {
@@ -96,6 +97,23 @@ export const favoritePost = async (req, res) => {
     }
     res.json(updatedPost);
 
+}
+
+export const commentPost = async (req, res) => {
+    const { id } = req.params;
+    const { userID, message } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const user = await User.findById(userID);
+
+    if(!user) {
+        res.status(404).send(`No User with id: ${userID}`);
+    }
+
+    let updatedPost = await PostMessage.findByIdAndUpdate(id, { $addToSet: {comments: {_id: userID, img: user.img, name: user.name, message} }}, { new: true })
+
+    res.json(updatedPost);
 }
 
 export const signup = async (req, res) => {

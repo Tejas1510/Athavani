@@ -24,10 +24,14 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import EditIcon from '@material-ui/icons/Edit';
+import CloseIcon from '@material-ui/icons/Close';
+import CommentIcon from '@material-ui/icons/Comment';
+import SendIcon from '@material-ui/icons/Send';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
-import { deletePost, likePost, dislikePost, favoritePost } from '../../../actions/posts';
+import { deletePost, likePost, dislikePost, favoritePost, commentPost } from '../../../actions/posts';
 import dotenv from 'dotenv';
 import { password1 } from './password';
 
@@ -149,6 +153,21 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
     );
   }
 
+  const [settingsOption, setSettingsOption] = useState(false);
+
+  function handleEditPost() {
+    if (post.creator._id === creatorID) {
+      setCurrentId(post._id);
+    } else {
+      toast.warn("You can't edit other's post!");
+    }
+    setSettingsOption(false)
+  }
+
+  const [commentToggle, setCommentToggle] = useState(false);
+
+  const [commentMessage, setCommentMessage] = useState("");
+
   return (
     <>
       <Card className={classes.card}>
@@ -158,24 +177,39 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
 
-        {
-          fromProfile ? <></> :
-            <div className={classes.overlay2}>
-              <Button
+        <div className={classes.overlay2}>
+          {
+              settingsOption ?
+              <div style={{display: "flex", flexDirection: "column", alignItems: "space-between"}}>
+                <IconButton
+                  style={{ color: "white", backgroundColor: "rgba(150, 150, 250, 0.5)"  }}
+                  onClick={() => setSettingsOption(false)}>
+                  <CloseIcon/>
+                </IconButton>
+                {
+                  !fromProfile &&
+                  <IconButton
+                    style={{ color: "white", backgroundColor: "rgba(0, 255, 0, 0.5)" }}
+                    onClick={() => handleEditPost()}>
+                    <EditIcon/>
+                  </IconButton>
+                }
+                <IconButton
+                  style={{ color: "white", backgroundColor: "rgba(255, 0, 0, 0.5)" }}
+                  onClick={() => {handleOpen(); setSettingsOption(false);}}>
+                  <DeleteIcon/>
+                </IconButton>
+                
+              </div>
+              :
+              <IconButton
                 style={{ color: "white" }}
-                size="small"
-                onClick={() => {
-                  if (post.creator._id === creatorID) {
-                    setCurrentId(post._id);
-                  } else {
-                    toast.warn("You can't edit other's post!");
-                  }
-                }}
+                onClick={() => setSettingsOption(true)}
               >
                 <MoreHorizIcon fontSize="default" />
-              </Button>
-            </div>
-        }
+              </IconButton>
+          }
+        </div>
 
         {/* ----- Post's Tags ----- */}
         <div className={classes.details}>
@@ -219,8 +253,16 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
           <Button size="small" color="primary" onClick={() => {
             dispatch(dislikePost(post._id, { userID: creatorID, bool: post.dislikes.includes(creatorID) }))
           }}>
-            <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "7" }} />
+            <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "5" }} />
             {post.dislikes.length}
+          </Button>
+
+          {/* ----- Comment ----- */}
+          <Button size="small" color="primary" onClick={() => {
+            setCommentToggle(current => !current);
+          }}>
+            <CommentIcon fontSize="small" style={{ paddingRight: "5" }} />
+            {post.comments.length}
           </Button>
 
           {/* ----- Heart ----- */}
@@ -231,12 +273,45 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
           >
             {post.favorites.includes(creatorID) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </Button>
-
-          {/* ----- Delete ----- */}
-          <Button size="small" color="primary" onClick={handleOpen}>
-            <DeleteIcon fontSize="small" />
-          </Button>
         </CardActions>
+
+        {
+          commentToggle &&
+          <div>
+            <hr/>
+            <div style={{display: "flex", margin: "0 1rem"}}>
+              <input type="text" style={{padding: "0.5rem", outline: "none", width: "80%", borderRadius: "15px", border: "1px solid gray"}}
+              placeholder="Comment..."
+              value={commentMessage}
+              onChange={(e) => setCommentMessage(e.target.value)}/>
+              <Button style={{width: "20%", color: "#ffa500", padding: "0"}} onClick={() => {
+                console.log("Clicked!");
+                dispatch(commentPost(post._id, { userID: creatorID, message: commentMessage}))
+                .then(() => {
+                  setCommentMessage("");
+                  console.log("Done");
+                });
+              }}>
+                <SendIcon/>
+              </Button>
+            </div>
+            <div style={{padding: "0.5rem", paddingTop: "0"}}>
+            {
+              post.comments.slice(0).reverse().map(comment => (
+                <div style={{margin: "0.5rem 0", padding: "0.3rem", borderRadius: "15px", backgroundColor: "rgba(138, 138, 138, 0.15)"}}>
+                  <div style={{display: "flex", alignItems: "center"}}>
+                    <img src={comment.img} alt="Profile" style={{width: "30px", height: "30px", borderRadius: "100%", objectFit: "cover", paddingRight: "0.3rem"}}/>
+                    <div style={{fontSize: "1.3rem"}}>{comment.name}</div>
+                  </div>
+                  <div style={{paddingTop: "0.1rem", fontStyle: "italic"}}>
+                    {comment.message}
+                  </div>
+                </div>
+              ))
+            }
+            </div>
+          </div>
+        }
       </Card>
 
       {/* ----- Delete Popup for admin ----- */}

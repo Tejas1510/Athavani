@@ -1,4 +1,5 @@
-import  User from '../modules/user.js';
+import User from '../modules/user.js';
+import Otp from '../modules/otp.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
@@ -207,6 +208,76 @@ export const checkPassword = async (req, res) => {
             return res.status(200).json({message: "Password Matched", status: matched});
         } else {
             return res.status(200).json({message: "Incorrect Password", status: matched});
+        }
+
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+}
+
+export const sendOtp = async (req, res) => {
+    try {
+        const {email} = req.body;
+
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+              user: process.env.MAIL,
+              pass: process.env.PASS,
+            },
+        });
+
+        const string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+        let OTP = '';
+        
+        const len = string.length; 
+        for (let i = 0; i < 6; i++ ) { 
+            OTP += string[Math.floor(Math.random() * len)]; 
+        }
+
+        console.log(OTP);
+
+        await Otp.create({
+            email,
+            otp: OTP
+        });
+
+        await transporter.sendMail({
+            from: `${process.env.MAIL}`, // sender address
+            to: `${email}`, // list of receivers
+            subject: `Email Verification || Athavani || ${new Date().toLocaleDateString()}`, // Subject line
+            html: `<div style="text-align: center; background-color: #ffa500; padding: 11px">
+            <h1>Please verify you email</h1>
+            <p style="padding: 15px 0;">
+                 Please confirm that you want this as your Athavani account email address. Use this OTP for creating your account on Athavani. Once it's verify, you will be able to use Athavani.
+            </p>
+            <div style="text-decoration: none; background-color: tomato; color: white; padding: 1rem 1.5rem; border-radius: 25px; box-shadow: 0px 1px 3px black; width: fit-content; margin: auto; font-weight: bold; letter-spacing: 3px;">
+                  ${OTP}
+            </div>
+            <p style="padding: 15px 0;">If you did not make this request, you can simply ignore this email.</p>
+            <p> Sent at ${new Date()}</p>`, // html body
+        });
+
+        return res.status(200).json({message: "OTP Sent"});
+
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+}
+
+export const verifyOtp = async (req, res) => {
+    try {
+        const {email, otp} = req.body;
+
+        const OTP = await Otp.findOne({email});
+
+        if(OTP.otp.localeCompare(otp) === 0) {
+            await Otp.findOneAndUpdate({email}, {isVerified: true});
+            return res.status(200).json({message: "OTP Match"});
+        } else {
+            return res.status(401).json({message: "Wrong OTP!"});
         }
 
     } catch (error) {

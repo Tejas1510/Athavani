@@ -21,6 +21,9 @@ export const checkPassword = (body) => axios.post(`${userUrl}/check-password`, b
 export const forgot = (email) => axios.put(`${userUrl}/forgot`, email);
 export const resetPassword = (body) => axios.put(`${userUrl}/reset-password`, body);
 
+export const sendOtp = (email) => axios.post(`${userUrl}/send-otp`, email);
+export const verifyOtp = (body) => axios.post(`${userUrl}/verify-otp`, body);
+
 export const getProfileById = (id) => axios.get(`${userUrl}/get-profile-by-id/${id}`);
 export const updateProfileById = (id, body) => axios.put(`${userUrl}/update-profile-by-id/${id}`, body);
 

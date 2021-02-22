@@ -237,7 +237,7 @@ export const sendOtp = async (req, res) => {
             OTP += string[Math.floor(Math.random() * len)]; 
         }
 
-        console.log(OTP);
+        // console.log(OTP);
 
         await Otp.create({
             email,
@@ -263,7 +263,11 @@ export const sendOtp = async (req, res) => {
         return res.status(200).json({message: "OTP Sent"});
 
     } catch (error) {
-        return res.status(404).json({message: error.message});
+        if(error.code && error.code === 11000) {
+            return res.status(409).json({message: "Email Already Exist!"});
+        } else {
+            return res.status(404).json({message: error.message});
+        }
     }
 }
 

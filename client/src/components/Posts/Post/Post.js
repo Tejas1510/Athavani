@@ -23,6 +23,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
@@ -75,16 +76,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
   };
 
   // toggling the content of post
-  const toggleContent = () => {
-    var x = document.getElementById("cardContent");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      document.getElementById("Arrow").innerHTML = "Show Less";
-    } else {
-      x.style.display = "none";
-      document.getElementById("Arrow").innerHTML = "READ MORE";
-    }
-  };
+  const [contentToggle, setContentToggle] = useState(true);
 
   // Component of delete option popup
   function DeleteBody({ name }) {
@@ -224,27 +216,36 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
         </Typography>
 
         {/* ----- Post's text content ----- */}
-        <CardContent id="cardContent" className={classes.cardContent}>
-          <Typography gutterBottom>{post.message}</Typography>
-        </CardContent>
+        {
+          !contentToggle &&
+          <CardContent>
+            <Typography>{post.message}</Typography>
+          </CardContent>
+        }
 
         {/* ----- Post's toggle button ----- */}
-        <Button size="small" color="primary" onClick={toggleContent} id='Arrow'>
-          <ArrowDownwardIcon />
-          Read more...
+        <Button size="small" color="primary" onClick={() => setContentToggle(current => !current)} id='Arrow'>
+          {
+            contentToggle ?
+            <>
+              <ArrowDownwardIcon />
+              Read more...
+            </>
+            :
+            <>
+              <ArrowUpwardIcon />
+              Read less...
+            </>
+          }
         </Button>
 
         {/* ----- Post's Action Buttons ----- */}
         <CardActions className={classes.cardActions}>
 
           {/* ----- Like ----- */}
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => {
+          <Button size="small" color="primary" onClick={() => {
               dispatch(likePost(post._id, { userID: creatorID, bool: post.likes.includes(creatorID) }))
-            }}
-          >
+          }}>
             <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
             {post.likes.length}
           </Button>

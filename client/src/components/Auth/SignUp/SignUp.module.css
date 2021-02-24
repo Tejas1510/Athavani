@@ -31,6 +31,16 @@
     border: 1px solid black;
 }
 
+.send_otp {
+    margin-top: 1rem;
+    padding: 0.7rem 0;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 .signup {
     background-color: #ffa500;
     color: white;
@@ -40,6 +50,7 @@
     border: none;
     box-shadow: 0 1px 3px grey; 
     margin: 2rem 0;
+    margin-top: 1rem;
     cursor: pointer;
     user-select: none;
 }

@@ -4,6 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
+import {LinearProgress} from '@material-ui/core';
 
 function Forgot(props) {
 
@@ -19,6 +20,8 @@ function Forgot(props) {
 
     const [email, setEmail] = useState("");
 
+    const [isLoading, setIsLoading] = useState(false);
+
     async function submitHandle() {
         if(validator.empty(email)) {
             return toast.error("Email Field is Empty!");
@@ -28,10 +31,13 @@ function Forgot(props) {
             return toast.error("Invalid Email!");
         }
 
+        setIsLoading(true);
+
         try {
             const {data} = await api.forgot({email});
             // console.log(data);
             toast.success(data.message);
+            setIsLoading(false);
             history.push('/signin');
         } catch(error) {
             if(error.response) {
@@ -43,6 +49,7 @@ function Forgot(props) {
                 toast.error(error.message);
                 // console.log(error.message);
             }
+            setIsLoading(false);
         }
     }
 
@@ -57,8 +64,14 @@ function Forgot(props) {
                 />
                 <button className={styles.reset}
                     onClick={submitHandle}
+                    disabled={isLoading}
+                    style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                 >
                     Mail Reset Link
+                    {
+                        isLoading &&
+                        <LinearProgress color="secondary" />
+                    }
                 </button>
                 <Link to='/signin' className={styles.back}>
                     Back

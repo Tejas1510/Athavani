@@ -4,6 +4,7 @@ import {toast} from 'react-toastify';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
+import {LinearProgress} from '@material-ui/core';
 
 function ResetPassword(props) {
 
@@ -21,6 +22,8 @@ function ResetPassword(props) {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
 
+    const [isLoading, setIsLoading] = useState(false);
+
     async function submitHandle() {
         if(validator.empty(password)) {
             return toast.error("Password Field is Empty!");
@@ -36,10 +39,13 @@ function ResetPassword(props) {
             return toast.error("Password and Confirm Password are not matching!")
         }
 
+        setIsLoading(true);
+
         try {
             const {data} = await api.resetPassword({token: params.token, newPassword: password});
             // console.log(data);
             toast.success(data.message);
+            setIsLoading(false);
             history.push('/signin');
         } catch(error) {
             if(error.response) {
@@ -51,6 +57,7 @@ function ResetPassword(props) {
                 toast.error(error.message);
                 // console.log(error.message);
             }
+            setIsLoading(false);
         }
     }
 
@@ -68,8 +75,14 @@ function ResetPassword(props) {
                 />
                 <button className={styles.change}
                     onClick={submitHandle}
+                    disabled={isLoading}
+                    style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                 >
                     Change Password
+                    {
+                        isLoading &&
+                        <LinearProgress color="secondary" />
+                    }
                 </button>
                 <Link to='/forgot' className={styles.back}>
                     Back

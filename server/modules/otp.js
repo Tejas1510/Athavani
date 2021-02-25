@@ -4,7 +4,6 @@ import validator from 'validator';
 const otpSchema = mongoose.Schema({
     email: {
         type: String,
-        unique: true,
         required: [true, 'Email is Required'],
         validate: {
             validator: email => validator.isEmail(email),

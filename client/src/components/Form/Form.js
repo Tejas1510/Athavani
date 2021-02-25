@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as api from '../../api/index';
 import useStyles from './style';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Typography, Paper, LinearProgress } from '@material-ui/core';
 import { Alert } from '@material-ui/lab'
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,8 @@ const Form = ({ currentId, setCurrentId }) => {
     const history = useHistory();
     const [creatorID, setCreatorID] = useState("");
     const [creatorName, setCreatorName] = useState("");
+
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(async () => {
         try {
@@ -55,15 +57,21 @@ const Form = ({ currentId, setCurrentId }) => {
             return setError('All Fields are required.');
         }
 
+        setIsLoading(true);
+
         let postdata = postData;
         postdata.creator = { _id: creatorID, name: creatorName };
         // console.log(postdata);
 
         if (currentId) {
-            dispatch(updatePost(currentId, postData))
+            dispatch(updatePost(currentId, postData)).then(() => {
+                setIsLoading(false);
+            })
         }
         else {
-            dispatch(createPost(postData));
+            dispatch(createPost(postData)).then(() => {
+                setIsLoading(false);
+            });
         }
         clear();
     }
@@ -142,8 +150,16 @@ const Form = ({ currentId, setCurrentId }) => {
 
             </div>
             
-            <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+            <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth
+                style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
+            >
+                Submit
+            </Button>
             <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            {
+                isLoading &&
+                <LinearProgress color="secondary" />
+            }
             </div>
            </form>
            

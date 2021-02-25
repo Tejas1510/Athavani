@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 import MailSubscibers from '../modules/mailSubscribers.js';
 
 export const addMail = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const newSubscriber = new MailSubscibers(req.body);
     try {
         await newSubscriber.save();
-        console.log(newSubscriber);
+        // console.log(newSubscriber);
         res.status(201).json(newSubscriber);
     } catch (error) {
         res.status(409).json({ message: error.message });

@@ -148,6 +148,7 @@ if you have cloned this repo, then open git in this directory and use
 ### This Project is a part of the following Open Source Program
 
 <img src ="https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt ="Devscript Winter of Code"></img>
+<img src = "https://github.com/mitalirs/Athavani/blob/update-readme/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
 
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.

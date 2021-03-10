@@ -168,149 +168,24 @@ For major changes, you are welcomed to open an issue and discuss what you would 
 
 ## ✨ Contributors
 
-<table>
-<!--   ROW 1 -->
-    <tr>
-        <td align="center">
-            <a href="https://github.com/Tejas1510">
-            <img src="https://avatars3.githubusercontent.com/u/64543913?v=4" width="100px" alt=""/><br />
-            <sub><b>Tejas1510</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=Tejas1510">
-            👑 Author
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/kanishkaa24">
-            <img src="https://avatars0.githubusercontent.com/u/71253790?v=4" width="100px" alt=""/><br />
-            <sub><b>kanishkaa24</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=kanishkaa24">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/antaramunshi">
-            <img src="https://avatars0.githubusercontent.com/u/74422097?v=4" width="100px" alt=""/><br />
-            <sub><b>antaramunshi</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=antaramunshi">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/Khimit">
-            <img src="https://avatars2.githubusercontent.com/u/46605529?v=4" width="100px" alt=""/><br />
-            <sub><b>Khimit</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=Khimit">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/Harshit850">
-            <img src="https://avatars1.githubusercontent.com/u/53150301?v=4" width="100px" alt=""/><br />
-            <sub><b>Harshit850</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=Harshit850">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/sanjay270899">
-            <img src="https://avatars3.githubusercontent.com/u/43892590?v=4" width="100px" alt=""/><br />
-            <sub><b>sanjay270899</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=sanjay270899">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/sakshikhachane">
-            <img src="https://avatars1.githubusercontent.com/u/53635792?v=4" width="100px" alt=""/><br />
-            <sub><b>sakshikhachane</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=sakshikhachane">
-            💻
-            </a>
-        </td>
-    </tr>
-<!--      ROW 2 -->
-    <tr>
-        <td align="center">
-            <a href="https://github.com/shubhraagarwal">
-            <img src="https://avatars3.githubusercontent.com/u/67220475?v=4" width="100px" alt=""/><br />
-            <sub><b>shubhraagarwal</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=shubhraagarwal">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/Aniket31-coder">
-            <img src="https://avatars3.githubusercontent.com/u/55101835?v=4" width="100px" alt=""/><br />
-            <sub><b>Aniket31-coder</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=Aniket31-coder">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/Ashuto7h">
-            <img src="https://avatars1.githubusercontent.com/u/53266261?v=4" width="100px" alt=""/><br />
-            <sub><b>Ashuto7h</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=Ashuto7h">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/musavveer">
-            <img src="https://avatars2.githubusercontent.com/u/62888562?v=4" width="100px" alt=""/><br />
-            <sub><b>musavveer</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=musavveer">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/koolgax99">
-            <img src="https://avatars0.githubusercontent.com/u/55532999?v=4" width="100px" alt=""/><br />
-            <sub><b>koolgax99</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=koolgax99">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/SuNiL-Chau">
-            <img src="https://avatars0.githubusercontent.com/u/46418190?v=4" width="100px" alt=""/><br />
-            <sub><b>SuNiL-Chau</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=SuNiL-Chau">
-            💻
-            </a>
-        </td>
-        <td align="center">
-            <a href="https://github.com/kenkirito">
-            <img src="https://avatars1.githubusercontent.com/u/68530218?v=4" width="100px" alt=""/><br />
-            <sub><b>kenkirito</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=kenkirito">
-            💻
-            </a>
-        </td>
-       <td align="center">
-            <a href="https://github.com/himanshu007-creator">
-            <img src="https://avatars.githubusercontent.com/u/65963997?s=460&u=da0f5f134520e08a42e768efb23942ecd9a25434&v=4" width="100px" alt=""/><br />
-            <sub><b>Himanshu</b></sub>
-            </a><br />
-            <a href="https://github.com/Tejas1510/Athavani/commits?author=himanshu007-creator">
-            💻
-            </a>
-        </td>
-    </tr>
-</table>
+<a href="https://github.com/Tejas1510"><img src="https://github.com/Tejas1510.png?size=50"></img></a>
+<a href="https://github.com/kanishkaa24"><img src="https://github.com/kanishkaa24.png?size=50"></img></a>
+<a href="https://github.com/antaramunshi"><img src="https://github.com/antaramunshi.png?size=50"></img></a>
+<a href="https://github.com/Khimit"><img src="https://github.com/Khimit.png?size=50"></img></a>
+<a href="https://github.com/Harshit850"><img src="https://github.com/Harshit850.png?size=50"></img></a>
+<a href="https://github.com/sanjay270899"><img src="https://github.com/sanjay270899.png?size=50"></img></a>
+<a href="https://github.com/sakshikhachane"><img src="https://github.com/sakshikhachane.png?size=50"></img></a>
+<a href="https://github.com/shubhraagarwal"><img src="https://github.com/shubhraagarwal.png?size=50"></img></a>
+<a href="https://github.com/Aniket31-coder"><img src="https://avatars3.githubusercontent.com/u/55101835?v=4" width="50px" alt=""></img></a>
+<a href="https://github.com/Ashuto7h"><img src="https://github.com/Ashuto7h.png?size=50"></img></a>
+<a href="https://github.com/musavveer"><img src="https://github.com/musavveer.png?size=50"></img></a>
+<a href="https://github.com/koolgax990"><img src="https://avatars0.githubusercontent.com/u/55532999?v=4" width="50px" alt=""></img></a>
+<a href="https://github.com/SuNiL-Chau"><img src="https://github.com/SuNiL-Chau.png?size=50"></img></a>
+<a href="https://github.com/kenkirito"><img src="https://github.com/kenkirito.png?size=50"></img></a>
+<a href="https://github.com/himanshu007-creator"><img src="https://github.com/himanshu007-creator.png?size=50"></img></a>
+
+
+
 
 ## 🔔 Credits
 

@@ -219,6 +219,12 @@ export const sendOtp = async (req, res) => {
     try {
         const {email} = req.body;
 
+        const userFind = await User.findOne({email});
+        
+        if(userFind) {
+            return res.status(400).json({message: "Account already exist on " + email});
+        }
+
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 587,
@@ -229,20 +235,24 @@ export const sendOtp = async (req, res) => {
             },
         });
 
-        const string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+        const optUserFind = await Otp.findOne({email});
         let OTP = '';
-        
-        const len = string.length; 
-        for (let i = 0; i < 6; i++ ) { 
-            OTP += string[Math.floor(Math.random() * len)]; 
+
+        if(optUserFind) {
+            OTP = optUserFind.otp;
+        } else {
+            const string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+            
+            const len = string.length; 
+            for (let i = 0; i < 6; i++ ) { 
+                OTP += string[Math.floor(Math.random() * len)]; 
+            }
+
+            await Otp.create({
+                email,
+                otp: OTP
+            });
         }
-
-        // console.log(OTP);
-
-        await Otp.create({
-            email,
-            otp: OTP
-        });
 
         await transporter.sendMail({
             from: `${process.env.MAIL}`, // sender address

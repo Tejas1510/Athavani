@@ -3,6 +3,8 @@ import Otp from '../modules/otp.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import pkg from 'googleapis';
+const { google } = pkg;
 
 export const signup = async (req, res) => {
     try {
@@ -89,15 +91,32 @@ export const forgot = async (req, res) => {
             return res.status(403).json({message: "Token Error!"});
         }
 
+        const CLIENT_ID = process.env.CLIENT_ID;
+        const CLIENT_SECRET = process.env.CLIENT_SECRET;
+        const REDIRECT_URI = process.env.REDIRECT_URI;
+        const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+
+        const oAuth2Client = new google.auth.OAuth2(
+            CLIENT_ID,
+            CLIENT_SECRET,
+            REDIRECT_URI
+        );
+        oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+        const accessToken = await oAuth2Client.getAccessToken();
+
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // true for 465, false for other ports
+            service: process.env.MAIL_SERVICE,
             auth: {
-              user: process.env.MAIL,
-              pass: process.env.PASS,
+                type: 'OAuth2',
+                user: process.env.MAIL,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: accessToken,
             },
         });
+
 
         await user.updateOne({resetPassLink: token});
 
@@ -225,13 +244,29 @@ export const sendOtp = async (req, res) => {
             return res.status(400).json({message: "Account already exist on " + email});
         }
 
+        const CLIENT_ID = process.env.CLIENT_ID;
+        const CLIENT_SECRET = process.env.CLIENT_SECRET;
+        const REDIRECT_URI = process.env.REDIRECT_URI;
+        const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+
+        const oAuth2Client = new google.auth.OAuth2(
+            CLIENT_ID,
+            CLIENT_SECRET,
+            REDIRECT_URI
+        );
+        oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+        const accessToken = await oAuth2Client.getAccessToken();
+
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // true for 465, false for other ports
+            service: process.env.MAIL_SERVICE,
             auth: {
-              user: process.env.MAIL,
-              pass: process.env.PASS,
+                type: 'OAuth2',
+                user: process.env.MAIL,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: accessToken,
             },
         });
 
@@ -276,6 +311,7 @@ export const sendOtp = async (req, res) => {
         if(error.code && error.code === 11000) {
             return res.status(409).json({message: "Email Already Exist!"});
         } else {
+            console.log(error);
             return res.status(404).json({message: error.message});
         }
     }

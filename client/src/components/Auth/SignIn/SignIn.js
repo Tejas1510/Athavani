@@ -70,6 +70,7 @@ function SignIn(props) {
     return (
         <div className={styles.SignIn}>
             <div className={styles.title}>Sign In</div>
+
             <div className={styles.body}>
                 <input type="text" className={styles.email} name="email" placeholder="Email Address"
                     value={email} onChange={(e) => setEmail(e.target.value)}

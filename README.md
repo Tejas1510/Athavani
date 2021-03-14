@@ -38,16 +38,16 @@ ability
 ## A sneak peek into what we have here🙈 :
 
 ### Creation of Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/createMemory.gif"></p>
+<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/createMemory.gif"></p>
 
 ### Updation of Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/updateMemory.gif"></p>
+<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/updateMemory.gif"></p>
 
 ### Like a  Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/likeMemory.gif"></p>
+<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/likeMemory.gif"></p>
 
 ### Delete a Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/deleteMemory.gif"></p>
+<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/deleteMemory.gif"></p>
 
 
 ## ⭐ Getting Started

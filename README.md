@@ -35,19 +35,19 @@ ability
 <img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
 </p>
 
-## A sneek peek into what we have here🙈 :
+## A sneak peek into what we have here🙈 :
 
 ### Creation of Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/creation.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/createMemory.gif"></p>
 
 ### Updation of Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/updation.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/updateMemory.gif"></p>
 
 ### Like a  Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/likePost.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/likeMemory.gif"></p>
 
 ### Delete a Memory
-<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/Delete.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/deleteMemory.gif"></p>
 
 
 ## ⭐ Getting Started

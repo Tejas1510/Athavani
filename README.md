@@ -38,16 +38,16 @@ ability
 ## A sneak peek into what we have here🙈 :
 
 ### Creation of Memory
-<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/createMemory.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/createMemory.gif" alt = "create memory"></p>
 
 ### Updation of Memory
-<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/updateMemory.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/updateMemory.gif" alt = "update memory"></p>
 
 ### Like a  Memory
-<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/likeMemory.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/likeMemory.gif" alt = "like memory"></p>
 
 ### Delete a Memory
-<p align="center"><img src="https://github.com/mitalirs/Athavani/blob/update-readme/assets/deleteMemory.gif"></p>
+<p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/deleteMemory.gif" alt = "delete memory"></p>
 
 
 ## ⭐ Getting Started
@@ -148,7 +148,7 @@ if you have cloned this repo, then open git in this directory and use
 ### This Project is a part of the following Open Source Program
 
 <img src ="https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt ="Devscript Winter of Code"></img>
-<img src = "https://github.com/mitalirs/Athavani/blob/update-readme/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
 
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.

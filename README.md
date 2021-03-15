@@ -168,21 +168,9 @@ For major changes, you are welcomed to open an issue and discuss what you would 
 
 ## ✨ Contributors
 
-<a href="https://github.com/Tejas1510"><img src="https://github.com/Tejas1510.png?size=50"></img></a>
-<a href="https://github.com/kanishkaa24"><img src="https://github.com/kanishkaa24.png?size=50"></img></a>
-<a href="https://github.com/antaramunshi"><img src="https://github.com/antaramunshi.png?size=50"></img></a>
-<a href="https://github.com/Khimit"><img src="https://github.com/Khimit.png?size=50"></img></a>
-<a href="https://github.com/Harshit850"><img src="https://github.com/Harshit850.png?size=50"></img></a>
-<a href="https://github.com/sanjay270899"><img src="https://github.com/sanjay270899.png?size=50"></img></a>
-<a href="https://github.com/sakshikhachane"><img src="https://github.com/sakshikhachane.png?size=50"></img></a>
-<a href="https://github.com/shubhraagarwal"><img src="https://github.com/shubhraagarwal.png?size=50"></img></a>
-<a href="https://github.com/Aniket31-coder"><img src="https://avatars3.githubusercontent.com/u/55101835?v=4" width="50px" alt=""></img></a>
-<a href="https://github.com/Ashuto7h"><img src="https://github.com/Ashuto7h.png?size=50"></img></a>
-<a href="https://github.com/musavveer"><img src="https://github.com/musavveer.png?size=50"></img></a>
-<a href="https://github.com/koolgax990"><img src="https://avatars0.githubusercontent.com/u/55532999?v=4" width="50px" alt=""></img></a>
-<a href="https://github.com/SuNiL-Chau"><img src="https://github.com/SuNiL-Chau.png?size=50"></img></a>
-<a href="https://github.com/kenkirito"><img src="https://github.com/kenkirito.png?size=50"></img></a>
-<a href="https://github.com/himanshu007-creator"><img src="https://github.com/himanshu007-creator.png?size=50"></img></a>
+<a href="https://github.com/Tejas1510/Athavani/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Tejas1510/Athavani" />
+</a>
 
 
 

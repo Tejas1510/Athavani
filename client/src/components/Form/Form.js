@@ -110,12 +110,13 @@ const Form = ({ currentId, setCurrentId }) => {
               value={creatorName}
               disabled={true}
               /> */}
-              <h2 style={{
+              <Typography style={{
                   fontSize: "1.5em",
                   margin: "10px 0",
-                  fontWeight: "400",
+                  fontWeight: "500",
+                  color: "#fff",
                   textAlign: "center"
-              }}>{creatorName}</h2>
+              }}>{creatorName}</Typography>
 
            <TextField 
             name ="title"

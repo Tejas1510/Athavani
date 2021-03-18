@@ -9,7 +9,6 @@ export default makeStyles((theme) => ({
   paper: {
     borderRadius: '12px',
     background: "#FF7F50",
-
     borderRadius: "20px"
   },
   heading: {

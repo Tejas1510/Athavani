@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const postUrl = "https://memories-mern-stack.herokuapp.com/posts";
-const userUrl = "https://memories-mern-stack.herokuapp.com/auth";
-// const postUrl = "http://localhost:5000/posts";
-// const userUrl = "http://localhost:5000/auth";
+// const mainUrl = "https://memories-mern-stack.herokuapp.com/";
+const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
+// const mainUrl = "http://localhost:5000/"
+
+const postUrl = mainUrl + "posts";
+const userUrl = mainUrl + "auth";
 
 export const fetchPost = () => axios.get(postUrl);
 export const createPost = (newPost) => axios.post(postUrl, newPost);
@@ -27,7 +29,6 @@ export const verifyOtp = (body) => axios.post(`${userUrl}/verify-otp`, body);
 export const getProfileById = (id) => axios.get(`${userUrl}/get-profile-by-id/${id}`);
 export const updateProfileById = (id, body) => axios.put(`${userUrl}/update-profile-by-id/${id}`, body);
 
-const mailUrl =  "https://memories-mern-stack.herokuapp.com/mails"
-// const mailUrl = "http://localhost:5000/mails";
+const mailUrl = mainUrl + "mails";
 
 export const addMail = (newMail) => axios.post(mailUrl, newMail);

@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+    name="description"
+    content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -19,7 +20,7 @@
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
-
+      
       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
@@ -33,12 +34,38 @@
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
-
+      
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
+        
+        To begin the development, run `npm start` or `yarn start`.
+        To create a production bundle, use `npm run build` or `yarn build`.
+      -->
+      <!--Dark mode Implementation-->
+      <script>
+        function addDarkmodeWidget() {
+          new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        const options = {
+          top: '64px', // default: '32px'
+          right: 'unset', // default: '32px'
+          left: '32px', // default: 'unset'
+          time: '0.5s', // default: '0.3s'
+          mixColor: '#fff', // default: '#fff'
+          backgroundColor: '#fff',  // default: '#fff'
+          buttonColorDark: '#100f2c',  // default: '#100f2c'
+          buttonColorLight: '#fff', // default: '#fff'
+          saveInCookies: true, // default: true,
+          label: '🌓', // default: ''
+          autoMatchOsTheme: true // default: true
+        }
+
+        const darkmode =  new Darkmode(options);
+        darkmode.toggle();
+        console.log(darkmode.isActivated())
+      </script>
+      <!--End of Dark Mode implementation-->
   </body>
 </html>

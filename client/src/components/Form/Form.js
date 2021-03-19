@@ -112,10 +112,16 @@ const Form = ({ currentId, setCurrentId }) => {
               /> */}
               <Typography style={{
                   fontSize: "1.5em",
-                  margin: "10px 0",
+                  margin: "10px 0px",
                   fontWeight: "500",
-                  color: "#fff",
-                  textAlign: "center"
+                  textAlign: "center",
+                  borderRadius: "12px",
+                  padding: "2px 15px",
+                  width: "fit-content",
+                  textAlign: "center",
+                  margin: "10px auto",
+                  color: "#101820ff",
+                  background: "#f2aa4cff"
               }}>{creatorName}</Typography>
 
            <TextField 

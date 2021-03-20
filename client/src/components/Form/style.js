@@ -8,11 +8,13 @@ export default makeStyles((theme) => ({
   },
   paper: {
     borderRadius: '12px',
-    background: 'linear-gradient(180deg, rgb(255 192 146 / 85%) 48%, rgb(253 226 52 / 0.71) 100%)',
+    background: "#FF7F50",
+    borderRadius: "20px"
   },
   heading: {
     background: 'rgb(248 172 78) 58%;',
-    borderRadius: '12px',
+    borderTopLeftRadius: "20px",
+    borderTopRightRadius: "20px",
     width: '380px!important',
     height: '55px',
   },
@@ -21,8 +23,8 @@ export default makeStyles((theme) => ({
     borderRadius:'10px'
   },
   inputBox: {
-    background: '#FFFFF1',
-    borderRadius:'10px'
+    background: 'rgb(248 172 78) 58%;',
+    borderRadius:'10px',
   },
   form: {
     display: 'flex',
@@ -32,9 +34,30 @@ export default makeStyles((theme) => ({
   error: {
     marginTop: '11px'
   },
+  fileUpload: {
+    position: "relative",
+    cursor: "pointer",
+  },
+  fileUploadIcon: {
+    fontSize: "3.5em",
+    cursor: "pointer",
+  },
   fileInput: {
+    position: "absolute",
+    left: "5px",
+    top: "5px",
     width: '97%',
+    minHeight: "50px",
     margin: '10px 0',
+    opacity: "0",
+    cursor: "pointer",
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: 'center',
+    alignItems: "center",
+    flexDirection: "column",
+    marginTop: "10px",
   },
   buttonSubmit: {
     marginBottom: 10,
@@ -42,8 +65,6 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
-    marginLeft: '28%', 
-    marginRight: '50px',
   },
   buttonClear: {
     marginBottom: 10,
@@ -51,7 +72,5 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
-    marginLeft: '28%', 
-    marginRight: '50px',
   },
 }));

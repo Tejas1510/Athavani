@@ -8,6 +8,7 @@ import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 import { toast } from 'react-toastify';
+import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
 
 const Form = ({ currentId, setCurrentId }) => {
 
@@ -90,7 +91,7 @@ const Form = ({ currentId, setCurrentId }) => {
        <Paper className={classes.paper}>
            <form autoComplete="off" noValidate onSubmit={handleSubmit} className={classes.form}>
             <div className={classes.heading}><Typography variant="h6" 
-                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '600',color:'white'}}>
+                style={{fontFamily: 'Amaranth',fontSize: '28px', textAlign: 'center', paddingTop: '5px', fontWeight: '400',color:'#ff0000'}}>
                 {currentId ? 'Editing': 'Creating' } A Memory</Typography>
             </div>
             {
@@ -100,15 +101,19 @@ const Form = ({ currentId, setCurrentId }) => {
                 </Alert>
             }
             <div className={classes.contents}>
-            <TextField 
-            name ="creator"
-             className={classes.inputBox}
-             variant="outlined"
-              label="Creator"
-              fullWidth
-              value={creatorName}
-              disabled={true}
-              />
+              <Typography style={{
+                  fontSize: "1.5em",
+                  margin: "10px 0px",
+                  fontWeight: "500",
+                  textAlign: "center",
+                  borderRadius: "12px",
+                  padding: "2px 15px",
+                  width: "fit-content",
+                  textAlign: "center",
+                  margin: "10px auto",
+                  color: "#101820ff",
+                  background: "#f2aa4cff"
+              }}>{creatorName}</Typography>
 
            <TextField 
             name ="title"
@@ -140,22 +145,29 @@ const Form = ({ currentId, setCurrentId }) => {
                 fullWidth
                 value={postData.tags}
                 onChange={(e)=> setPostData({...postData,tags:e.target.value.split(',')})} />
+            <div className={classes.fileUpload}>
+                <div style={{display: "flex", alignItems: "center"}}>
+                <PublishRoundedIcon className={classes.fileUploadIcon}/>
+                <Typography>Upload Your Memory</Typography>
+                </div>
 
-            <div className={classes.fileInput}>
-                <FileBase
-                  type="file"
-                  multiple={false}
-                  onDone={({base64}) =>setPostData({...postData,selectedFile:base64})} 
-                />
-
+                <div className={classes.fileInput}>
+                    <FileBase
+                        type="file"
+                        multiple={false}
+                        onDone={({base64}) =>setPostData({...postData,selectedFile:base64})} 
+                    />
+                </div>
             </div>
             
+            <div className={classes.buttons}>
             <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth
                 style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
             >
                 Submit
             </Button>
             <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            </div>
             {
                 isLoading &&
                 <LinearProgress color="secondary" />

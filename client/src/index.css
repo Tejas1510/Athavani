@@ -1,7 +1,7 @@
 body {
   background-color: #ffaa00;
-  background-image: url("../src/Images/background.jpg");
-  background-position: center;
+  background-image: url("../src/Images/Img.jpg");
+  background-position: center center;
   background-attachment: fixed;
   background-size: cover;
 }

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, AppBar, Typography, Grid, Grow, Button } from '@material-ui/core';
@@ -18,6 +18,7 @@ import Forgot from './components/Auth/Forgot/Forgot';
 import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
 import Profile from './components/Profile/Profile';
 import Error404 from './components/404/Error404';
+import * as api from './api/index'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 
   const dispatch = useDispatch();
   const [currentId, setCurrentId] = useState(null);
+  const [userImg, setUserImg] = useState("");
 
   useEffect(() => {
     dispatch(getPosts())
@@ -40,6 +42,16 @@ function App() {
     }
   },[history])
 
+  useEffect(async () => {
+    try {
+        const {data} = await api.verify({token : localStorage.getItem('token')});
+        const response = await api.getProfileById(data.id);
+        setUserImg(response.data.user.img)
+    } catch (error) {
+        console.log(error);
+    }
+}, []);
+
   const [logout, setLogout] = useState(true);
 
   function logoutHandle() {
@@ -48,17 +60,40 @@ function App() {
     toast.success('Logged out successfully.');
   }
 
+  const toggleMenu = () => {
+    document.querySelector("#menuBox").classList.toggle("active");
+  };
+
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
         <img className={classes.image} height="50" src={memories} alt="Memories"></img>
-        {
-          logout &&
-          <Button className={classes.logout}
-            onClick={logoutHandle}
-          >Logout&nbsp;<ExitToAppIcon /></Button>
-        }
+        {logout && (
+          <>
+            <img className={classes.menuIcon} height="50" src={userImg} alt="Memories" onClick={() => toggleMenu()}></img>
+        <div className={classes.menuBox} id="menuBox">
+            <ul>
+              <li>
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: "none", color: "black" }}
+                  onClick={() => toggleMenu()}
+                >
+                  <h1 style={{margin: "0"}}>
+                    Profile
+                  </h1>
+                </Link>
+              </li>
+              <li>
+                  <h1 style={{margin: "0"}} onClick={() => logoutHandle()}>
+                      Logout
+                  </h1>
+              </li>
+            </ul>
+          </div>
+          </>
+        )}
       </AppBar>
       <Grow in>
         <Container>

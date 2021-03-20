@@ -101,15 +101,6 @@ const Form = ({ currentId, setCurrentId }) => {
                 </Alert>
             }
             <div className={classes.contents}>
-            {/* <TextField 
-            name ="creator"
-             className={classes.inputBox}
-             variant="outlined"
-              label="Creator"
-              fullWidth
-              value={creatorName}
-              disabled={true}
-              /> */}
               <Typography style={{
                   fontSize: "1.5em",
                   margin: "10px 0px",

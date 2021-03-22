@@ -25,3 +25,10 @@ _Please delete options that are not relevant._
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
 - [ ] I have added tests/screenshots(if any) that prove my fix is effective or that my feature works
+
+
+# Screenshots (Or Videos)
+
+Original             |  Updated
+:-------------------------:|:-------------------------:
+** original screenshot **  |  ** updated screenshot **

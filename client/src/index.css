@@ -1,9 +1,9 @@
-body{
+body {
   background-color: #ffaa00;
-background-image: url("../src/Images/sign_bg.jpg");
-background-position: center center;
-background-attachment: fixed;
-background-size: cover;
+  background-image: url("../src/Images/Img.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 a {

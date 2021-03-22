@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 import { toast } from 'react-toastify';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
+import AvatarButtons from '../Buttons/AvatarButtons';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const Form = ({ currentId, setCurrentId }) => {
 
@@ -161,12 +164,14 @@ const Form = ({ currentId, setCurrentId }) => {
             </div>
             
             <div className={classes.buttons}>
-            <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth
-                style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
-            >
-                Submit
-            </Button>
-            <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            <AvatarButtons styling={classes.buttonSubmit} variant="contained" color="#FFB800" size="large" type="submit" fullWidth
+                style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`,margin:"1rem auto"}} displayicon={ArrowUpwardIcon}>
+                    Submit
+                </AvatarButtons>
+            <AvatarButtons styling={classes.buttonClear} variant="contained" color="#ff0000" size="large" fullWidth
+                onClick={clear} displayicon={ClearIcon}>
+                    Clear
+                </AvatarButtons>
             </div>
             {
                 isLoading &&

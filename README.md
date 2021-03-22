@@ -1,6 +1,6 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
-## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/pQbVQqu7)
+## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
 
 <p align="center">
   <img width="400" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/athavani.gif"></img>

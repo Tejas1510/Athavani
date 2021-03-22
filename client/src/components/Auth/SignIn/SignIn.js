@@ -6,6 +6,7 @@ import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
 import {LinearProgress} from '@material-ui/core';
+import signinBg from '../../../Images/signin_bg.jpg';
 
 function SignIn(props) {
 
@@ -69,6 +70,7 @@ function SignIn(props) {
 
     return (
         <div className={styles.SignIn}>
+            <img src={signinBg} alt="Background" className={styles.signin_bg}/>
             <div className={styles.title}>Sign In</div>
 
             <div className={styles.body}>

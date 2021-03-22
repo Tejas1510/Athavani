@@ -49,9 +49,6 @@ const Posts = ({setCurrentId}) =>{
         !posts.length ? <CircularProgress/> : (
             <>
                 <div className={classes.filterBar}>
-                    <Link to='/profile'>
-                        <Button aria-controls="simple-menu" aria-haspopup="true" className={classes.filterButtons}>My Profile</Button>
-                    </Link>
                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.filterButtons}>
                         Sort
                     </Button>

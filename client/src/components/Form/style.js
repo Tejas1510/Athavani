@@ -65,6 +65,7 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
+    fontWeight:"Bold"
   },
   buttonClear: {
     marginBottom: 10,
@@ -72,5 +73,6 @@ export default makeStyles((theme) => ({
     color:'white', 
     borderRadius: '7px', 
     width: '149px',
+    fontWeight:"Bold"
   },
 }));

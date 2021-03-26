@@ -1,116 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 .SignUp {
-    background-color: white;
-    width: fit-content;
-    margin: auto;
-    padding: 2rem;
-    padding-bottom: 1rem;
-    border-radius: 10px;
-    font-family: Poppins;
-    box-shadow: 0 5px 15px grey;
+  background-color: white;
+  width: fit-content;
+  margin: auto;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  font-family: Poppins;
+  box-shadow: 0 5px 15px grey;
 }
 
 .title {
-    text-align: center;
-    font-size: 1.7rem;
-    font-weight: bold;
-    color:tomato;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: tomato;
 }
 
 .body {
-    padding: 1rem;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  padding: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.body input{
-    padding: 1rem 1rem;
-    width: 350px;
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #eee;
+.body input {
+  padding: 1rem 1rem;
+  width: 350px;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #eee;
 }
 
 .send_otp {
-    margin-top: 2em;
-    padding: 0.7rem 0;
-    font-size: 1rem;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color:white;
-    width: 50%;
-    background: rgb(221,39,28);
-    background: linear-gradient(90deg, rgba(221,39,28,1) 0%, rgba(248,249,7,1) 100%);
+  margin-top: 2em;
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  width: 50%;
+  background: rgb(221, 39, 28);
+  background: linear-gradient(
+    90deg,
+    rgba(221, 39, 28, 1) 0%,
+    rgba(248, 249, 7, 1) 100%
+  );
 }
 
 .signup {
-    background-color: #ffa500;
-    color: white;
-    padding: 0.7rem 1rem;
-    font-size: 1.1rem;
-    outline: none;
-    border: none;
-    box-shadow: 0 1px 3px grey; 
-    margin: 2rem 0;
-    margin-top: 0.8rem;
-    cursor: pointer;
-    user-select: none;
+  background-color: #ffa500;
+  color: white;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  box-shadow: 0 1px 3px grey;
+  margin: 2rem 0;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  user-select: none;
 }
-.send_otp:hover{
-      box-shadow: 0 5px 15px orange;
-  background: rgb(255,165,38);
-background: linear-gradient(90deg, rgba(255,165,38,1) 0%, rgba(242,227,2,1) 100%);
+.send_otp:hover {
+  box-shadow: 0 5px 15px orange;
+  background: rgb(255, 165, 38);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 165, 38, 1) 0%,
+    rgba(242, 227, 2, 1) 100%
+  );
 }
 .signup:hover {
-    filter: brightness(97%)
+  filter: brightness(97%);
 }
 
 .already {
-    display: flex;
-    margin-top: 0.8rem;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  margin-top: 0.8rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .text {
-    font-size: 0.7rem;
-    font-weight: bold;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 
 .link {
-    color: tomato;
-    font-weight: bold;
-    margin-left: 11px;
-    font-size: 0.8rem;
-    cursor: pointer;
+  color: tomato;
+  font-weight: bold;
+  margin-left: 11px;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 630px) {
+  .SignUp {
+    padding: 1rem;
+    margin: 0;
+    margin-top: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .SignUp {
-        padding: 1rem;
-        margin:0;
-        margin-top: 30px;
-        position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        
-    }
+  .body input {
+    width: 250px;
+    font-size: 1rem;
+  }
+}
 
-    .body input {
-        width: 250px;
-        font-size: 1rem;
-    }    
+@media only screen and (max-width: 360px) {
+  .signUp {
+    padding: 0.8rem;
+    width: 80%;
+  }
+  .body input {
+    width: 90%;
+  }
 }

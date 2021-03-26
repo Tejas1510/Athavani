@@ -29,6 +29,10 @@ mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnified
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
+mongoose.connection.on('error', error => {
+  console.log(error.message);
+});
+
 // sends the mail every sunday
 cron.schedule('* * * * Sun', () => {
     sendMail();

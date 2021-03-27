@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
 import {Link, useHistory} from 'react-router-dom';
 import styles from './SignUp.module.css';
@@ -18,6 +19,9 @@ function SignUp(props) {
 
 
     const history = useHistory();
+
+    const  [showPassword, setShowPassword] = useState(false);
+    const  [showPassword2, setShowPassword2] = useState(false);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -186,12 +190,28 @@ function SignUp(props) {
                         <input type="text" name="name" placeholder="Your Name"
                             value={name} onChange={(e) => setName(e.target.value)}
                         />
-                        <input type="password" name="password" placeholder="Enter Password"
-                            value={password} onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <input type="password" name="password2" placeholder="Confirm Password"
-                            value={password2} onChange={(e) => setPassword2(e.target.value)}
-                        />
+                        <div className={styles.password_container}>
+                            <input type={showPassword ? "text" : "password"}  name="password" placeholder="Enter Password"
+                                value={password} onChange={(e) => setPassword(e.target.value)}
+                            /> 
+                            <div className={styles.eye} onClick={()=> setShowPassword((prevState)=> !prevState)}>
+                                {
+                                    showPassword ? <FiEyeOff /> : <FiEye/>
+                                }
+                            </div>
+                        </div>
+
+                        <div className={styles.password_container}>
+                            <input type={showPassword2 ? "text" : "password"}  name="password2" placeholder="Confirm Password"
+                                value={password2} onChange={(e) => setPassword2(e.target.value)}
+                            />
+                            <div className={styles.eye} onClick={()=> setShowPassword2((prevState)=> !prevState)}>
+                                {
+                                    showPassword2 ? <FiEyeOff /> : <FiEye/>
+                                }
+                            </div>
+                        </div>
+
                         <button className={styles.signup}
                             onClick={submitHandle}
                             disabled={isLoading}

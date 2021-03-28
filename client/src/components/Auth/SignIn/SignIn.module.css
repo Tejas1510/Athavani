@@ -1,149 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 .SignIn {
-    background-color:white;
+  background-color: white;
 
-    width: fit-content;
-    margin: auto;
-    padding: 2rem;
-    border-radius: 10px;
-    font-family:Poppins;
-    box-shadow: 0 5px 15px grey;
+  width: fit-content;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 10px;
+  font-family: Poppins;
+  box-shadow: 0 5px 15px grey;
 }
 
 .signin_bg {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .title {
-    text-align: center;
-    font-size: 1.7rem;
-    color:tomato;
-    font-weight: bold;
+  text-align: center;
+  font-size: 1.7rem;
+  color: tomato;
+  font-weight: bold;
 }
 
 .body {
-    padding: 1rem;
-    padding-top: 2rem;
-     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  padding: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.email, .password {
-    padding: 1rem 1rem;
-    width: 350px;
-    font-size: 0.8rem;
-    margin-top: 1.3rem;
-    outline: none;
-    border:none;
-    background-color:#fff;
-    padding-right: 1.5rem;
-    border-bottom:1px solid #eee;
-     
+.email,
+.password {
+  padding: 1rem 1rem;
+  width: 350px;
+  font-size: 0.8rem;
+  margin-top: 1.3rem;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  padding-right: 1.5rem;
+  border-bottom: 1px solid #eee;
 }
 
 .password_container {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .eye {
-    position: absolute;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .forgot {
-    margin-left: auto;
-    width: fit-content;
-    font-size: 0.8rem;
-    cursor: pointer;
-    margin-top: 5px;
-    user-select: none;
+  margin-left: auto;
+  width: fit-content;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 5px;
+  user-select: none;
 }
 
 .forgot:hover {
-    text-decoration: underline;
-    color:tomato;
+  text-decoration: underline;
+  color: tomato;
 }
-.password:hover{
-  box-shadow:none;
+.password:hover {
+  box-shadow: none;
 }
-.email:hover{
-   box-shadow: none;
+.email:hover {
+  box-shadow: none;
 }
 .login {
-    background: rgb(221,39,28);
-    background: linear-gradient(90deg, rgba(221,39,28,1) 0%, rgba(248,249,7,1) 100%);
-    color: white;
-    padding: 0.7rem 1rem;
-    font-size: 1.1rem;
-    outline: none;
-    border: none;
-    border-radius: 20px;
-    
-    margin: 2rem 0;
-    cursor: pointer;
-    user-select: none;
-    width:50%;
+  background: rgb(221, 39, 28);
+  background: linear-gradient(
+    90deg,
+    rgba(221, 39, 28, 1) 0%,
+    rgba(248, 249, 7, 1) 100%
+  );
+  color: white;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  border-radius: 20px;
 
-
+  margin: 2rem 0;
+  cursor: pointer;
+  user-select: none;
+  width: 50%;
 }
 
 .login:hover {
-      box-shadow: 0 5px 15px orange;
-  background: rgb(255,165,38);
-background: linear-gradient(90deg, rgba(255,165,38,1) 0%, rgba(242,227,2,1) 100%);
+  box-shadow: 0 5px 15px orange;
+  background: rgb(255, 165, 38);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 165, 38, 1) 0%,
+    rgba(242, 227, 2, 1) 100%
+  );
 }
 
 .already {
-    display: flex;
-    margin-top: 3.5rem;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  margin-top: 3.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .text {
-    font-size: 0.7rem;
-    font-weight: bold;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 
 .link {
-    color: tomato;
-    font-weight: bold;
-    margin-left: 11px;
-    font-size: 0.8rem;
-    cursor: pointer;
+  color: tomato;
+  font-weight: bold;
+  margin-left: 11px;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 630px) {
+  .SignIn {
+    padding: 1rem;
+    margin: 0;
+    margin-top: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .SignIn {
-        padding: 1rem;
-        margin:0;
-        margin-top: 30px;
-        position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%,-50%);
+  .email,
+  .password {
+    width: 250px;
+    font-size: 1rem;
+  }
+}
 
-    }
+@media only screen and (max-width: 360px) {
+  .SignIn {
+    width: 80%;
+  }
 
-    .email, .password {
-        width: 250px;
-        font-size: 1rem;
-    }    
+  .email,
+  .password {
+    width: 80%;
+  }
 }

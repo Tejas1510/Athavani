@@ -6,9 +6,7 @@ import * as validator from "../../../utils/validator";
 import * as api from "../../../api/index";
 import { LinearProgress } from "@material-ui/core";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-const eye = <FontAwesomeIcon icon={faEye} />;
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function SignUp(props) {
   useEffect(() => {
@@ -203,6 +201,7 @@ function SignUp(props) {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+
             <div>
               <input
                 type={passwordShown ? "text" : "password"}
@@ -211,8 +210,15 @@ function SignUp(props) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <i onClick={togglePasswordVisiblity}>{eye}</i>
+              <span
+                onClick={togglePasswordVisiblity}
+                className={styles.eye}
+                style={{ position: "relative" }}
+              >
+                {passwordShown ? <FiEyeOff /> : <FiEye />}
+              </span>
             </div>
+
             <div>
               <input
                 type={passwordShown1 ? "text" : "password"}
@@ -221,8 +227,15 @@ function SignUp(props) {
                 value={password2}
                 onChange={(e) => setPassword2(e.target.value)}
               />
-              <i onClick={togglePasswordVisiblity1}>{eye}</i>
+              <span
+                onClick={togglePasswordVisiblity1}
+                className={styles.eye}
+                style={{ position: "relative" }}
+              >
+                {passwordShown1 ? <FiEyeOff /> : <FiEye />}
+              </span>
             </div>
+
             <button
               className={styles.signup}
               onClick={submitHandle}

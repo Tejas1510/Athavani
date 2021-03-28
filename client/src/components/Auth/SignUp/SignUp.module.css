@@ -80,10 +80,7 @@
   filter: brightness(97%);
 }
 
-i {
-  position: relative;
-}
-i:hover {
+.eye:hover {
   color: #ffa500;
   cursor: pointer;
 }

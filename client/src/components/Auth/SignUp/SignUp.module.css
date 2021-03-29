@@ -76,6 +76,19 @@
     rgba(242, 227, 2, 1) 100%
   );
 }
+
+.password_container {
+    display: flex;
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    cursor: pointer;
+}
+
 .signup:hover {
   filter: brightness(97%);
 }

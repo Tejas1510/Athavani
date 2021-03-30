@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // const mainUrl = "https://memories-mern-stack.herokuapp.com/";
-const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
-// const mainUrl = "http://localhost:5000/"
+// const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
+const mainUrl = "http://localhost:5000/"
 
 const postUrl = mainUrl + "posts";
 const userUrl = mainUrl + "auth";
@@ -15,6 +15,7 @@ export const likePost = (id, body) => axios.patch(`${postUrl}/${id}/likePost`, b
 export const dislikePost = (id, body) => axios.patch(`${postUrl}/${id}/dislikePost`, body);
 export const favoritePost = (id, body) => axios.patch(`${postUrl}/${id}/favoritePost`, body);
 export const commentPost = (id, body) => axios.patch(`${postUrl}/${id}/commentPost`, body);
+export const deleteComment = (id, commentId, body) => axios.patch(`${postUrl}/${id}/deleteComment/${commentId}`, body);
 
 export const signIn = (user) => axios.post(`${userUrl}/signin`, user);
 export const signUp = (user) => axios.post(`${userUrl}/signup`, user);

@@ -1,5 +1,5 @@
 import express from 'express';
-import {getPost, createPost,updatePost,deletePost,likePost,signup,dislikePost,favoritePost,commentPost,test} from '../controller/posts.js'
+import {getPost, createPost,updatePost,deletePost,likePost,signup,dislikePost,favoritePost,commentPost,test, deleteComment} from '../controller/posts.js'
 const router = express.Router();
 
 router.get('/',getPost);
@@ -10,6 +10,7 @@ router.patch('/:id/likePost',likePost);
 router.patch('/:id/dislikePost', dislikePost);
 router.patch('/:id/favoritePost', favoritePost);
 router.patch('/:id/commentPost', commentPost);
+router.patch('/:id/deleteComment/:commentId', deleteComment);
 router.post('/',signup);
 router.get('/test',test);
 

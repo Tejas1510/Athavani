@@ -36,8 +36,8 @@ const postSchema = mongoose.Schema({
     ],
     comments: [
         {
-            _id: {
-                type: mongoose.Types.ObjectId,
+            postedBy: {
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'User'
             },
             img: {

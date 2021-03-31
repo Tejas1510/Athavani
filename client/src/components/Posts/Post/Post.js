@@ -45,6 +45,7 @@ import { password1 } from "./password";
 
 const Post = ({ post, setCurrentId, fromProfile }) => {
   dotenv.config();
+  console.log(post);
 
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");
@@ -286,6 +287,14 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
             size="small"
             color="primary"
             onClick={() => {
+              if (post.dislikes.includes(creatorID)) {
+                dispatch(
+                  dislikePost(post._id, {
+                    userID: creatorID,
+                    bool: true,
+                  })
+                );
+              }
               dispatch(
                 likePost(post._id, {
                   userID: creatorID,
@@ -303,6 +312,14 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
             size="small"
             color="primary"
             onClick={() => {
+              if (post.likes.includes(creatorID)) {
+                dispatch(
+                  likePost(post._id, {
+                    userID: creatorID,
+                    bool: true,
+                  })
+                );
+              }
               dispatch(
                 dislikePost(post._id, {
                   userID: creatorID,
@@ -411,13 +428,22 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                       />
                       <div style={{ fontSize: "1.3rem" }}>{comment.name}</div>
                     </div>
-                    <div style={{ paddingTop: "0.1rem", fontStyle: "italic", display: "flex", justifyContent: "space-between" }}>
-                      <div style={{paddingTop: "10px"}}>{comment.message}</div>
-                       <Button
-                       size="small"
-                       color="primary"
+                    <div
+                      style={{
+                        paddingTop: "0.1rem",
+                        fontStyle: "italic",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div style={{ paddingTop: "10px" }}>
+                        {comment.message}
+                      </div>
+                      <Button
+                        size="small"
+                        color="primary"
                         onClick={() => {
-                          console.log(creatorID)
+                          console.log(creatorID);
                           console.log(comment.postedBy);
                           dispatch(
                             deleteComment(post._id, comment._id, {

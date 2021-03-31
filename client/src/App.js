@@ -18,7 +18,8 @@ import Forgot from './components/Auth/Forgot/Forgot';
 import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
 import Profile from './components/Profile/Profile';
 import Error404 from './components/404/Error404';
-import * as api from './api/index'
+import * as api from './api/index';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
   };
 
   return (
+    <div>
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
@@ -131,6 +133,8 @@ function App() {
         </Container>
       </Grow>
     </Container>
+    <Footer/>
+    </div>
   );
 }
 

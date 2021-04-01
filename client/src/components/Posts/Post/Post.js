@@ -426,7 +426,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                           paddingRight: "0.3rem",
                         }}
                       />
-                      <div style={{ fontSize: "1.3rem" }}>{comment.name}</div>
+                      <div style={{ fontSize: "1.3rem" }}>{comment.name}  <span style={{fontSize: "16px", color: "#666", fontWeight: "300"}} > • {moment(comment.createdAt).fromNow()} </span></div>
                     </div>
                     <div
                       style={{
@@ -455,7 +455,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                         {comment.postedBy === creatorID && <DeleteIcon />}
                       </Button>
                     </div>
-                    <div style={{fontSize: "13px", color: "#666", fontWeight: "300"}}>{moment(comment.createdAt).fromNow()}</div>
+                    <div style={{fontSize: "13px", color: "#666", fontWeight: "300"}}></div>
                   </div>
                 ))}
             </div>

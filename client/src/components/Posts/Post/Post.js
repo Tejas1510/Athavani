@@ -455,6 +455,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                         {comment.postedBy === creatorID && <DeleteIcon />}
                       </Button>
                     </div>
+                    <div style={{fontSize: "13px", color: "#666", fontWeight: "300"}}>{moment(comment.createdAt).fromNow()}</div>
                   </div>
                 ))}
             </div>

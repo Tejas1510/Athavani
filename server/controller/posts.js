@@ -48,23 +48,6 @@ export const deletePost = async (req, res) => {
   res.json({ message: "Post Deleted Succesfully" });
 };
 
-// export const deletePostByAdmin = async (req, res) => {
-//   const { id } = req.params;
-//   const { password } = req.body;
-
-//   if (!mongoose.Types.ObjectId.isValid(id))
-//     return res.status(404).send(`No post with id: ${id}`);
-
-//   const matched = await bcrypt.compare(password, process.env.PASSWORD_ADMIN);
-
-//   if (matched) {
-//     await PostMessage.findByIdAndRemove(id);
-
-//     res.json({ message: "Post Deleted Succesfully" });
-//   }
-//   return res.status(404).send(`Wrong admin password!`);
-
-// };
 
 export const likePost = async (req, res) => {
   const { id } = req.params;
@@ -159,13 +142,7 @@ export const commentPost = async (req, res) => {
     id,
     {
       $addToSet: {
-        comments: {
-          message,
-          img: user.img,
-          postedBy: user,
-          name: user.name,
-          createdAt: new Date(),
-        },
+        comments: { message, img: user.img, postedBy: user, name: user.name, createdAt: new Date() },
       },
     },
     { new: true }

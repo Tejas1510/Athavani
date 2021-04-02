@@ -67,6 +67,9 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
 
   const [openDelete, setOpenDelete] = useState(false); // for users
   const [openDeleteAdmin, setOpenDeleteAdmin] = useState(false); // for admin
+  const [openDeleteComment, setOpenDeleteComment] = useState(false); // for users
+  const [openDeleteCommentAdmin, setOpenDeleteCommentAdmin] = useState(false); // for admin
+  const [commentID, setCommentID] = useState('');
 
   // function to open delete post option
   const handleOpen = () => {
@@ -84,11 +87,31 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
     setOpenDeleteAdmin(false);
   };
 
+  // function to open delete comment option
+  const handleCommentOpen = (comment) => {
+    console.log(comment);
+    console.log(creatorID);
+    if (comment.postedBy == creatorID) {
+      console.log(true);
+      setOpenDeleteComment(true);
+    } else {
+      toast.info("You are trying to delete other's comment!");
+      setOpenDeleteCommentAdmin(true);
+    }
+  };
+
+  // function to close delete comment option
+  const handleCommentClose = () => {
+    setOpenDeleteComment(false);
+    setOpenDeleteCommentAdmin(false);
+  };
+
   // toggling the content of post
   const [contentToggle, setContentToggle] = useState(true);
 
   // Component of delete option popup
   function DeleteBody({ name }) {
+    // console.log(thename);
     // input password
     const [password, setPassword] = useState("");
 
@@ -135,6 +158,90 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
       <div className={classes.paper}>
         <h2 id="simple-modal-title">
           <center>Please Enter {name} Password</center>
+        </h2>
+        <TextField
+          name="message"
+          variant="outlined"
+          label="Enter Password"
+          type="password"
+          style={{ marginBottom: "1.5rem" }}
+          className={classes.customInput}
+          fullWidth
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button
+          variant="contained"
+          className={classes.paperButton}
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+      </div>
+    );
+  }
+
+  function DeleteCommentBody({ thename }) {
+    console.log(thename);
+    // input password
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async () => {
+      console.log(openDeleteComment);
+      console.log(commentID);
+      if (openDeleteComment) {
+        // for user
+        let matched = false;
+        try {
+          const { data } = await api.checkPassword({
+            id: creatorID,
+            password: password,
+          });
+          matched = data.status;
+        } catch (error) {
+          toast.error(error.message);
+        }
+
+        if (matched) {
+          // dispatch(deletePost(post._id)).then(() =>
+          //   toast.success("Post Deleted.")
+          // );
+          console.log(post);
+          console.log(commentID);
+          dispatch(
+            deleteComment(post._id, commentID, {
+              userID: creatorID,
+            })
+          ).then(() => toast.success("Comment Deleted."));
+          handleCommentClose();
+          toast.info("Deleting Comment... It may take some seconds.");
+        } else {
+          setOpenDeleteComment(false);
+          toast.error("You have entered wrong password!");
+        }
+      } else if (openDeleteCommentAdmin) {
+        // for admin
+        if (password === password1) {
+          dispatch(
+            deleteComment(post._id, commentID, {
+              userID: creatorID,
+            })
+          ).then(() => toast.success("Comment Deleted."));
+          handleCommentClose();
+          toast.info("Deleting Comment... It may take some seconds.");
+        } else {
+          setOpenDeleteCommentAdmin(false);
+          toast.error("You have entered wrong password!!!");
+        }
+      }
+    };
+
+    // setCommentID();
+
+    return (
+      <div className={classes.paper}>
+        <h2 id="simple-modal-title">
+          <center>Please Enter {thename} Password</center>
         </h2>
         <TextField
           name="message"
@@ -411,22 +518,31 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                       />
                       <div style={{ fontSize: "1.3rem" }}>{comment.name}</div>
                     </div>
-                    <div style={{ paddingTop: "0.1rem", fontStyle: "italic", display: "flex", justifyContent: "space-between" }}>
-                      <div style={{paddingTop: "10px"}}>{comment.message}</div>
-                       <Button
-                       size="small"
-                       color="primary"
+                    <div
+                      style={{
+                        paddingTop: "0.1rem",
+                        fontStyle: "italic",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div style={{ paddingTop: "10px" }}>
+                        {comment.message}
+                      </div>
+                      <Button
+                        size="small"
+                        color="primary"
                         onClick={() => {
-                          console.log(creatorID)
-                          console.log(comment.postedBy);
-                          dispatch(
-                            deleteComment(post._id, comment._id, {
-                              userID: creatorID,
-                            })
-                          );
+
+                          console.log(comment._id);
+                          setCommentID(comment._id);
+                          console.log(commentID);
+                          handleCommentOpen(comment);
+                          setSettingsOption(false);
+                          
                         }}
                       >
-                        {comment.postedBy === creatorID && <DeleteIcon />}
+                        <DeleteIcon />
                       </Button>
                     </div>
                   </div>
@@ -454,6 +570,26 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
         aria-describedby="simple-modal-description"
       >
         <DeleteBody name="your" />
+      </Modal>
+
+      {/* ----- Delete Popup for admin ----- */}
+      <Modal
+        open={openDeleteCommentAdmin}
+        onClose={handleCommentClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <DeleteCommentBody thename="Admin" />
+      </Modal>
+
+      {/* ----- Delete Popup for user ----- */}
+      <Modal
+        open={openDeleteComment}
+        onClose={handleCommentClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <DeleteCommentBody thename="your" />
       </Modal>
     </>
   );

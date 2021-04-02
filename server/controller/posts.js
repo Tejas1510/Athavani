@@ -14,7 +14,7 @@ export const getPost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   const post = req.body;
-  const newPost = new PostMessage(post);
+  const newPost = new PostMessage({ ...post, createdAt: new Date() });
 
   try {
     await newPost.save();
@@ -47,6 +47,24 @@ export const deletePost = async (req, res) => {
 
   res.json({ message: "Post Deleted Succesfully" });
 };
+
+// export const deletePostByAdmin = async (req, res) => {
+//   const { id } = req.params;
+//   const { password } = req.body;
+
+//   if (!mongoose.Types.ObjectId.isValid(id))
+//     return res.status(404).send(`No post with id: ${id}`);
+
+//   const matched = await bcrypt.compare(password, process.env.PASSWORD_ADMIN);
+
+//   if (matched) {
+//     await PostMessage.findByIdAndRemove(id);
+
+//     res.json({ message: "Post Deleted Succesfully" });
+//   }
+//   return res.status(404).send(`Wrong admin password!`);
+
+// };
 
 export const likePost = async (req, res) => {
   const { id } = req.params;
@@ -141,25 +159,32 @@ export const commentPost = async (req, res) => {
     id,
     {
       $addToSet: {
-        comments: { message, img: user.img, postedBy: user, name: user.name },
+        comments: {
+          message,
+          img: user.img,
+          postedBy: user,
+          name: user.name,
+          createdAt: new Date(),
+        },
       },
     },
     { new: true }
-  ).populate("comment.postedBy", "_id name").exec((err, updatedPost) => {
-      if(err){
+  )
+    .populate("comment.postedBy", "_id name")
+    .exec((err, updatedPost) => {
+      if (err) {
         res.status(404).send(`Error Occured!`);
       }
-    //   console.log(updatedPost);
-    res.json(updatedPost);
-  });
-  
+      //   console.log(updatedPost);
+      res.json(updatedPost);
+    });
 };
 
 export const deleteComment = async (req, res) => {
   const { id, commentId } = req.params;
   const { userID } = req.body;
-//   console.log(commentId);
-//   console.log(userID);
+  //   console.log(commentId);
+  //   console.log(userID);
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
@@ -170,21 +195,20 @@ export const deleteComment = async (req, res) => {
     res.status(404).send(`No User with id: ${userID}`);
   }
 
-
   PostMessage.findByIdAndUpdate(
     id,
     {
       $pull: { comments: { _id: commentId } },
     },
     { new: true }
-  ).populate("postedBy", "_id").exec((err, updatedPost) => {
-    res.json(updatedPost);
-  });
+  )
+    .populate("postedBy", "_id")
+    .exec((err, updatedPost) => {
+      res.json(updatedPost);
+    });
 
   //   let updatedPost = await PostMessage.findById(id);
   //   console.log(updatedPost);
-
-
 };
 
 export const signup = async (req, res) => {

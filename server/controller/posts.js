@@ -14,7 +14,9 @@ export const getPost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   const post = req.body;
+
   const newPost = new PostMessage({ ...post, createdAt: new Date() });
+
 
   try {
     await newPost.save();
@@ -159,13 +161,8 @@ export const commentPost = async (req, res) => {
     id,
     {
       $addToSet: {
-        comments: {
-          message,
-          img: user.img,
-          postedBy: user,
-          name: user.name,
-          createdAt: new Date(),
-        },
+
+        comments: { message, img: user.img, postedBy: user, name: user.name, createdAt: new Date() },
       },
     },
     { new: true }

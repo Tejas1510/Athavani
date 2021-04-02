@@ -120,9 +120,7 @@ function Profile() {
         return (
           <div className={styles.loadstate}>
             <CircularProgress  color="black"  size = "6rem"  thickness="5"/>
-          </div>
-
-           
+          </div>   
         )
     }
 

@@ -115,3 +115,8 @@
 .inputs::-webkit-input-placeholder {
     color: grey;
 }
+
+.loadstate{
+    justify-content: center;
+    display: flex;    
+}

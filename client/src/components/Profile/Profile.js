@@ -118,12 +118,15 @@ function Profile() {
 
     if(loading) {
         return (
-            <CircularProgress />
+          <div className={styles.loadstate}>
+            <CircularProgress  color="black"  size = "6rem"  thickness="5"/>
+          </div>   
         )
     }
 
+
     return (
-        <div className={styles.Profile}>
+          <div className={styles.Profile}>
             <Link to='/'>
                 <Button aria-controls="simple-menu" aria-haspopup="true" className={styles.back}>
                     <ArrowBackIcon/>

@@ -5,7 +5,8 @@ import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
 import {Grid,CircularProgress, Button, Menu, MenuItem} from '@material-ui/core';
-
+import Aos from "aos"
+import "aos/dist/aos.css";
 const Posts = ({setCurrentId}) =>{
 
     const history = useHistory();
@@ -44,6 +45,10 @@ const Posts = ({setCurrentId}) =>{
         }
     }
 
+    useEffect(()=>{
+        Aos.init({duration:2000});
+    },[])
+
     // console.log("posts : ", posts)
     return(
         !posts.length ? <CircularProgress/> : (
@@ -72,7 +77,7 @@ const Posts = ({setCurrentId}) =>{
                         {isFavoritePosts? 'All Posts' : 'My Favorite Posts'}
                     </Button>
                 </div>
-                <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
+                <Grid data-aos="fade-up" className={classes.mainContainer} container alignItems="stretch" spacing={3}>
                 {posts.slice(0).reverse().map((post)=> {
                     if(isFavoritePosts && !post.favorites.includes(creatorID)) {
                         return (<></>)

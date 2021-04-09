@@ -20,6 +20,7 @@ import Profile from './components/Profile/Profile';
 import Error404 from './components/404/Error404';
 import * as api from './api/index';
 import Footer from './components/Footer/Footer';
+import noProfilePhoto from "./assets/noProfilePhoto.jpg";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
   const dispatch = useDispatch();
   const [currentId, setCurrentId] = useState(null);
-  const [userImg, setUserImg] = useState("");
+  const [userImg, setUserImg] = useState(noProfilePhoto);
 
   useEffect(() => {
     dispatch(getPosts())
@@ -50,6 +51,7 @@ function App() {
         setUserImg(response.data.user.img)
     } catch (error) {
         console.log(error);
+        setUserImg(noProfilePhoto)
     }
 }, []);
 

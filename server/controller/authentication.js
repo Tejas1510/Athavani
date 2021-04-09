@@ -53,7 +53,8 @@ export const signin = async (req, res) => {
         delete user._doc.password;
         return res.status(200).json({
             token,
-            message: "Successfully Logged In"
+            message: "Successfully Logged In",
+            user: user
         });
     } catch (error) {
         res.status(404).json({message: error.message});

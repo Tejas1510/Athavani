@@ -48,8 +48,9 @@ function SignIn(props) {
 
         try {
             const {data} = await api.signIn({email, password});
-            // console.log(data);
+            console.log(data);
             toast.success(data.message);
+            // console.log(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
             setIsLoading(false);

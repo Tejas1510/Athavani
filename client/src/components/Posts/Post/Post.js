@@ -92,7 +92,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
   const handleCommentOpen = (comment) => {
     console.log(comment);
     console.log(creatorID);
-    if (comment.postedBy == creatorID) {
+    if (comment._id == creatorID) {
       console.log(true);
       setOpenDeleteComment(true);
     } else {

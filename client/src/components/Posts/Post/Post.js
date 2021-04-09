@@ -71,6 +71,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
   const [openDeleteComment, setOpenDeleteComment] = useState(false); // for users
   const [openDeleteCommentAdmin, setOpenDeleteCommentAdmin] = useState(false); // for admin
   const [commentID, setCommentID] = useState('');
+  const [commented, setCommented] = useState(false);
 
   // function to open delete post option
   const handleOpen = () => {
@@ -491,9 +492,11 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                 onChange={(e) => setCommentMessage(e.target.value)}
               />
               <Button
-                style={{ width: "20%", color: "#ffa500", padding: "0" }}
+                style={{ width: "20%", color: "#ffa500", padding: "0", opacity: commented ? "0.4" : "1" }}
+                disabled={commented}
                 onClick={() => {
                   console.log("Clicked!");
+                  setCommented(true);
                   dispatch(
                     commentPost(post._id, {
                       userID: creatorID,
@@ -501,8 +504,9 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                     })
                   ).then(() => {
                     setCommentMessage("");
+                    setCommented(false);
                     console.log("Done");
-                  });
+                  }).catch((err) => setCommented(false));
                 }}
               >
                 <SendIcon />

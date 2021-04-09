@@ -59,6 +59,7 @@ function App() {
 
   function logoutHandle() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     history.push('/signin');
     toast.success('Logged out successfully.');
   }

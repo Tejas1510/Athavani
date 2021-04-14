@@ -19,7 +19,7 @@ import AvatarButtons from "../Buttons/AvatarButtons";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");
   const [creatorName, setCreatorName] = useState("");
@@ -83,10 +83,12 @@ const Form = ({ currentId, setCurrentId }) => {
 
     if (currentId) {
       dispatch(updatePost(currentId, postData)).then(() => {
+        setOpenCreatePost(false)
         setIsLoading(false);
       });
     } else {
       dispatch(createPost(postData)).then(() => {
+        setOpenCreatePost(false)
         setIsLoading(false);
       });
     }

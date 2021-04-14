@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, Redirect, useHistory} from 'react-router-dom';
 import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
@@ -17,6 +17,8 @@ function SignIn(props) {
             props.setLogout(true);
         }
     },[props])
+
+    
 
     const history = useHistory();
 
@@ -67,6 +69,10 @@ function SignIn(props) {
             }
             setIsLoading(false);
         }
+    }
+
+    if (localStorage.getItem('token')) {
+        return <Redirect to="/" />
     }
 
     return (

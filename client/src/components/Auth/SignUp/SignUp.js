@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import {FiEye, FiEyeOff} from 'react-icons/fi';
 import {toast} from 'react-toastify';
-import {Link, Redirect, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import styles from './SignUp.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
@@ -136,10 +136,6 @@ function SignUp(props) {
         setIsOtpSent(false);
         setIsOtpVerified(false);
         setOtp("");
-    }
-    
-    if (localStorage.getItem('token')) {
-        return <Redirect to="/" />
     }
 
     return (

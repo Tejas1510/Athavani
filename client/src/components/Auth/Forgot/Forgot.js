@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Forgot.module.css';
-import {Link, Redirect, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
@@ -51,10 +51,6 @@ function Forgot(props) {
             }
             setIsLoading(false);
         }
-    }
-
-    if (localStorage.getItem('token')) {
-        return <Redirect to="/" />
     }
 
     return (

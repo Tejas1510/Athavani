@@ -42,11 +42,16 @@ import {
 } from "../../../actions/posts";
 import dotenv from "dotenv";
 import { password1 } from "./password";
+import Aos from "aos"
+import "aos/dist/aos.css";
+
 
 const Post = ({ post, setCurrentId, fromProfile }) => {
   dotenv.config();
   console.log(post);
-
+  useEffect(()=>{
+    Aos.init({duration:2000});
+},[])
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");
 
@@ -157,7 +162,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
     };
 
     return (
-      <div className={classes.paper}>
+      <div className={classes.paper} >
         <h2 id="simple-modal-title">
           <center>Please Enter {name} Password</center>
         </h2>
@@ -284,7 +289,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
 
   return (
     <>
-      <Card className={classes.card}>
+      <Card data-aos="fade-up"  className={classes.card}>
         <CardMedia
           className={classes.media}
           image={post.selectedFile}

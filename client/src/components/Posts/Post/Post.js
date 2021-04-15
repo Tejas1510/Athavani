@@ -77,6 +77,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
   const [openDeleteCommentAdmin, setOpenDeleteCommentAdmin] = useState(false); // for admin
   const [commentID, setCommentID] = useState('');
   const [commented, setCommented] = useState(false);
+  const [commentDeleted, setCommentDeleted] = useState(false);
 
   // function to open delete post option
   const handleOpen = () => {
@@ -98,7 +99,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
   const handleCommentOpen = (comment) => {
     console.log(comment);
     console.log(creatorID);
-    if (comment._id == creatorID) {
+    if (comment.postedBy == creatorID) {
       console.log(true);
       setOpenDeleteComment(true);
     } else {
@@ -199,6 +200,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
       if (openDeleteComment) {
         // for user
         let matched = false;
+        setCommentDeleted(true);
         try {
           const { data } = await api.checkPassword({
             id: creatorID,
@@ -221,12 +223,15 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
             })
           ).then(() => toast.success("Comment Deleted."));
           handleCommentClose();
+          setCommentDeleted(false);
           toast.info("Deleting Comment... It may take some seconds.");
         } else {
+          setCommentDeleted(false);
           setOpenDeleteComment(false);
           toast.error("You have entered wrong password!");
         }
       } else if (openDeleteCommentAdmin) {
+        setCommentDeleted(true);
         // for admin
         if (password === password1) {
           dispatch(
@@ -235,9 +240,11 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
             })
           ).then(() => toast.success("Comment Deleted."));
           handleCommentClose();
+          setCommentDeleted(false);
           toast.info("Deleting Comment... It may take some seconds.");
         } else {
           setOpenDeleteCommentAdmin(false);
+          setCommentDeleted(false);
           toast.error("You have entered wrong password!!!");
         }
       }
@@ -265,6 +272,10 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
           variant="contained"
           className={classes.paperButton}
           onClick={handleSubmit}
+          disabled={commentDeleted}
+          style={{
+            opacity: commentDeleted ? "0.8" : "1"
+          }}
         >
           Submit
         </Button>

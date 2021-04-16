@@ -137,6 +137,10 @@ function SignUp(props) {
         setIsOtpVerified(false);
         setOtp("");
     }
+    
+    if (localStorage.getItem('token')) {
+        return <Redirect to="/" />
+    }
 
     if (localStorage.getItem('token')) {
         return <Redirect to="/" />

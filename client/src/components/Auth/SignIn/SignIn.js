@@ -70,6 +70,10 @@ function SignIn(props) {
             setIsLoading(false);
         }
     }
+    
+    if (localStorage.getItem('token')) {
+        return <Redirect to="/" />
+    }
 
     if (localStorage.getItem('token')) {
         return <Redirect to="/" />

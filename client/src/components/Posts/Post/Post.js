@@ -512,6 +512,9 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                 disabled={commented}
                 onClick={() => {
                   console.log("Clicked!");
+                  if (!commentMessage) {
+                    return toast.error("Comment cannot be empty.");
+                  }
                   setCommented(true);
                   dispatch(
                     commentPost(post._id, {

@@ -142,6 +142,10 @@ function SignUp(props) {
         return <Redirect to="/" />
     }
 
+    if (localStorage.getItem('token')) {
+        return <Redirect to="/" />
+    }
+
     return (
         <div className={styles.SignUp}>
             <div className={styles.title}>Sign Up</div>

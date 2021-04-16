@@ -18,6 +18,8 @@ function SignIn(props) {
         }
     },[props])
 
+    
+
     const history = useHistory();
 
     const [passwordHide, setPasswordHide] = useState(false);
@@ -69,6 +71,10 @@ function SignIn(props) {
         }
     }
     
+    if (localStorage.getItem('token')) {
+        return <Redirect to="/" />
+    }
+
     if (localStorage.getItem('token')) {
         return <Redirect to="/" />
     }

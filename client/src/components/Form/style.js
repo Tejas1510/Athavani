@@ -7,14 +7,12 @@ export default makeStyles((theme) => ({
     },
   },
   paper: {
-    borderRadius: '12px',
     background: "#FF7F50",
-    borderRadius: "20px"
+    boxShadow: "none !important"
   },
   heading: {
     background: 'rgb(248 172 78) 58%;',
-    borderTopLeftRadius: "20px",
-    borderTopRightRadius: "20px",
+    borderRadius: "8px",
     width: '380px!important',
     height: '55px',
   },

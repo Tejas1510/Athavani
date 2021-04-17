@@ -18,6 +18,8 @@ import {
   Backdrop,
 } from "@material-ui/core";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import ThumbDownAltOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -426,8 +428,8 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                 })
               );
             }}
-          >
-            <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} />
+          >{post.likes.includes(creatorID) ? <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} /> : <ThumbUpAltOutlinedIcon fontSize="small" style={{ paddingRight: "5" }} />}
+            
             {post.likes.length}
           </Button>
 
@@ -451,8 +453,8 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                 })
               );
             }}
-          >
-            <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "5" }} />
+          >{post.dislikes.includes(creatorID) ? <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "5" }} /> : <ThumbDownAltOutlinedIcon fontSize="small" style={{ paddingRight: "5" }} />}
+            
             {post.dislikes.length}
           </Button>
 

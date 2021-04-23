@@ -16,6 +16,8 @@ import {
   IconButton,
   withStyles,
   Backdrop,
+  Dialog,
+  DialogTitle,
 } from "@material-ui/core";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
@@ -463,7 +465,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
             size="small"
             color="primary"
             onClick={() => {
-              setCommentToggle((current) => !current);
+              setCommentToggle(true);
             }}
           >
             <CommentIcon fontSize="small" style={{ paddingRight: "5" }} />
@@ -492,10 +494,20 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
           </Button>
         </CardActions>
 
-        {commentToggle && (
+        <Dialog
+          fullWidth={false}
+          open={commentToggle}
+          maxWidth="sm"
+          onClose={() => setCommentToggle(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle style={{background: "orange"}} id="alert-dialog-title">Comment Section</DialogTitle>
+          <div style={{
+            background: "rgb(255, 192, 146)",
+            padding: "20px"
+          }}>
           <div>
-            <hr />
-            <div style={{ display: "flex", margin: "0 1rem" }}>
+            <div style={{ display: "flex", margin: "0 1rem", width: "100%" }}>
               <input
                 type="text"
                 style={{
@@ -592,7 +604,8 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                 ))}
             </div>
           </div>
-        )}
+          </div>
+        </Dialog>
       </Card>
 
       {/* ----- Delete Popup for admin ----- */}

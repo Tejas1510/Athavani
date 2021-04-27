@@ -546,7 +546,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
               </Button>
             </div>
             <div style={{ padding: "0.5rem", paddingTop: "0" }}>
-              {post.comments
+              {post.comments.length > 0 ? (post.comments
                 .slice(0)
                 .reverse()
                 .map((comment) => (
@@ -601,7 +601,17 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
                     </div>
                     <div style={{fontSize: "13px", color: "#666", fontWeight: "300"}}></div>
                   </div>
-                ))}
+                ))) : (
+                  <div
+                    style={{
+                      margin: "0.5rem 0",
+                      padding: "0.3rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    Be the first one to comment!
+                  </div>
+                )}
             </div>
           </div>
           </div>

@@ -38,11 +38,11 @@ function Footer() {
             >
               <h1
                 class="text-uppercase"
-                style={{ marginBottom: "0px", marginTop: "20px", marginLeft: "620px" }}
+                style={{ textAlign: "center" }}
               >
                 <b class="footer-class">About Athvani</b>
               </h1>
-              <p style={{ marginBottom: "0px", marginTop: "0px", marginLeft: "350px" }}>
+              <p style={{ textAlign: "center" }}>
                 😻 Athavani/Memories is a place to save all your memories in a
                 single place and rejoice them through the years.
               </p>

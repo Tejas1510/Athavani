@@ -137,11 +137,13 @@ npm start
 ```
 🛈**IMPORTANT**🛈
 
-To open the webapp directly from CLI use:-
-```explorer "https://memoriestejastapas.netlify.app/"```
+- To open the webapp directly from CLI use:-
 
-if you have cloned this repo, then open git in this directory and use 
-``` ./script.sh ```
+    `explorer "https://memoriestejastapas.netlify.app/"`
+
+- If you have cloned this repo, then open git in this directory and use
+
+    ` ./script.sh `
 
 ## 📢  Open Source Program
 

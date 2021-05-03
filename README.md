@@ -1,6 +1,6 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
-## 📢 Join Discord channel for Discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
+## 📢 Join Discord channel for discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
 
 <p align="center">
   <img width="400" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/athavani.gif"></img>
@@ -35,7 +35,7 @@ ability
 <img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
 </p>
 
-## A sneak peek into what we have here🙈 :
+## A sneak peeks into what we have here🙈 :
 
 ### Creation of Memory
 <p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/createMemory.gif" alt = "create memory"></p>
@@ -137,7 +137,7 @@ npm start
 ```
 🛈**IMPORTANT**🛈
 
-To open the webapp directly from CLI use:-
+To open the web app directly from CLI use:-
 ```explorer "https://memoriestejastapas.netlify.app/"```
 
 if you have cloned this repo, then open git in this directory and use 

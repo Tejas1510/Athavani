@@ -8,7 +8,7 @@
 
 ## 📌 Motive of the Project
 
-<b>Athavani or Memories</b> is a full-stack MERN tool built in order to save all your memories in a single place so that you can enjoy them throughout the year.
+<b>Athavani or Memories</b> is a full-stack MERN tool built which is used to save all your memories in a single place so that you can enjoy them throughout the year.
 
 ## 💡 Project Background
 

@@ -4,7 +4,6 @@ import { Switch, Route, useHistory, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, AppBar, Typography, Grid, Grow, Button, Dialog } from '@material-ui/core';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import memories from './Images/memories.png'
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
@@ -22,8 +21,61 @@ import * as api from './api/index';
 import Footer from './components/Footer/Footer';
 import noProfilePhoto from "./assets/noProfilePhoto.jpg";
 import { SignOutGoogle } from '../src/components/Auth/gapiFrontend';
+import React from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuIcon from "@material-ui/icons/Menu";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
+import FilterListOutlinedIcon from "@material-ui/icons/FilterListOutlined";
+import CardMembershipOutlinedIcon from "@material-ui/icons/CardMembershipOutlined";
+import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
+import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 
-function App() {
+const drawerWidth = 240;
+
+const useStyl = makeStyles((theme) => ({
+  root: {
+    display: "flex"
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  appBar: {
+    [theme.breakpoints.up("sm")]: {
+      width: "100%",
+      marginLeft: drawerWidth
+    }
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
+    }
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+    height: 'calc(100% - 80px)',
+    top: 80
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
+
+function App(props) {
 
   let history = useHistory();
   toast.configure();
@@ -33,10 +85,17 @@ function App() {
   const dispatch = useDispatch();
   const [currentId, setCurrentId] = useState(null);
   const [userImg, setUserImg] = useState(noProfilePhoto);
-
+  const [OpenSubscription, setOpenSubscription] = useState(false);
   const [openCreatePost, setOpenCreatePost] = useState(false);
+  const classs = useStyl();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
+  
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
@@ -75,14 +134,23 @@ function App() {
 
   return (
     <div>
-    <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
+      <AppBar className={classes.appBar} position="fixed" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
+      {logout && <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classs.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>}
+      
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
         <img className={classes.image} height="50" src={memories} alt="Memories"></img>
         {logout && (
           <>
-            <img className={classes.menuIcon} height="50" src={userImg} alt="Memories" onClick={() => toggleMenu()}></img>
-        <div className={classes.menuBox} id="menuBox">
+            {/* <img className={classes.menuIcon} height="50" src={userImg} alt="Memories" onClick={() => toggleMenu()}></img> */}
+        {/* <div className={classes.menuBox} id="menuBox">
             <ul>
               <li>
                 <Link
@@ -109,12 +177,128 @@ function App() {
                   </h1>
               </li>
             </ul>
-          </div>
+          </div> */}
           </>
         )}
       </AppBar>
-      <Grow in>
-        <Container>
+      <div className={classs.root}>
+      <CssBaseline />    
+      {logout && 
+      <nav className={classs.drawer}>
+        <Hidden smUp implementation="css">
+          
+          <Drawer
+            container={window.document.body}
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classs.drawerPaper
+            }}
+            ModalProps={{
+              keepMounted: true
+            }}
+            
+          >
+            <div>
+      <div className={classs.toolbar} />
+      
+      <List>
+        <ListItem button component={Link} to="/profile">
+          <ListItemIcon>
+            <HomeOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button onClick={() => {
+                    setOpenCreatePost(true)
+                    }}>
+          <ListItemIcon>
+            <PostAddOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Create Post" />
+        </ListItem>
+        
+        <ListItem button component={Link} to="/profile">
+          <ListItemIcon>
+            <PersonOutlineOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItem>
+        <ListItem button onClick={() => {
+                    setOpenSubscription(true)
+                    }}>
+          <ListItemIcon>
+            <CardMembershipOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Subscribe" />
+        </ListItem>
+        <ListItem button onClick={() => logoutHandle()}>
+          <ListItemIcon>
+            <ExitToAppOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Logout" />
+        </ListItem>
+      </List>
+    </div>
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            classes={{
+              paper: classs.drawerPaper
+            }}
+            variant="permanent"
+            open
+          >
+            <div>
+      <div className={classs.toolbar} />
+      <List>
+        <ListItem button component={Link} to="/">
+          <ListItemIcon>
+            <HomeOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button onClick={() => {
+                    setOpenCreatePost(true)
+                    }}>
+          <ListItemIcon>
+            <PostAddOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Create Post" />
+        </ListItem>
+        
+        <ListItem button component={Link} to="/profile">
+          <ListItemIcon>
+            <PersonOutlineOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItem>
+        <ListItem button onClick={() => {
+                    setOpenSubscription(true)
+                    }}>
+          <ListItemIcon>
+            <CardMembershipOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Subscribe" />
+        </ListItem>
+        <ListItem button onClick={() => logoutHandle()}>
+          <ListItemIcon>
+            <ExitToAppOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Logout" />
+        </ListItem>
+      </List>
+    </div>
+          </Drawer>
+        </Hidden>
+      </nav>}
+      <main className={classs.content}>
+        <div className={classs.toolbar} />
+        <Grow in>
+        <div>
           <Switch>
             <Route path="/" exact>
               <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
@@ -134,7 +318,15 @@ function App() {
                       <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
                       </div>
                   </Dialog>
-                  <MailForm />
+                  <Dialog
+                    fullWidth={true}
+                    open={OpenSubscription}
+                    maxWidth="sm"
+                    onClose={() => setOpenSubscription(false)}
+                    aria-labelledby="responsive-dialog-title"
+                  >
+                      <MailForm />
+                  </Dialog>
                 </Grid>
               </Grid>
             </Route>
@@ -157,10 +349,14 @@ function App() {
               <Error404 />
             </Route>
           </Switch>
-        </Container>
+        </div>
       </Grow>
-    </Container>
-    <Footer/>
+      
+        </main>
+          
+      </div>
+      
+      <Footer/>
     </div>
   );
 }

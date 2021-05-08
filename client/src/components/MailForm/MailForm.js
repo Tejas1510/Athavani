@@ -29,8 +29,8 @@ const MailForm = () => {
 
     return (
         <Paper style={{
-            marginTop: '10px',
-            borderRadius: '12px',
+            marginTop: '0',
+            borderRadius: '5px',
             background: 'linear-gradient(180deg, rgb(255 192 146 / 85%) 48%, rgb(253 226 52 / 0.71) 100%)'
         }}>
             <div id="container">
@@ -40,6 +40,7 @@ const MailForm = () => {
                     value={mailPostData.email}
                     onChange={(e) => setMailPostData({email: e.target.value})}
                 />
+                <br></br>
                 <button onClick={(e) => handleSubmit(e)}>Subscribe</button>
             </div>
         </Paper>

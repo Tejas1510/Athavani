@@ -3,6 +3,7 @@ const router = express.Router();
 
 import {
   signin,
+  Gsignin,
   signup,
   verify,
   checkPassword,
@@ -17,6 +18,7 @@ import {
 import requireLogin from "../middleware/loginRequired.js";
 
 router.post("/signin", signin);
+router.post("/signin/Gsignin", Gsignin);
 router.post("/signup", signup);
 router.post("/verify", verify);
 router.post("/check-password", checkPassword);

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // const mainUrl = "https://memories-mern-stack.herokuapp.com/";
-const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
-// const mainUrl = "http://localhost:5000/";
+// const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
+const mainUrl = "http://localhost:5000/";
 
 const postUrl = mainUrl + "posts";
 const userUrl = mainUrl + "auth";
@@ -117,7 +117,7 @@ export const deleteComment = (id, commentId, body) =>
   })
 
 
-
+export const Gsignin = (user) => axios.post(`${userUrl}/signin/Gsignin`, user);
 export const signIn = (user) => axios.post(`${userUrl}/signin`, user);
 export const signUp = (user) => axios.post(`${userUrl}/signup`, user);
 export const verify = (token) => axios.post(`${userUrl}/verify`, token);

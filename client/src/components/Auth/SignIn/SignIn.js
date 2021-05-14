@@ -7,6 +7,7 @@ import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
 import {LinearProgress} from '@material-ui/core';
 import signinBg from '../../../Images/signin_bg.jpg';
+import GoogleSignin from '../gapiFrontend';
 
 function SignIn(props) {
 
@@ -114,6 +115,7 @@ function SignIn(props) {
                         <LinearProgress color="secondary" />
                     }
                 </button>
+                <GoogleSignin />
                 <div className={styles.already}>
                     <div className={styles.text}>New to Realate?</div>
                     <div className={styles.link}><Link to="/signup">Sign Up</Link></div>

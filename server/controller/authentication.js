@@ -4,7 +4,12 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import pkg from 'googleapis';
+import { OAuth2Client } from 'google-auth-library'; //this is requied so that the id token could be verified with google db
+import dotenv from 'dotenv';
 const { google } = pkg;
+dotenv.config();
+
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 export const signup = async (req, res) => {
     try {
@@ -60,6 +65,61 @@ export const signin = async (req, res) => {
         res.status(404).json({message: error.message});
     }
 };
+
+export const Gsignin = async (req, res) => { // this handels the Google user requests 
+    try {
+        // console.log(req.body); Use for Debugging
+        const { idToken } = req.body;
+        // console.log(idToken); Use for Debugging
+        client.verifyIdToken({idToken: idToken, audience: process.env.CLIENT_ID}).then(response => { //verifes the id token from google database
+            // console.log(response); Use for Debugging
+            // console.log(response.payload); Use for Debugging
+            const {email_verified, email, name} = response.payload;
+            if(email_verified){
+                User.findOne({email}).exec(async (err, user) => { //this checks whether the Google email already exists in out db or not
+                    if(err){
+                        return res.status(400).json({
+                            message: 'Something Went Wrong!!!'
+                        })
+                    }else {
+                        if(user){ // this runs if user already exists
+                            const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY);
+                            delete user._doc.password;
+                            return res.status(200).json({
+                                token,
+                                message: "Successfully Logged In",
+                                user: user
+                            });
+                        } else { // this runs if user doesnt exist. here basically a new user is created with the user details returned by the id token
+                            const hash = await bcrypt.hash("Google_User" + process.env.JWT_KEY, 12);
+                            const newUser = new User({
+                                name,
+                                password: hash,
+                                email
+                            });
+                            newUser.save((err, data) => {
+                                if(err){
+                                    return res.status(400).json({
+                                        message: 'Something Went Wrong!!!'
+                                    })
+                                }
+                                const token = jwt.sign({ _id: data._id }, process.env.JWT_KEY);
+                                delete newUser._doc.password;
+                                return res.status(200).json({
+                                    token,
+                                    message: "Successfully Logged In",
+                                    user: newUser
+                                });
+                            });
+                        };
+                    };
+                });
+            };
+        });
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
 
 export const verify = async (req, res) => {
     try {

@@ -20,6 +20,7 @@ import Error404 from './components/404/Error404';
 import * as api from './api/index';
 import Footer from './components/Footer/Footer';
 import noProfilePhoto from "./assets/noProfilePhoto.jpg";
+import { SignOutGoogle } from '../src/components/Auth/gapiFrontend';
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -120,6 +121,7 @@ function App(props) {
   const [logout, setLogout] = useState(true);
 
   function logoutHandle() {
+    SignOutGoogle(); //this is called when the user signs out from our website
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     history.push('/signin');

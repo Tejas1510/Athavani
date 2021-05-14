@@ -1,5 +1,16 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
+<p align="center">
+<img src="https://img.shields.io/github/stars/Tejas1510/Athavani?style=for-the-badge" >
+<img src="https://img.shields.io/github/forks/Tejas1510/Athavani?style=for-the-badge" >  
+<img src="https://img.shields.io/github/issues-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
+<img src="https://img.shields.io/github/issues-pr-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge">
+</p>
+
 ## 📢 Join Discord channel for discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
 
 <p align="center">
@@ -36,6 +47,10 @@ ability
 </p>
 
 ## A sneak peeks into what we have here🙈 :
+
+<p align="center">
+  <img width="650" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Athavani-GIF.gif"></img>
+</p>  
 
 ### Creation of Memory
 <p align="center"><img src="https://github.com/Tejas1510/Athavani/blob/master/assets/createMemory.gif" alt = "create memory"></p>

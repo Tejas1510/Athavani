@@ -4,13 +4,14 @@ import useStyles from './style';
 import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
-import {Grid,CircularProgress, Button, Menu, MenuItem} from '@material-ui/core';
+import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography} from '@material-ui/core';
 
 const Posts = ({setCurrentId}) =>{
 
     const history = useHistory();
     const [creatorID, setCreatorID] = useState("");
     const [isFavoritePosts, setIsFavoritePosts] = useState(false);
+    const [checkedB, setCheckedB] = useState(false);
     
     useEffect(async () => {
         try {
@@ -70,9 +71,38 @@ const Posts = ({setCurrentId}) =>{
                             sort(true);
                             }}>By Oldest</MenuItem>
                     </Menu>
-                    <Button className={classes.filterButtons} onClick={() => setIsFavoritePosts(current => !current)}>
-                        {isFavoritePosts? 'All Posts' : 'My Favorite Posts'}
-                    </Button>
+                </div>
+                <div style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    margin: "5px"
+                }}>
+                    <Typography component="div">
+                        <Grid component="label" container alignItems="center" spacing={1}>
+                        <Grid item style={{
+                            color: "black",
+                            fontSize: "1.2em",
+                            fontWeight: "500"
+                        }}>All Posts</Grid>
+                        <Grid item>
+                            <FormControlLabel
+                                control={
+                                    <Switch 
+                                    checked={isFavoritePosts}
+                                    onChange={(e) => setIsFavoritePosts(e.target.checked)}
+                                    color="secondary"
+                                    name="checkedB"
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />}
+                            />
+                        </Grid>
+                        <Grid item style={{
+                            color: "black",
+                            fontSize: "1.2em",
+                            fontWeight: "500"
+                        }}>My Favorite Posts</Grid>
+                        </Grid>
+                    </Typography>
                 </div>
                 <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
                 {posts.slice(0).reverse().map((post)=> {

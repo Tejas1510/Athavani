@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container, AppBar, Typography, Grid, Grow, Button, Dialog } from '@material-ui/core';
+import {  AppBar, Typography, Grid, Grow, Dialog } from '@material-ui/core';
 import memories from './Images/memories.png'
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
@@ -34,10 +34,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
-import FilterListOutlinedIcon from "@material-ui/icons/FilterListOutlined";
 import CardMembershipOutlinedIcon from "@material-ui/icons/CardMembershipOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import Toolbar from '@material-ui/core/Toolbar';
 
 const drawerWidth = 240;
 
@@ -53,9 +53,11 @@ const useStyl = makeStyles((theme) => ({
   },
   appBar: {
     [theme.breakpoints.up("sm")]: {
-      width: "100%",
-      marginLeft: drawerWidth
-    }
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
+    background: "radial-gradient(orange 100%,transparent)",
+      color:"black",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -66,13 +68,17 @@ const useStyl = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    height: 'calc(100% - 80px)',
-    top: 80
+    height: "100%",
+    background: "radial-gradient(orange 100%,transparent)",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  logo:{
+    display:"inline-block",
+    margin:"15px 0 10px 45px",
+  }
 }));
 
 function App(props) {
@@ -90,6 +96,7 @@ function App(props) {
   const classs = useStyl();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [pageName, setPageName] = React.useState("Home");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -134,6 +141,7 @@ function App(props) {
 
   return (
     <div>
+      {!logout && 
       <AppBar className={classes.appBar} position="fixed" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
       {logout && <IconButton
             color="inherit"
@@ -180,11 +188,18 @@ function App(props) {
           </div> */}
           </>
         )}
-      </AppBar>
+      </AppBar>}
       <div className={classs.root}>
-      <CssBaseline />    
+      <CssBaseline />
       {logout && 
       <nav className={classs.drawer}>
+      <AppBar position="fixed" className={classs.appBar}>
+        <Toolbar>
+          <Typography variant="h6" noWrap>
+            {pageName}
+          </Typography>
+        </Toolbar>
+      </AppBar>    
         <Hidden smUp implementation="css">
           
           <Drawer
@@ -202,10 +217,13 @@ function App(props) {
             
           >
             <div>
-      <div className={classs.toolbar} />
       
       <List>
-        <ListItem button component={Link} to="/profile">
+      <Typography className={classes.heading} variant="h6" align="center">Memories</Typography>
+        <img className={classes.image} height="30" src={memories} alt="Memories"></img>
+        <ListItem button component={Link} to="/" onClick={() => {
+                    setPageName("Home")
+                    }}>
           <ListItemIcon>
             <HomeOutlinedIcon />
           </ListItemIcon>
@@ -220,7 +238,9 @@ function App(props) {
           <ListItemText primary="Create Post" />
         </ListItem>
         
-        <ListItem button component={Link} to="/profile">
+        <ListItem button component={Link} to="/profile" onClick={() => {
+                    setPageName("Profile")
+                    }}>
           <ListItemIcon>
             <PersonOutlineOutlinedIcon />
           </ListItemIcon>
@@ -244,6 +264,7 @@ function App(props) {
     </div>
           </Drawer>
         </Hidden>
+        
         <Hidden xsDown implementation="css">
           <Drawer
             classes={{
@@ -253,9 +274,16 @@ function App(props) {
             open
           >
             <div>
-      <div className={classs.toolbar} />
+      
       <List>
-        <ListItem button component={Link} to="/">
+        <div className={classs.logo}>
+          <Typography  style={{float:"left"}} className={classes.heading} variant="h6" align="center">Memories</Typography>
+          <img style={{float:"right"}} className={classes.image} height="30" src={memories} alt="Memories"></img>
+        </div>
+      
+        <ListItem button component={Link} to="/" onClick={() => {
+                    setPageName("Home")
+                    }}>
           <ListItemIcon>
             <HomeOutlinedIcon />
           </ListItemIcon>
@@ -270,7 +298,9 @@ function App(props) {
           <ListItemText primary="Create Post" />
         </ListItem>
         
-        <ListItem button component={Link} to="/profile">
+        <ListItem button component={Link} to="/profile" onClick={() => {
+                    setPageName("Profile")
+                    }}>
           <ListItemIcon>
             <PersonOutlineOutlinedIcon />
           </ListItemIcon>

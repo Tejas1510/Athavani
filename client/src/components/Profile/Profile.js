@@ -11,6 +11,7 @@ import {Button, CircularProgress} from '@material-ui/core';
 import * as api from '../../api/index';
 import FileBase from 'react-file-base64';
 import { toast } from 'react-toastify';
+import noProfilePhoto from "../../assets/noProfilePhoto.jpg";
 import * as validator from '../../utils/validator';
 import moment from 'moment';
 
@@ -27,12 +28,12 @@ function Profile() {
     const [name ,setName] = useState("");
     const [email, setEmail] = useState("");
     const [bio, setBio] = useState("");
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState(noProfilePhoto);
     const [joined, setJoined] = useState("");
 
     const [newName, setNewName] = useState("");
     const [newBio, setNewBio] = useState("");
-    const [newProfile, setNewProfile] = useState("");
+    const [newProfile, setNewProfile] = useState(noProfilePhoto);
 
     useEffect(async () => {
         setLoading(true);
@@ -44,20 +45,28 @@ function Profile() {
 
             const response = await api.getProfileById(data.id);
             // console.log(response.data);
-            const {name, email, bio, createdOn, img} = response.data.user;
+            const {name, email, bio, createdOn} = response.data.user;
             // console.log(name, email, bio, createdOn, img);
 
             setName(name);
             setEmail(email);
             setBio(bio);
             setJoined(createdOn);
-            setImg(img);
             setId(data.id);
             setNewName(name);
             setNewBio(bio);
+
+            setLoading(false);
+        
+            const imgResponse = await api.getProfilePhotoById(data.id);
+            console.log(imgResponse);
+            const { img } = imgResponse.data;
+
+            setImg(img);
             setNewProfile(img);
 
         } catch (error) {
+            setLoading(false);
             // console.log(error);
             if(error.response) {
                 toast.error(error.response.data.message);
@@ -71,8 +80,6 @@ function Profile() {
             history.push('/');
 
         }
-
-        setLoading(false);
         // console.log(posts);
     }, []);
 

@@ -38,6 +38,7 @@ import CardMembershipOutlinedIcon from "@material-ui/icons/CardMembershipOutline
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Toolbar from '@material-ui/core/Toolbar';
+import PrivateRoutes from './components/Auth/PrivateRoutes';
 
 const drawerWidth = 240;
 
@@ -330,7 +331,7 @@ function App(props) {
         <Grow in>
         <div>
           <Switch>
-            <Route path="/" exact>
+            <PrivateRoutes path="/" exact>
               <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={12}>
                   <Posts setCurrentId={setCurrentId} />
@@ -359,7 +360,7 @@ function App(props) {
                   </Dialog>
                 </Grid>
               </Grid>
-            </Route>
+            </PrivateRoutes>
             <Route path="/signup" exact>
               <SignUp setLogout={setLogout}/>
             </Route>
@@ -372,9 +373,9 @@ function App(props) {
             <Route path="/resetPassword/:token" exact>
               <ResetPassword setLogout={setLogout}/>
             </Route>
-            <Route path="/profile" exact>
+            <PrivateRoutes path="/profile" exact>
               <Profile />
-            </Route>
+            </PrivateRoutes>
             <Route>
               <Error404 />
             </Route>

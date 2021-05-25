@@ -295,7 +295,7 @@ function App(props) {
           <ListItemIcon>
             <PostAddOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Create Post" />
+          <ListItemText primary="Create Memory" />
         </ListItem>
         
         <ListItem button component={Link} to="/profile" onClick={() => {

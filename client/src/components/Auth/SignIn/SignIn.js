@@ -86,35 +86,41 @@ function SignIn(props) {
             <div className={styles.title}>Sign In</div>
 
             <div className={styles.body}>
-                <input type="text" className={styles.email} name="email" placeholder="Email Address"
-                    value={email} onChange={(e) => setEmail(e.target.value)}
-                />
-                <div className={styles.password_container}>
-                    <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password"
-                        value={password} onChange={(e) => setPassword(e.target.value)}
+                <form onSubmit={submitHandle}>
+                    <input type="text" className={styles.email} name="email" placeholder="Email Address"
+                        value={email} onChange={(e) => setEmail(e.target.value)}
                     />
-                    <div className={styles.eye} onClick={tooglePassword}>
-                        {
-                            passwordHide ? <FiEyeOff /> : <FiEye/>
-                        }
+                    <div className={styles.password_container}>
+                        <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password"
+                            value={password} onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <div className={styles.eye} onClick={tooglePassword}>
+                            {
+                                passwordHide ? <FiEyeOff /> : <FiEye/>
+                            }
+                        </div>
                     </div>
-                </div>
-                <div className={styles.forgot}>
-                    <Link to="/forgot">
-                        Forgot your password?
-                    </Link>
-                </div>
-                <button className={styles.login}
-                    onClick={submitHandle}
-                    disabled={isLoading}
-                    style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
-                >
-                    Log In
-                    {
-                        isLoading &&
-                        <LinearProgress color="secondary" />
-                    }
-                </button>
+                    <div className={styles.forgot}>
+                        <Link to="/forgot">
+                            Forgot your password?
+                        </Link>
+                    </div>
+                    <div style={{display: "flex", justifyContent: "center"}}>
+                        <button 
+                            className={styles.login}
+                            onClick={submitHandle}
+                            disabled={isLoading}
+                            type="submit"
+                            style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
+                        >
+                            Log In
+                            {
+                                isLoading &&
+                                <LinearProgress color="secondary" />
+                            }
+                        </button>
+                    </div>
+                </form>
                 <GoogleSignin />
                 <div className={styles.already}>
                     <div className={styles.text}>New to Realate?</div>

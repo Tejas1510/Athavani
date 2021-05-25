@@ -44,27 +44,16 @@ function Footer() {
               <p style={{ textAlign: "center" }}>
                 <div className="swipeButton">
                   <IconButton
-                    className="swipeButtons_repeat"
-                    style={{ color: "red" }}
-                  >
-                    <YouTubeIcon fontSize="large" />
-                  </IconButton>
-                  <IconButton
-                    style={{
-                      color: "#0077b5"
-                    }}
-                  >
-                    <LinkedInIcon fontSize="large" />
-                  </IconButton>
-                  <IconButton
                     style={{ color: "#00acee" }}
+                    onClick={() => window.open('')}
                   >
                     <TwitterIcon fontSize="large" />
                   </IconButton>
                   <IconButton
-                   style={{ color: "#fb3958" }}
+                   style={{ color: "#7289d9" }}
+                   onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    <InstagramIcon fontSize="large" />
+                    <DiscordIcon fontSize="large" />
                   </IconButton>
                 </div>
               </p>

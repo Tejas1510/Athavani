@@ -82,7 +82,6 @@ function SignIn(props) {
 
     return (
         <div className={styles.SignIn}>
-            <img src={signinBg} alt="Background" className={styles.signin_bg}/>
             <div className={styles.title}>Sign In</div>
 
             <div className={styles.body}>

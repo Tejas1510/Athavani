@@ -143,6 +143,12 @@ export const getProfileById = (id) =>
     },
   });
 
+export const getProfilePhotoById = (id) =>
+  axios({
+    method: "get",
+    url: `${userUrl}/get-profile-photo-by-id/${id}`,
+  });
+
 export const updateProfileById = (id, body) =>
   axios({
     method: "put",

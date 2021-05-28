@@ -60,7 +60,7 @@ const useStyl = makeStyles((theme) => ({
       color:"black",
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    margin: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
       display: "none"
     }
@@ -193,7 +193,18 @@ function App(props) {
       <CssBaseline />
       {logout && 
       <nav className={classs.drawer}>
-      <AppBar position="fixed" className={classs.appBar}>
+      <AppBar position="fixed" className={classs.appBar} style={{display: "flex", flexDirection: "row"}}>
+        {logout && (
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classs.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
         <Toolbar>
           <Typography variant="h6" noWrap>
             {pageName}

@@ -7,3 +7,13 @@
     width: 100%
   
   }
+
+.footer-row div {
+    padding-left: 240px ;
+  }
+
+@media only screen and (max-width: 600px) {
+  .footer-row div {
+    padding-left: 0px ;
+  } 
+  }

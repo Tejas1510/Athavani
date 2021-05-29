@@ -12,6 +12,7 @@ import * as api from '../../api/index';
 import FileBase from 'react-file-base64';
 import { toast } from 'react-toastify';
 import noProfilePhoto from "../../assets/noProfilePhoto.jpg";
+import camera from "../../assets/camera.gif"
 import * as validator from '../../utils/validator';
 import moment from 'moment';
 
@@ -59,7 +60,6 @@ function Profile() {
             setLoading(false);
         
             const imgResponse = await api.getProfilePhotoById(data.id);
-            console.log(imgResponse);
             const { img } = imgResponse.data;
 
             setImg(img);
@@ -163,20 +163,21 @@ function Profile() {
             <div className={styles.photo}>
                 {
                     editMode ?
-                    <>
-                        <div>
-                            Profile Photo:&nbsp;
+                    <div className={styles.hoverdiv}>
+                        <div className={styles.hover_camera}>
+                            <img src={camera} width="200px" height="200px" />
+                        </div>
+                        <div className={styles.inputFile}>
                             <FileBase
                                 type="file"
                                 multiple={false}
                                 onDone={({base64}) =>setNewProfile(base64)} 
                             />
                         </div>
-                        <div style={{margin: '15px 0'}}>
+                        <div className={styles.imgDiv}>
                             <img src={newProfile} alt="Preview of Uploaded Image" className={styles.preview}/>
                         </div>
-                        
-                    </>
+                    </div>
                     :
                     <img src={img}
                         alt="No Profile Photo Found"

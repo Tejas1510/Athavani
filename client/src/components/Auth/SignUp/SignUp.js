@@ -150,51 +150,65 @@ function SignUp(props) {
         <div className={styles.SignUp}>
             <div className={styles.title}>Sign Up</div>
             <div className={styles.body}>
+                <form onSubmit={isOtpSent ? resetHandle : sendOtpHandle}>
                 <input type="text" name="email" placeholder="Email Address"
                     value={email} onChange={(e) => setEmail(e.target.value)}
                     disabled={isOtpSent}
                 />
                 {
                     isOtpSent ?
-                    <button className={styles.send_otp}
-                        onClick={resetHandle}
-                    >Change Email</button>
-                    :
-                    <button className={styles.send_otp}
-                        onClick={sendOtpHandle}
-                        disabled={isLoading}
-                        style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
-                    >
-                        Send OTP
-                        {
-                            isLoading &&
-                            <LinearProgress color="secondary" />
-                        }
-                    </button>
-
-                }
-                {
-                    isOtpSent && !isOtpVerified &&
-                    <>
-                        <input type="text" name="otp" placeholder="Enter OTP"
-                            value={otp} onChange={(e) => setOtp(e.target.value)}
-                        />
+                    <div style={{display: "flex", justifyContent: "center"}}>
                         <button className={styles.send_otp}
-                            onClick={verifyOtpHandle}
+                            onClick={resetHandle}
+                            >
+                            Change Email
+                        </button>
+                    </div>
+                    :
+                    <div style={{display: "flex", justifyContent: "center"}}>
+                        <button 
+                            type="submit"
+                            className={styles.send_otp}
+                            onClick={sendOtpHandle}
                             disabled={isLoading}
                             style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                         >
-                            Verifiy OTP
+                            Send OTP
                             {
                                 isLoading &&
                                 <LinearProgress color="secondary" />
                             }
                         </button>
-                    </>
+                    </div>
+
+                }
+                </form>
+                {
+                    isOtpSent && !isOtpVerified &&
+                    <form onSubmit={verifyOtpHandle}>
+                        <input type="text" name="otp" placeholder="Enter OTP"
+                            value={otp} onChange={(e) => setOtp(e.target.value)}
+                        />
+                        <div style={{display: "flex", justifyContent: "center"}}>
+                            <button 
+                                type="submit"
+                                className={styles.send_otp}
+                                onClick={verifyOtpHandle}
+                                disabled={isLoading}
+                                style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
+                            >
+                                Verifiy OTP
+                                {
+                                    isLoading &&
+                                    <LinearProgress color="secondary" />
+                                }
+                            </button>
+                        </div>
+                    </form>
                 }
                 {
                     isOtpVerified &&
-                    <>
+                    <form onSubmit={submitHandle}>
                         <input type="text" name="name" placeholder="Your Name"
                             value={name} onChange={(e) => setName(e.target.value)}
                         />
@@ -220,19 +234,22 @@ function SignUp(props) {
                                 }
                             </div>
                         </div>
-                        
-                        <button className={styles.signup}
-                            onClick={submitHandle}
-                            disabled={isLoading}
-                            style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
-                        >
-                            Sign Up
-                            {
-                                isLoading &&
-                                <LinearProgress color="secondary" />
-                            }
-                        </button>
-                    </>
+                        <div style={{display: "flex", justifyContent: "center"}}>
+                            <button 
+                                type="submit"
+                                className={styles.signup}
+                                onClick={submitHandle}
+                                disabled={isLoading}
+                                style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
+                            >
+                                Sign Up
+                                {
+                                    isLoading &&
+                                    <LinearProgress color="secondary" />
+                                }
+                            </button>
+                        </div>
+                    </form>
                 }
                 <div className={styles.already}>
                     <div className={styles.text}>Already have an account?</div>

@@ -11,12 +11,14 @@ import {
   commentPost,
   test,
   deleteComment,
+  getPostPhoto,
 } from "../controller/posts.js";
 const router = express.Router();
 
 import requireLogin from "../middleware/loginRequired.js";
 
 router.get("/", requireLogin, getPost);
+router.get("/get-post-photo-by-id/:id", getPostPhoto);
 router.post("/", requireLogin, createPost);
 router.patch("/:id", requireLogin, updatePost);
 router.delete("/:id", requireLogin, deletePost);

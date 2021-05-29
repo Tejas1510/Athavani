@@ -6,10 +6,25 @@ import Signup from "../modules/signup.js";
 export const getPost = async (req, res) => {
   try {
     const postMessage = await PostMessage.find();
-    res.status(200).json(postMessage);
+    postMessage.map((p, i) => {
+      p.selectedFile = undefined
+    })
+    return res.status(200).json(postMessage);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
+};
+
+export const getPostPhoto = async (req, res) => {
+  try {
+      const id = req.params.id;
+      const postMessage = await PostMessage.findOne({ _id: id });
+      const img = postMessage.selectedFile
+      return res.status(200).json({message: "Post Image returned.", img});        
+  } catch (error) {
+      return res.status(404).json({message: error.message});
+  }
+  
 };
 
 export const createPost = async (req, res) => {

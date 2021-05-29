@@ -241,7 +241,7 @@ export const getProfileById = async (req, res) => {
         const user = await User.findOne({_id: id});
         delete user._doc.password;
         delete user._doc.resetPassLink;
-
+        delete user._doc.img;
         return res.status(200).json({message: "User returned.", user});
     }
     catch (error) {
@@ -249,6 +249,20 @@ export const getProfileById = async (req, res) => {
     }
 }
 
+export const getProfilePhoto = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const user = await User.findOne({ _id: id });
+        delete user._doc.password;
+        delete user._doc.resetPassLink;
+        const img = user._doc.img
+        return res.status(200).json({message: "Profile Image returned.", img});        
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+    
+  };
+  
 export const updateProfileById = async (req, res) => {
     try {
         const id = req.params.id;

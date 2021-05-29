@@ -13,6 +13,7 @@ import {
   getProfileById,
   sendOtp,
   verifyOtp,
+  getProfilePhoto,
 } from "../controller/authentication.js";
 
 import requireLogin from "../middleware/loginRequired.js";
@@ -30,6 +31,7 @@ router.put("/forgot", forgot);
 router.put("/reset-password", resetPassword);
 
 router.get("/get-profile-by-id/:id", requireLogin, getProfileById);
+router.get("/get-profile-photo-by-id/:id", getProfilePhoto);
 router.put("/update-profile-by-id/:id", requireLogin, updateProfileById);
 
 export default router;

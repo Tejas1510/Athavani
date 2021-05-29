@@ -58,6 +58,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
 },[])
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");
+  const [postImage, setpostImage] = useState()
 
   useEffect(async () => {
     try {
@@ -71,6 +72,22 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
       history.push("/signin");
     }
   }, []);
+
+  useEffect(async () => {
+    try {
+      const imgResponse = await api.getPostPhotoById(post._id);
+      const { img } = imgResponse.data;
+      setpostImage(img);
+    } catch (error) {
+      if(error.response) {
+        toast.error(error.response.data.message);
+    } else if(error.request) {
+        toast.error("Server is not Responding!");
+    } else {
+        toast.error(error.message);
+    }
+    }
+  }, [])
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -307,7 +324,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
       <Card data-aos="fade-up"  className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={post.selectedFile}
+          image={postImage}
           title={post.title}
         />
         <div className={classes.overlay}>

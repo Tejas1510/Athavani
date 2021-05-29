@@ -38,6 +38,7 @@ import CardMembershipOutlinedIcon from "@material-ui/icons/CardMembershipOutline
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Toolbar from '@material-ui/core/Toolbar';
+import PrivateRoutes from './components/Auth/PrivateRoutes';
 
 const drawerWidth = 240;
 
@@ -60,7 +61,7 @@ const useStyl = makeStyles((theme) => ({
       color:"black",
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    margin: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
       display: "none"
     }
@@ -193,7 +194,18 @@ function App(props) {
       <CssBaseline />
       {logout && 
       <nav className={classs.drawer}>
-      <AppBar position="fixed" className={classs.appBar}>
+      <AppBar position="fixed" className={classs.appBar} style={{display: "flex", flexDirection: "row"}}>
+        {logout && (
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classs.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
         <Toolbar>
           <Typography variant="h6" noWrap>
             {pageName}
@@ -295,7 +307,7 @@ function App(props) {
           <ListItemIcon>
             <PostAddOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Create Post" />
+          <ListItemText primary="Create Memory" />
         </ListItem>
         
         <ListItem button component={Link} to="/profile" onClick={() => {
@@ -330,36 +342,13 @@ function App(props) {
         <Grow in>
         <div>
           <Switch>
-            <Route path="/" exact>
+            <PrivateRoutes path="/" exact>
               <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={12}>
                   <Posts setCurrentId={setCurrentId} />
-                  <Dialog
-                    fullWidth={false}
-                    open={openCreatePost}
-                    maxWidth="xs"
-                    onClose={() => setOpenCreatePost(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <div style={{
-                        background: "#FF7F50",
-                        padding: "20px"
-                      }}>
-                      <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                      </div>
-                  </Dialog>
-                  <Dialog
-                    fullWidth={true}
-                    open={OpenSubscription}
-                    maxWidth="sm"
-                    onClose={() => setOpenSubscription(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <MailForm />
-                  </Dialog>
                 </Grid>
               </Grid>
-            </Route>
+            </PrivateRoutes>
             <Route path="/signup" exact>
               <SignUp setLogout={setLogout}/>
             </Route>
@@ -372,9 +361,9 @@ function App(props) {
             <Route path="/resetPassword/:token" exact>
               <ResetPassword setLogout={setLogout}/>
             </Route>
-            <Route path="/profile" exact>
+            <PrivateRoutes path="/profile" exact>
               <Profile />
-            </Route>
+            </PrivateRoutes>
             <Route>
               <Error404 />
             </Route>
@@ -383,7 +372,29 @@ function App(props) {
       </Grow>
       
         </main>
-          
+        <Dialog
+          fullWidth={false}
+          open={openCreatePost}
+          maxWidth="xs"
+          onClose={() => setOpenCreatePost(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+            <div style={{
+              background: "#FF7F50",
+              padding: "20px"
+            }}>
+            <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+            </div>
+        </Dialog>
+        <Dialog
+          fullWidth={true}
+          open={OpenSubscription}
+          maxWidth="sm"
+          onClose={() => setOpenSubscription(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+            <MailForm />
+        </Dialog>
       </div>
       
       <Footer/>

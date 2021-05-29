@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div>
       <footer>
-        <div style={{ position: "relative" }}>
+        <div>
           
           <div
             class="footer-row"
@@ -18,7 +18,7 @@ function Footer() {
             <div
               class="col-lg-12 col-md-12 col-sm-12"
               align="left"
-              style={{ paddingLeft: "5%", marginTop: "0%", marginBottom: "0%" }}
+              style={{ marginTop: "0%", marginBottom: "0%" }}
             >
               <h1
                 class="text-uppercase"
@@ -53,7 +53,7 @@ function Footer() {
                    style={{ color: "#7289d9" }}
                    onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    <DiscordIcon fontSize="large" />
+                    {/* <DiscordIcon fontSize="large" /> */}
                   </IconButton>
                 </div>
               </p>

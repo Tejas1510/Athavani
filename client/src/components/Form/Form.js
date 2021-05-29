@@ -72,6 +72,7 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
       postData.tags === "" ||
       postData.selectedFile === ""
     ) {
+      toast.error("All Fields are required.");
       return setError("All Fields are required.");
     }
 
@@ -84,11 +85,13 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
     if (currentId) {
       dispatch(updatePost(currentId, postData)).then(() => {
         setOpenCreatePost(false)
+        toast.success("Post Updated Successfully")
         setIsLoading(false);
       });
     } else {
       dispatch(createPost(postData)).then(() => {
         setOpenCreatePost(false)
+        toast.success("Post Created Successfully")
         setIsLoading(false);
       });
     }
@@ -129,7 +132,7 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
             {currentId ? "Editing" : "Creating"} A Memory
           </Typography>
         </div>
-        {error && (
+        {/* {error && (
           <Alert
             onClose={() => setError("")}
             severity="error"
@@ -137,7 +140,7 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
           >
             {error}
           </Alert>
-        )}
+        )} */}
         <div className={classes.contents}>
           <Typography
             style={{
@@ -214,6 +217,7 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
                     setError();
                   } else {
                     setPostData({ ...postData, selectedFile: "" });
+                    toast.error("Only Image can be uploaded");
                     setError("Only Image can be uploaded");
                   }
                 }}

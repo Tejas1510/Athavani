@@ -117,8 +117,12 @@ function SignIn(props) {
                 </button>
                 <GoogleSignin />
                 <div className={styles.already}>
-                    <div className={styles.text}>New to Realate?</div>
-                    <div className={styles.link}><Link to="/signup">Sign Up</Link></div>
+                {!isLoading && (
+                    <>
+                        <div className={styles.text}>New to Realate?</div>
+                        <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
+                    </>
+                )}
                 </div>
             </div>
         </div>

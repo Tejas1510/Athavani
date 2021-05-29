@@ -53,7 +53,7 @@ function Footer() {
                    style={{ color: "#7289d9" }}
                    onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    <DiscordIcon fontSize="large" />
+                    {/* <DiscordIcon fontSize="large" /> */}
                   </IconButton>
                 </div>
               </p>

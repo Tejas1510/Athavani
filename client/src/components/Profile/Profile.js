@@ -59,7 +59,6 @@ function Profile() {
             setLoading(false);
         
             const imgResponse = await api.getProfilePhotoById(data.id);
-            console.log(imgResponse);
             const { img } = imgResponse.data;
 
             setImg(img);

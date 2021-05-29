@@ -16,6 +16,13 @@ export const fetchPost = () =>
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
   })
+
+export const getPostPhotoById = (id) =>
+  axios({
+    method: "get",
+    url: `${postUrl}/get-post-photo-by-id/${id}`,
+  });
+
 // export const createPost = (newPost) => axios.post(postUrl, newPost);
 export const createPost = (newPost) =>
   axios({

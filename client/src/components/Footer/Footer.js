@@ -18,7 +18,7 @@ function Footer() {
             <div
               class="col-lg-12 col-md-12 col-sm-12"
               align="left"
-              style={{ paddingLeft: "5%", marginTop: "0%", marginBottom: "0%" }}
+              style={{ marginTop: "0%", marginBottom: "0%" }}
             >
               <h1
                 class="text-uppercase"

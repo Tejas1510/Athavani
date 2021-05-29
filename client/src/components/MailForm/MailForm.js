@@ -36,12 +36,14 @@ const MailForm = () => {
             <div id="container">
                 <h2>Subscribe</h2>
                 <p>Stay updated with our newsletter</p>
-                <input type="email" placeholder="Type your Email"
-                    value={mailPostData.email}
-                    onChange={(e) => setMailPostData({email: e.target.value})}
-                />
-                <br></br>
-                <button onClick={(e) => handleSubmit(e)}>Subscribe</button>
+                <form onSubmit={handleSubmit}>
+                    <input type="email" placeholder="Type your Email"
+                        value={mailPostData.email}
+                        onChange={(e) => setMailPostData({email: e.target.value})}
+                    />
+                    <br></br>
+                    <button type="submit" onClick={(e) => handleSubmit(e)}>Subscribe</button>
+                </form>
             </div>
         </Paper>
     );

@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div>
       <footer>
-        <div style={{ position: "relative" }}>
+        <div>
           
           <div
             class="footer-row"

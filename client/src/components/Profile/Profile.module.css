@@ -38,6 +38,53 @@
     align-items: center;
 }
 
+.inputFile {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 999;
+    width: 200px;
+    height: 200px;
+}
+
+.hoverdiv {
+    margin: 30px auto 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.imgDiv {
+    position: absolute;
+    opacity: 1;
+}
+
+.hover_camera {
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    animation: anim1 0.5s ease-in-out;
+}
+
+@keyframes anim1 {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+.hoverdiv:hover .imgDiv {
+    opacity: 0.3;
+}
+
+.hoverdiv:hover .hover_camera {
+    display: block;
+    opacity: 0.7;
+}
+
 .preview {
     width: 200px;
     height: 200px;

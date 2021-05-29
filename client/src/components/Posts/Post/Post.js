@@ -50,7 +50,7 @@ import Aos from "aos"
 import "aos/dist/aos.css";
 
 
-const Post = ({ post, setCurrentId, fromProfile }) => {
+const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
   dotenv.config();
   console.log(post);
   useEffect(()=>{
@@ -308,6 +308,7 @@ const Post = ({ post, setCurrentId, fromProfile }) => {
 
   function handleEditPost() {
     if (post.creator._id === creatorID) {
+      setOpenCreatePost(true)
       setCurrentId(post._id);
     } else {
       toast.warn("You can't edit other's post!");

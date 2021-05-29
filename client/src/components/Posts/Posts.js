@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
 import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography} from '@material-ui/core';
 
-const Posts = ({setCurrentId}) =>{
+const Posts = ({setCurrentId, setOpenCreatePost}) =>{
 
     const history = useHistory();
     const [creatorID, setCreatorID] = useState("");
@@ -110,7 +110,7 @@ const Posts = ({setCurrentId}) =>{
                         return (<></>)
                     } else {
                         return (<Grid key={post._id} item xs={12} sm={12} lg={6}>
-                            <Post post={post} setCurrentId={setCurrentId}/>
+                            <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
                         </Grid>)
                     }})}
                 </Grid>

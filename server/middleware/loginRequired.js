@@ -19,8 +19,8 @@ const requireLogin = (req, res, next) => {
 
     const { _id } = payload;
     User.findById(_id).then((userData) => {
+      delete userData._doc.password;
       req.user = userData;
-      console.log(req.user);
       next();
     });
   });

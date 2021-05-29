@@ -335,29 +335,6 @@ function App(props) {
               <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={12}>
                   <Posts setCurrentId={setCurrentId} />
-                  <Dialog
-                    fullWidth={false}
-                    open={openCreatePost}
-                    maxWidth="xs"
-                    onClose={() => setOpenCreatePost(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <div style={{
-                        background: "#FF7F50",
-                        padding: "20px"
-                      }}>
-                      <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                      </div>
-                  </Dialog>
-                  <Dialog
-                    fullWidth={true}
-                    open={OpenSubscription}
-                    maxWidth="sm"
-                    onClose={() => setOpenSubscription(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <MailForm />
-                  </Dialog>
                 </Grid>
               </Grid>
             </PrivateRoutes>
@@ -384,7 +361,29 @@ function App(props) {
       </Grow>
       
         </main>
-          
+        <Dialog
+          fullWidth={false}
+          open={openCreatePost}
+          maxWidth="xs"
+          onClose={() => setOpenCreatePost(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+            <div style={{
+              background: "#FF7F50",
+              padding: "20px"
+            }}>
+            <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+            </div>
+        </Dialog>
+        <Dialog
+          fullWidth={true}
+          open={OpenSubscription}
+          maxWidth="sm"
+          onClose={() => setOpenSubscription(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+            <MailForm />
+        </Dialog>
       </div>
       
       <Footer/>

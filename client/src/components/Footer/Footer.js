@@ -1,12 +1,29 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
 import "./style.css"
+
 function Footer() {
+  const [footerStyle, setFooterStyle] = useState({})
+  const [url, setUrl] = useState("")
+  
+  useEffect(() => {
+    const url = window.location.pathname
+    setUrl(url)
+    if (url === "/" || url === "/profile") {
+      setFooterStyle({
+        position: "relative"
+      })
+    } else {
+      setFooterStyle({
+        position: "absolute"
+      })
+    }
+  }, [window.location.pathname])
+
   return (
     <div>
       <footer>
@@ -14,11 +31,12 @@ function Footer() {
           
           <div
             class="footer-row"
+            style={footerStyle}
            >
             <div
               class="col-lg-12 col-md-12 col-sm-12"
               align="left"
-              style={{ marginTop: "0%", marginBottom: "0%" }}
+              style={{ marginTop: "0%", marginBottom: "0%", paddingLeft: (url === "/" || url === "/profile") && window.innerWidth > 600 ?  "240px" : "0px" }}
             >
               <h1
                 class="text-uppercase"

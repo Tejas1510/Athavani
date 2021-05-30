@@ -2,14 +2,8 @@
 .footer-row{
     background-color: #FF7F50;
     margin-top: 0%;
-    position: absolute;
     bottom: -350px;
-    width: 100%
-  
-  }
-
-.footer-row div {
-    padding-left: 240px ;
+    width: 100%;
   }
 
 @media only screen and (max-width: 600px) {

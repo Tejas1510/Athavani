@@ -148,7 +148,12 @@ function Profile() {
                         <SaveIcon/>
                     </Button>
                     <Button aria-controls="simple-menu" aria-haspopup="true" className={styles.close}
-                        onClick={() => setEditMode(mode => !mode)}
+                        onClick={() => {
+                            setEditMode(mode => !mode)
+                            setNewName(name);
+                            setNewBio(bio);                            
+                            setNewProfile(img);
+                        }}
                     >
                         <CloseIcon/>
                     </Button>

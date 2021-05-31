@@ -25,7 +25,8 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -404,8 +405,9 @@ function App(props) {
         >
             <div style={{
               background: "#FF7F50",
-              padding: "20px"
+              padding: "40px 20px 20px"
             }}>
+            <CloseIcon onClick={() => setOpenCreatePost(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
             <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
             </div>
         </Dialog>
@@ -416,7 +418,8 @@ function App(props) {
           onClose={() => setOpenSubscription(false)}
           aria-labelledby="responsive-dialog-title"
         >
-            <MailForm />
+          <CloseIcon onClick={() => setOpenSubscription(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
+          <MailForm />
         </Dialog>
       </div>
       

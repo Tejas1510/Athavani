@@ -185,6 +185,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
 
     return (
       <div className={classes.paper} >
+        <CloseIcon onClick={handleClose} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
         <h2 id="simple-modal-title">
           <center>Please Enter {name} Password</center>
         </h2>
@@ -275,6 +276,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
 
     return (
       <div className={classes.paper}>
+        <CloseIcon onClick={handleClose} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
         <h2 id="simple-modal-title">
           <center>Please Enter {thename} Password</center>
         </h2>

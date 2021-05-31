@@ -4,14 +4,15 @@ import useStyles from './style';
 import {Link, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
-import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography} from '@material-ui/core';
+import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography, TextField} from '@material-ui/core';
 
 const Posts = ({setCurrentId, setOpenCreatePost}) =>{
 
     const history = useHistory();
     const [creatorID, setCreatorID] = useState("");
     const [isFavoritePosts, setIsFavoritePosts] = useState(false);
-    const [checkedB, setCheckedB] = useState(false);
+    const [searchTagPosts, setSearchTagPosts] = useState([]);
+    const [searchTag, setSearchTag] = useState("");
     
     useEffect(async () => {
         try {
@@ -45,6 +46,21 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
         }
     }
 
+    // function searchStringInArray (str, strArray) {
+    //     for (var j=0; j<strArray.length; j++) {
+    //         if (strArray[j].match(str)) return strArray[j];
+    //     }
+    //     return strArray[j];
+    // }
+
+    const searchForTag = (e) => {
+        setSearchTagPosts([])
+
+        let a = posts.filter(
+                (p, i) => p.tags.includes(e.target.value)
+            )
+        setSearchTagPosts(a);
+    }
    
 
     // console.log("posts : ", posts)
@@ -71,6 +87,12 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
                             sort(true);
                             }}>By Oldest</MenuItem>
                     </Menu>
+                </div>
+                <div>
+                    <TextField placeholder="Search for tags"  onChange={(e) => {
+                        setSearchTag(e.target.value)
+                        searchForTag(e)
+                    }} />
                 </div>
                 <div style={{
                     display: "flex",
@@ -105,14 +127,27 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
                     </Typography>
                 </div>
                 <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
-                {posts.slice(0).reverse().map((post)=> {
-                    if(isFavoritePosts && !post.favorites.includes(creatorID)) {
-                        return (<></>)
-                    } else {
-                        return (<Grid key={post._id} item xs={12} sm={12} lg={6}>
-                            <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                        </Grid>)
-                    }})}
+                    { !searchTag ? (
+                        posts.slice(0).reverse().map((post)=> {
+                            if(isFavoritePosts && !post.favorites.includes(creatorID)) {
+                                return (<></>)
+                            } else {
+                                console.log(searchTagPosts);
+                                return (<Grid key={post._id} item xs={12} sm={12} lg={6}>
+                                    <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+                                </Grid>
+                                )
+                            }})
+                    ) : (
+                        searchTagPosts.slice(0).reverse().map((post)=> {
+                            if(isFavoritePosts && !post.favorites.includes(creatorID)) {
+                                return (<></>)
+                            } else {
+                                return (<Grid key={post._id} item xs={12} sm={12} lg={6}>
+                                    <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+                                </Grid>)
+                            }})
+                    )}
                 </Grid>
             </>
         )

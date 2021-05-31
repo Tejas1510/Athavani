@@ -392,7 +392,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
         {/* ----- Post's Tags ----- */}
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary">
-            {post.tags.map((tag) => `#${tag} `)}
+            {post.tags.map((tag) => `#${tag.trim()} `)}
           </Typography>
         </div>
 

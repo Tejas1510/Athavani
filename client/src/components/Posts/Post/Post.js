@@ -322,6 +322,20 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
 
   const [commentMessage, setCommentMessage] = useState("");
 
+  const showTitle = (post) => {
+    if (contentToggle) {
+      if ((post.title.length >= 35)) 
+      {
+        return `${post.title.substring(0,35)}...`;
+      }
+      else 
+      {
+        return post.title;
+      }
+    }
+
+    return post.title;
+  }
   return (
     <>
       <Card data-aos="fade-up"  className={classes.card}>
@@ -397,8 +411,8 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
         </div>
 
         {/* ----- Post's Title ----- */}
-        <Typography className={classes.title} variant="h5" gutterBottom>
-          {post.title}
+        <Typography className={classes.title} variant="h5" gutterBottom title={post.title}>
+          {showTitle(post)}
         </Typography>
 
         {/* ----- Post's text content ----- */}

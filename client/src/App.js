@@ -3,20 +3,14 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {  AppBar, Typography, Grid, Grow, Dialog } from '@material-ui/core';
+import {  AppBar, Typography, Grid, Grow, Dialog, CircularProgress } from '@material-ui/core';
 import memories from './Images/memories.png'
 import Form from './components/Form/Form';
-import Posts from './components/Posts/Posts';
 import useStyles from './style';
 import { useDispatch } from 'react-redux';
 import { getPosts } from './actions/posts';
 import MailForm from './components/MailForm/MailForm';
-import SignUp from './components/Auth/SignUp/SignUp';
-import SignIn from './components/Auth/SignIn/SignIn';
-import Forgot from './components/Auth/Forgot/Forgot';
-import ResetPassword from './components/Auth/ResetPassword/ResetPassword';
-import Profile from './components/Profile/Profile';
-import Error404 from './components/404/Error404';
+import Error404 from "./components/404/Error404"
 import * as api from './api/index';
 import Footer from './components/Footer/Footer';
 import noProfilePhoto from "./assets/noProfilePhoto.jpg";
@@ -39,7 +33,16 @@ import CardMembershipOutlinedIcon from "@material-ui/icons/CardMembershipOutline
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Toolbar from '@material-ui/core/Toolbar';
-import PrivateRoutes from './components/Auth/PrivateRoutes';
+import { Suspense } from 'react';
+
+//Lazy Loading.
+const SignUp = React.lazy(() => import("./components/Auth/SignUp/SignUp"));
+const SignIn = React.lazy(() => import("./components/Auth/SignIn/SignIn"));
+const Forgot = React.lazy(() => import("./components/Auth/Forgot/Forgot"));
+const ResetPassword = React.lazy(() => import("./components/Auth/ResetPassword/ResetPassword"));
+const Profile = React.lazy(() => import("./components/Profile/Profile"));
+const Posts = React.lazy(() => import("./components/Posts/Posts"));
+const PrivateRoutes  = React.lazy(() => import("./components/Auth/PrivateRoutes"));
 
 const drawerWidth = 240;
 
@@ -157,39 +160,6 @@ function App(props) {
       
         <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
         <img className={classes.image} height="50" src={memories} alt="Memories"></img>
-        {logout && (
-          <>
-            {/* <img className={classes.menuIcon} height="50" src={userImg} alt="Memories" onClick={() => toggleMenu()}></img> */}
-        {/* <div className={classes.menuBox} id="menuBox">
-            <ul>
-              <li>
-                <Link
-                  to="/profile"
-                  style={{ textDecoration: "none", color: "black" }}
-                  onClick={() => toggleMenu()}
-                >
-                  <h1 style={{margin: "0"}}>
-                    Profile
-                  </h1>
-                </Link>
-              </li>
-              <li>
-                  <h1 style={{margin: "0"}} onClick={() => {
-                    setOpenCreatePost(true)
-                    toggleMenu()
-                    }}>
-                      Create Post
-                  </h1>
-              </li>
-              <li>
-                  <h1 style={{margin: "0"}} onClick={() => logoutHandle()}>
-                      Logout
-                  </h1>
-              </li>
-            </ul>
-          </div> */}
-          </>
-        )}
       </AppBar>}
       <div className={classs.root}>
       <CssBaseline />
@@ -343,51 +313,30 @@ function App(props) {
         <Grow in>
         <div>
           <Switch>
-            <PrivateRoutes path="/" exact>
-              <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
-                <Grid item xs={12} sm={12}>
-                  <Posts setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                  <Dialog
-                    fullWidth={false}
-                    open={openCreatePost}
-                    maxWidth="xs"
-                    onClose={() => setOpenCreatePost(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <div style={{
-                        background: "#FF7F50",
-                        padding: "20px"
-                      }}>
-                      <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                      </div>
-                  </Dialog>
-                  <Dialog
-                    fullWidth={true}
-                    open={OpenSubscription}
-                    maxWidth="sm"
-                    onClose={() => setOpenSubscription(false)}
-                    aria-labelledby="responsive-dialog-title"
-                  >
-                      <MailForm />
-                  </Dialog>
+            <Suspense fallback={<CircularProgress />}>
+              <PrivateRoutes path="/" exact>
+                <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
+                  <Grid item xs={12} sm={12}>
+                    <Posts setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </PrivateRoutes>
-            <Route path="/signup" exact>
-              <SignUp setLogout={setLogout}/>
-            </Route>
-            <Route path="/signin" exact>
-              <SignIn setLogout={setLogout}/>
-            </Route>
-            <Route path="/forgot" exact>
-              <Forgot setLogout={setLogout}/>
-            </Route>
-            <Route path="/resetPassword/:token" exact>
-              <ResetPassword setLogout={setLogout}/>
-            </Route>
-            <PrivateRoutes path="/profile" exact>
-              <Profile />
-            </PrivateRoutes>
+              </PrivateRoutes>
+              <Route path="/signup" exact>
+                <SignUp setLogout={setLogout}/>
+              </Route>
+              <Route path="/signin" exact>
+                <SignIn setLogout={setLogout}/>
+              </Route>
+              <Route path="/forgot" exact>
+                <Forgot setLogout={setLogout}/>
+              </Route>
+              <Route path="/resetPassword/:token" exact>
+                <ResetPassword setLogout={setLogout}/>
+              </Route>
+              <PrivateRoutes path="/profile" exact>
+                <Profile />
+              </PrivateRoutes>
+            </Suspense>
             <Route>
               <Error404 />
             </Route>

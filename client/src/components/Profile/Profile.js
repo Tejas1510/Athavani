@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import CloseIcon from '@material-ui/icons/Close';
 import {Link,useHistory} from 'react-router-dom';
-import {Button, CircularProgress} from '@material-ui/core';
+import {Button, CircularProgress, Grid} from '@material-ui/core';
 import * as api from '../../api/index';
 import FileBase from 'react-file-base64';
 import { toast } from 'react-toastify';
@@ -225,15 +225,17 @@ function Profile() {
                     posts.length === 0 ?
                     <>You have not posted a Memory till now.</>
                     :
-                    <div className={styles.posts}>
+                    <Grid className={styles.postsContainer} container alignItems="stretch" spacing={3}>
                         {
                             posts.filter((post) => post.creator._id === id).map(post => (
-                                <div className={styles.post} key={post._id}>
-                                    <Post post={post} fromProfile={true}/>
-                                </div>
+                                <Grid key={post._id} item xs={12} sm={12} lg={6}>
+                                    <div className={styles.post} key={post._id}>
+                                        <Post post={post} fromProfile={true}/>
+                                    </div>
+                                </Grid>
                             ))
                         }
-                    </div>
+                    </Grid>
                 }
                 </>
             }

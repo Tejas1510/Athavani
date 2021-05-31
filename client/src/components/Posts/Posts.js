@@ -105,14 +105,16 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
                     </Typography>
                 </div>
                 <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
-                {posts.slice(0).reverse().map((post)=> {
-                    if(isFavoritePosts && !post.favorites.includes(creatorID)) {
-                        return (<></>)
-                    } else {
-                        return (<Grid key={post._id} item xs={12} sm={12} lg={6}>
-                            <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
-                        </Grid>)
-                    }})}
+                    {posts.slice(0).reverse().map((post)=> {
+                        if(isFavoritePosts && !post.favorites.includes(creatorID)) {
+                            return (<></>)
+                        } else {
+                            return (
+                                <Grid key={post._id} item xs={12} sm={12} lg={6}>
+                                    <Post post={post} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
+                                </Grid>
+                            )
+                        }})}
                 </Grid>
             </>
         )

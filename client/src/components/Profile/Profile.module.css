@@ -140,6 +140,11 @@
     margin: 15px 0;
 }
 
+.postsContainer {
+    display: flex;
+    align-items: center;
+}
+
 .posts {
     display: flex;
     justify-content: center;

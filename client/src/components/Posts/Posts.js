@@ -51,32 +51,32 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
     return(
         !posts.length ? <CircularProgress/> : (
             <>
-                <div className={classes.filterBar}>
-                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.filterButtons}>
-                        Sort
-                    </Button>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={() => {
-                            handleClose();
-                            sort(false);
-                            }}>By Newest</MenuItem>
-                        <MenuItem onClick={() => {
-                            handleClose();
-                            sort(true);
-                            }}>By Oldest</MenuItem>
-                    </Menu>
-                </div>
                 <div style={{
                     display: "flex",
-                    justifyContent: "flex-end",
+                    justifyContent: "space-between",
                     margin: "5px"
                 }}>
+                    <Typography component="div">
+                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.filterButtons} style={{ background: "#ff7300" }}>
+                            Sort
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={() => {
+                                handleClose();
+                                sort(false);
+                                }}>By Newest</MenuItem>
+                            <MenuItem onClick={() => {
+                                handleClose();
+                                sort(true);
+                                }}>By Oldest</MenuItem>
+                        </Menu>
+                    </Typography>
                     <Typography component="div">
                         <Grid component="label" container alignItems="center" spacing={1}>
                         <Grid item style={{

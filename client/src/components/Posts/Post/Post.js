@@ -317,10 +317,50 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
     }
     setSettingsOption(false);
   }
-
+  const [postLiked, setPostLiked] = useState(false);
+  const [postDisliked, setPostDisliked] = useState(false);
+  
   const [commentToggle, setCommentToggle] = useState(false);
 
   const [commentMessage, setCommentMessage] = useState("");
+
+  const likePostCall = () => {
+    setPostLiked(true)
+    if (post.dislikes.includes(creatorID)) {
+      dispatch(
+        dislikePost(post._id, {
+          userID: creatorID,
+          bool: true,
+        })
+      );
+    }
+    dispatch(
+      likePost(post._id, {
+        userID: creatorID,
+        bool: post.likes.includes(creatorID),
+      })
+    );
+    setPostLiked(false)
+  }
+
+  const disLikePostCall = () => {
+    setPostDisliked(true)
+    if (post.likes.includes(creatorID)) {
+      dispatch(
+        likePost(post._id, {
+          userID: creatorID,
+          bool: true,
+        })
+      );
+    }
+    dispatch(
+      dislikePost(post._id, {
+        userID: creatorID,
+        bool: post.dislikes.includes(creatorID),
+      })
+    );
+    setPostDisliked(false)
+  }
 
   return (
     <>
@@ -434,22 +474,9 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
           <Button
             size="small"
             color="primary"
-            onClick={() => {
-              if (post.dislikes.includes(creatorID)) {
-                dispatch(
-                  dislikePost(post._id, {
-                    userID: creatorID,
-                    bool: true,
-                  })
-                );
-              }
-              dispatch(
-                likePost(post._id, {
-                  userID: creatorID,
-                  bool: post.likes.includes(creatorID),
-                })
-              );
-            }}
+            style={{ opacity: postLiked ? "0.7" : "1" }}
+            disabled={postLiked}
+            onClick={likePostCall}
           >{post.likes.includes(creatorID) ? <ThumbUpAltIcon fontSize="small" style={{ paddingRight: "5" }} /> : <ThumbUpAltOutlinedIcon fontSize="small" style={{ paddingRight: "5" }} />}
             
             {post.likes.length}
@@ -459,22 +486,8 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
           <Button
             size="small"
             color="primary"
-            onClick={() => {
-              if (post.likes.includes(creatorID)) {
-                dispatch(
-                  likePost(post._id, {
-                    userID: creatorID,
-                    bool: true,
-                  })
-                );
-              }
-              dispatch(
-                dislikePost(post._id, {
-                  userID: creatorID,
-                  bool: post.dislikes.includes(creatorID),
-                })
-              );
-            }}
+            style={{ opacity: postDisliked ? "0.7" : "1" }}
+            onClick={disLikePostCall}
           >{post.dislikes.includes(creatorID) ? <ThumbDownAltIcon fontSize="small" style={{ paddingRight: "5" }} /> : <ThumbDownAltOutlinedIcon fontSize="small" style={{ paddingRight: "5" }} />}
             
             {post.dislikes.length}

@@ -5,7 +5,9 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
+import discordIcon from "../../assets/discordIcon.png";
 import "./style.css"
+
 function Footer() {
   return (
     <div>
@@ -16,7 +18,7 @@ function Footer() {
             class="footer-row"
            >
             <div
-              class="col-lg-12 col-md-12 col-sm-12"
+              class="col-lg-12 col-md-12 col-sm-12 footer-row-1"
               align="left"
               style={{ marginTop: "0%", marginBottom: "0%" }}
             >
@@ -53,7 +55,7 @@ function Footer() {
                    style={{ color: "#7289d9" }}
                    onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    {/* <DiscordIcon fontSize="large" /> */}
+                    <img src={discordIcon} width="35px" height="35px"/>
                   </IconButton>
                 </div>
               </p>

@@ -34,7 +34,8 @@ function SignUp(props) {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    async function sendOtpHandle() {
+    async function sendOtpHandle(e) {
+        e.preventDefault()
         if(validator.empty(email)) {
             return toast.error("Email Field is Empty!");
         }
@@ -65,7 +66,8 @@ function SignUp(props) {
         }
     }
 
-    async function verifyOtpHandle() {
+    async function verifyOtpHandle(e) {
+        e.preventDefault()
         if(validator.empty(otp)) {
             return toast.error("OTP Field is Empty!");
         }
@@ -92,7 +94,8 @@ function SignUp(props) {
         }
     }
 
-    async function submitHandle() {
+    async function submitHandle(e) {
+        e.preventDefault()
         if(validator.empty(name)) {
             return toast.error("Name Field is Empty!");
         }
@@ -141,11 +144,7 @@ function SignUp(props) {
     if (localStorage.getItem('token')) {
         return <Redirect to="/" />
     }
-
-    if (localStorage.getItem('token')) {
-        return <Redirect to="/" />
-    }
-
+    
     return (
         <div className={styles.SignUp}>
             <div className={styles.title}>Sign Up</div>

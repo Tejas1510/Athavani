@@ -99,6 +99,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
   const [commentID, setCommentID] = useState('');
   const [commented, setCommented] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
+  const [postDeleted, setPostDeleted] = useState(false);
 
   // function to open delete post option
   const handleOpen = () => {
@@ -148,6 +149,11 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
       if (openDelete) {
         // for user
         let matched = false;
+        setPostDeleted(true);
+        if (!password) {
+          setPostDeleted(false)
+          return toast.error("Passowrd Cannot be Empty");
+        }
         try {
           const { data } = await api.checkPassword({
             id: creatorID,
@@ -163,9 +169,11 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
             toast.success("Post Deleted.")
           );
           handleClose();
+          setPostDeleted(false);
           toast.info("Deleting Post... It may take some seconds.");
         } else {
           setOpenDelete(false);
+          setPostDeleted(false);
           toast.error("You have entered wrong password!");
         }
       } else if (openDeleteAdmin) {
@@ -175,9 +183,11 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
             toast.success("Post Deleted.")
           );
           handleClose();
+          setPostDeleted(false);
           toast.info("Deleting Post... It may take some seconds.");
         } else {
           setOpenDeleteAdmin(false);
+          setPostDeleted(false);
           toast.error("You have entered wrong password!!!");
         }
       }
@@ -204,6 +214,10 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
           variant="contained"
           className={classes.paperButton}
           onClick={handleSubmit}
+          disabled={postDeleted}
+          style={{
+            opacity: postDeleted ? "0.8" : "1"
+          }}
         >
           Submit
         </Button>
@@ -322,6 +336,20 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
 
   const [commentMessage, setCommentMessage] = useState("");
 
+  const showTitle = (post) => {
+    if (contentToggle) {
+      if ((post.title.length >= 35)) 
+      {
+        return `${post.title.substring(0,35)}...`;
+      }
+      else 
+      {
+        return post.title;
+      }
+    }
+
+    return post.title;
+  }
   return (
     <>
       <Card data-aos="fade-up"  className={classes.card}>
@@ -392,13 +420,13 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
         {/* ----- Post's Tags ----- */}
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary">
-            {post.tags.map((tag) => `#${tag} `)}
+            {post.tags.map((tag) => `#${tag.trim()} `)}
           </Typography>
         </div>
 
         {/* ----- Post's Title ----- */}
-        <Typography className={classes.title} variant="h5" gutterBottom>
-          {post.title}
+        <Typography className={classes.title} variant="h5" gutterBottom title={post.title}>
+          {showTitle(post)}
         </Typography>
 
         {/* ----- Post's text content ----- */}

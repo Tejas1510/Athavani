@@ -42,12 +42,8 @@ function Profile() {
         try {
 
             const {data} = await api.verify({token : localStorage.getItem('token')});
-            // console.log(data);
-
             const response = await api.getProfileById(data.id);
-            // console.log(response.data);
             const {name, email, bio, createdOn} = response.data.user;
-            // console.log(name, email, bio, createdOn, img);
 
             setName(name);
             setEmail(email);
@@ -67,20 +63,15 @@ function Profile() {
 
         } catch (error) {
             setLoading(false);
-            // console.log(error);
             if(error.response) {
                 toast.error(error.response.data.message);
             } else if(error.request) {
                 toast.error("Server is not Responding!");
-                // console.log(error.request);
             } else {
                 toast.error(error.message);
-                // console.log(error.message);
             }
             history.push('/');
-
         }
-        // console.log(posts);
     }, []);
 
     async function save() {
@@ -107,15 +98,12 @@ function Profile() {
             toast.success(data.message);
 
         } catch (error) {
-            // console.log(error);
             if(error.response) {
                 toast.error(error.response.data.message);
             } else if(error.request) {
                 toast.error("Server is not Responding!");
-                // console.log(error.request);
             } else {
                 toast.error(error.message);
-                // console.log(error.message);
             }
         }
         
@@ -232,12 +220,10 @@ function Profile() {
                     :
                     <Grid className={styles.postsContainer} container alignItems="stretch" spacing={3}>
                         {
-                            posts.filter((post) => post.creator._id === id).map(post => (
-                                <Grid key={post._id} item xs={12} sm={12} lg={6}>
-                                    <div className={styles.post} key={post._id}>
-                                        <Post post={post} fromProfile={true}/>
-                                    </div>
-                                </Grid>
+                            posts.reverse().filter((post) => post.creator._id === id).map(post => (
+                                <div className={styles.post} key={post._id}>
+                                    <Post post={post} fromProfile={true}/>
+                                </div>
                             ))
                         }
                     </Grid>

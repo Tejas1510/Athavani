@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
     textAlign: 'center',
   },
   filterBar: {
-    background: "radial-gradient(#FF7F50 40%,transparent)",
+    background: "radial-gradient(orange 100%,transparent) !important",
     marginBottom: "21px",
     padding: "3px 21px",
     borderRadius: "15px",

@@ -45,14 +45,7 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
                 setIsReversed(current => !current);
         }
     }
-
-    // function searchStringInArray (str, strArray) {
-    //     for (var j=0; j<strArray.length; j++) {
-    //         if (strArray[j].match(str)) return strArray[j];
-    //     }
-    //     return strArray[j];
-    // }
-
+    
     const searchForTag = (e) => {
         setSearchTagPosts([])
 
@@ -62,8 +55,6 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
         setSearchTagPosts(a);
     }
    
-
-    // console.log("posts : ", posts)
     return(
         !posts.length ? <CircularProgress/> : (
             <>

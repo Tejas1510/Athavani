@@ -104,10 +104,16 @@ git clone https://github.com/<your-github-username>/Athavani
 ```bash
 cd Athavani
 ```
+**4.** Make a new branch 
 
-**4.** Make changes in source code.
+```bash
+#Make a new branch to avoid conflicts with the main branch of repository
+git checkout -b NewBranchName
+```
 
-**5.** Stage your changes and commit
+**5.** Make changes in source code.
+
+**6.** Stage your changes and commit
 
 ```bash
 #Add changes to Index

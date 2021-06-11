@@ -52,6 +52,7 @@
     rgba(221, 39, 28, 1) 0%,
     rgba(248, 249, 7, 1) 100%
   );
+  transition: all 0.4s;
 }
 
 .signup {
@@ -66,6 +67,7 @@
   margin-top: 0.8rem;
   cursor: pointer;
   user-select: none;
+  
 }
 .send_otp:hover {
   box-shadow: 0 5px 15px orange;

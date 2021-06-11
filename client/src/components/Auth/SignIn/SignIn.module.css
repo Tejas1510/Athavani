@@ -88,6 +88,8 @@
   cursor: pointer;
   user-select: none;
   width: 50%;
+
+  transition: all 0.4s;
 }
 
 .login:hover {

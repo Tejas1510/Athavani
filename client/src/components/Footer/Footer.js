@@ -26,7 +26,6 @@ function Footer() {
   }, [window.location.pathname])
 
   return (
-    <div>
       <footer>
         <div>
           
@@ -80,7 +79,6 @@ function Footer() {
           </div>
         </div>
       </footer>
-    </div>
   );
 }
 

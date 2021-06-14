@@ -11,3 +11,14 @@
     padding-left: 0px ;
   } 
 }
+
+.MuiSvgIcon-root:hover{
+  transform: scale(1.06);
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.MuiSvgIcon-root{
+  transition: 0.4s;
+}

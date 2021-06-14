@@ -1,14 +1,14 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
 <p align="center">
-<img src="https://img.shields.io/github/stars/Tejas1510/Athavani?style=for-the-badge" >
-<img src="https://img.shields.io/github/forks/Tejas1510/Athavani?style=for-the-badge" >  
-<img src="https://img.shields.io/github/issues-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
-<img src="https://img.shields.io/github/issues-pr-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
+<a href="https://github.com/Tejas1510/Athavani/stargazers"><img src="https://img.shields.io/github/stars/Tejas1510/Athavani?style=for-the-badge" ></a>
+<a href="https://github.com/Tejas1510/Athavani/network/members"><img src="https://img.shields.io/github/forks/Tejas1510/Athavani?style=for-the-badge" >  </a>
+<a href="https://github.com/Tejas1510/Athavani/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/Tejas1510/Athavani?style=for-the-badge" ></a>
+<a href="https://github.com/Tejas1510/Athavani/pulls?q=is%3Apr+is%3Aclosed"><img src="https://img.shields.io/github/issues-pr-closed-raw/Tejas1510/Athavani?style=for-the-badge" ></a>
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge">
+<a href="https://github.com/Tejas1510/Athavani/graphs/contributors"><img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge"></a>
 </p>
 
 ## 📢 Join Discord channel for discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)

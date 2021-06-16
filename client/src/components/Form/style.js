@@ -7,27 +7,52 @@ export default makeStyles((theme) => ({
     },
   },
   paper: {
-    background: "#FF7F50",
-    boxShadow: "none !important"
+    
+    padding: "0 15px",
+    margin: "0",
+    borderRadius:"8px",
+    borderShadow:"5px 10px  8px rgba(255, 0, 0, 0),",
+    marginTop: "15px",
+    
+    
+    
+   
+    
+  },
+  p:{
+    fontSize:"20px",
+    fontFamily: "Roboto, sans-serif",
+    marginRight:"8px"
+    
   },
   heading: {
-    background: 'rgb(248 172 78) 58%;',
+    
     borderRadius: "8px",
     width: '380px!important',
     height: '55px',
   },
   contents: {
     padding: theme.spacing(2),
-    borderRadius:'10px'
+    borderRadius:'17px'
   },
   inputBox: {
-    background: 'rgb(248 172 78) 58%;',
-    borderRadius:'10px',
+   
+    
+    borderColor: 'pink',
+    marginBottom:"15px",
+    boxShadow:"4px 7px 11px #527a7a"
+    
+
+
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    borderShadow:"5px 10px  8px red"
+
+    
+    
   },
   error: {
     marginTop: '11px'
@@ -39,6 +64,7 @@ export default makeStyles((theme) => ({
   fileUploadIcon: {
     fontSize: "3.5em",
     cursor: "pointer",
+    color:"#004080"
   },
   fileInput: {
     position: "absolute",

@@ -353,8 +353,8 @@ function App(props) {
           aria-labelledby="responsive-dialog-title"
         >
             <div style={{
-              background: "#FF7F50",
-              padding: "40px 20px 20px"
+              backgroundColor:"white"
+             
             }}>
             <CloseIcon onClick={() => setOpenCreatePost(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
             <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
@@ -378,3 +378,5 @@ function App(props) {
 }
 
 export default App;
+
+

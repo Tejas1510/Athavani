@@ -11,7 +11,6 @@
 <a href="https://github.com/Tejas1510/Athavani/graphs/contributors"><img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge"></a>
 </p>
 
-## 📢 Join Discord channel for discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
 
 <p align="center">
   <img width="400" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/athavani.gif"></img>

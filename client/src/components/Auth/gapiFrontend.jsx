@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 import * as api from '../../api/index';
 import {toast} from 'react-toastify';
 import {Redirect, withRouter} from 'react-router-dom';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+//import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+//import { firebase } from "./../../utils/firebase";
+
 
 dotenv.config(); // this is to be installed in the node modules so CLIENT_ID could be used for Google Signin
 // The following CLIENT_ID is used to initialize the Google Signin APIs
@@ -130,13 +133,32 @@ class GoogleSignin extends Component {
         }else{
 
             if (!this.state.isSignedIn) {
-
+                /** For firebase login-------(uncomment this to enable firebase login and enter your firebase credentials to login)
+                const uiConfig = {
+                    signInFlow: "popup",
+                    signInSuccessUrl: "/",
+                    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+                  };
                 // console.log("not signed in.."); Use for Debugging
                 return (
                     <div>
-                        <div id="G-loginButton">Login with Google</div>
+                        <StyledFirebaseAuth
+                            uiConfig={uiConfig}
+                            firebaseAuth={firebase.auth()}
+                        />
                     </div>
                 )
+                 */
+
+                /**
+                For Logout--add this button where you want to work with log-out button
+                <button
+                    onClick={function () {
+                    firebase.auth().signOut();
+                    }}
+                >
+                Logout
+                </button> */
             }
         } 
     }

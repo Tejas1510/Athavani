@@ -10,6 +10,8 @@ const requireLogin = (req, res, next) => {
     
   }
   const token = authorization.replace("Bearer ", "");
+  //console.log("token:",token);
+  if(token!="null"){
   jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
     console.log(err);
     if (err) {
@@ -24,6 +26,7 @@ const requireLogin = (req, res, next) => {
       next();
     });
   });
+  }
 };
 
 export default requireLogin

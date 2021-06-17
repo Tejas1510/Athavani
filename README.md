@@ -171,6 +171,35 @@ If you have cloned this repo, then open git in this directory and use
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
 ![Lets Grow More Summer of Code](https://user-images.githubusercontent.com/60106112/121303829-28c07900-c919-11eb-8cf2-afd39b5c54ab.png)
 
+## Levels & Points
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Points</th> 
+  </tr>
+  <tr>
+    <td>Level 0</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Level 1</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Level 2</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Level 3</td>
+    <td>30</td>
+  </tr>
+<tr>
+    <td>Level 4</td>
+    <td>45</td>
+  </tr>
+</table>  
+
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
 

@@ -169,7 +169,7 @@ If you have cloned this repo, then open git in this directory and use
 
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt = "Devscript Winter of Code"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
-<img src = "https://user-images.githubusercontent.com/60106112/121303829-28c07900-c919-11eb-8cf2-afd39b5c54ab.png" alt = "Lets Grow More Summer of Code">
+<img src = "https://user-images.githubusercontent.com/60106112/121303829-28c07900-c919-11eb-8cf2-afd39b5c54ab.png" alt = "Lets Grow More Summer of Code"></img>
 
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.

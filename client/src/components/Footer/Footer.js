@@ -44,22 +44,25 @@ function Footer() {
               >
                 <b class="footer-class">About Athvani</b>
               </h1>
-              <p style={{ textAlign: "center" }}>
-                😻 Athavani/Memories is a place to save all your memories in a
-                single place and rejoice them through the years.
+              <p style={{ textAlign: "center" ,fontSize:24,paddingLeft:'5%',paddingRight:'5%'}}>
+                Athavani/Memories is a place to save all your memories in a
+                single place and rejoice them through the years. Athavani assures it all users that their privacy will be hidden.
+                
               </p>
              
-              <hr style={{ width: "20%", alignItems: "center", marginBottom: "20px", marginTop: "20px" }}></hr>
+              <hr style={{ width: "20%", alignItems: "center" }}></hr>
               <h2
                 style={{
                   textAlign: "center",
                   marginBottom: "0px",
                   marginTop: "0px",
+                  color:'gray',
+
                 }}
               >
-                Contact us at
+                Contact Us: 
               </h2>
-              <p style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center" }}>
                 <div className="swipeButton">
                   <IconButton
                     style={{ color: "#00acee" }}
@@ -74,7 +77,8 @@ function Footer() {
                     <img src={discordIcon} width="35px" height="35px"/>
                   </IconButton>
                 </div>
-              </p>
+              </div>
+             
             </div>
           </div>
         </div>

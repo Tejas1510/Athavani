@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
 
 .footer-row {
-    background-color: #FF7F50;
+    background-color: #f2f2f2;
     margin-top: 0%;
-    bottom: -350px;
     width: 100%;
 }
 
@@ -21,4 +21,8 @@
 
 .MuiSvgIcon-root{
   transition: 0.4s;
+}
+
+*{
+  font-family: 'Benne', serif;;
 }

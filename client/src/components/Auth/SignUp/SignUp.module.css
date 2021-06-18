@@ -8,13 +8,15 @@
   border-radius: 10px;
   font-family: Poppins;
   box-shadow: 0 5px 15px grey;
+  height:490px
 }
 
 .title {
   text-align: center;
   font-size: 1.7rem;
   font-weight: bold;
-  color: tomato;
+  color: maroon;
+  font-size: 42px;
 }
 
 .body {

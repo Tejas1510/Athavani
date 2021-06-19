@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import YouTubeIcon from "@material-ui/icons/YouTube";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
 import discordIcon from "../../assets/discordIcon.png";
@@ -71,7 +68,7 @@ function Footer() {
                    style={{ color: "#7289d9" }}
                    onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    <img src={discordIcon} width="35px" height="35px"/>
+                    <img src={discordIcon} alt="" width="35px" height="35px"/>
                   </IconButton>
                 </div>
               </p>

@@ -36,43 +36,45 @@ function Profile() {
     const [newBio, setNewBio] = useState("");
     const [newProfile, setNewProfile] = useState(noProfilePhoto);
 
-    useEffect(async () => {
-        setLoading(true);
-
-        try {
-
-            const {data} = await api.verify({token : localStorage.getItem('token')});
-            const response = await api.getProfileById(data.id);
-            const {name, email, bio, createdOn} = response.data.user;
-
-            setName(name);
-            setEmail(email);
-            setBio(bio);
-            setJoined(createdOn);
-            setId(data.id);
-            setNewName(name);
-            setNewBio(bio);
-
-            setLoading(false);
-        
-            const imgResponse = await api.getProfilePhotoById(data.id);
-            const { img } = imgResponse.data;
-
-            setImg(img);
-            setNewProfile(img);
-
-        } catch (error) {
-            setLoading(false);
-            if(error.response) {
-                toast.error(error.response.data.message);
-            } else if(error.request) {
-                toast.error("Server is not Responding!");
-            } else {
-                toast.error(error.message);
+    useEffect(() => {
+        (async () => {
+            setLoading(true);
+    
+            try {
+    
+                const {data} = await api.verify({token : localStorage.getItem('token')});
+                const response = await api.getProfileById(data.id);
+                const {name, email, bio, createdOn} = response.data.user;
+    
+                setName(name);
+                setEmail(email);
+                setBio(bio);
+                setJoined(createdOn);
+                setId(data.id);
+                setNewName(name);
+                setNewBio(bio);
+    
+                setLoading(false);
+            
+                const imgResponse = await api.getProfilePhotoById(data.id);
+                const { img } = imgResponse.data;
+    
+                setImg(img);
+                setNewProfile(img);
+    
+            } catch (error) {
+                setLoading(false);
+                if(error.response) {
+                    toast.error(error.response.data.message);
+                } else if(error.request) {
+                    toast.error("Server is not Responding!");
+                } else {
+                    toast.error(error.message);
+                }
+                history.push('/');
             }
-            history.push('/');
-        }
-    }, []);
+        })();
+    }, [])
 
     async function save() {
         if(validator.empty(newName)) {
@@ -158,7 +160,7 @@ function Profile() {
                     editMode ?
                     <div className={styles.hoverdiv}>
                         <div className={styles.hover_camera}>
-                            <img src={camera} width="200px" height="200px" />
+                            <img alt="" src={camera} width="200px" height="200px" />
                         </div>
                         <div className={styles.inputFile}>
                             <FileBase
@@ -168,12 +170,12 @@ function Profile() {
                             />
                         </div>
                         <div className={styles.imgDiv}>
-                            <img src={newProfile} alt="Preview of Uploaded Image" className={styles.preview}/>
+                            <img src={newProfile} alt="Preview" className={styles.preview}/>
                         </div>
                     </div>
                     :
                     <img src={img}
-                        alt="No Profile Photo Found"
+                        alt="Not Found"
                         className={styles.profile_img}
                     />
                 }

@@ -356,7 +356,10 @@ function App(props) {
         >
             <div style={{
               background: "#gray",
-              padding: "40px 20px 20px"
+              padding: "40px 20px 20px",
+              backgroundColor:"white"
+             
+
             }}>
             <CloseIcon onClick={() => setOpenCreatePost(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
             <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
@@ -380,3 +383,5 @@ function App(props) {
 }
 
 export default App;
+
+

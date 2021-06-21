@@ -1,25 +1,28 @@
 
 .footer-row {
-    background-color: #FF7F50;
-    margin-top: 0%;
-    bottom: -350px;
-    width: 100%;
+  background-color: #f2f2f2;
+  margin-top: 0%;
+  bottom: -350px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
 }
 
 @media only screen and (max-width: 600px) {
-  .footer-row div {
-    padding-left: 0px ;
-  } 
+.footer-row div {
+  padding-left: 0px ;
+} 
 }
 
 .MuiSvgIcon-root:hover{
-  transform: scale(1.06);
-  background: #fff;
-  border-radius: 50%;
-  padding: 5px;
+transform: scale(1.06);
+background: #fff;
+border-radius: 50%;
+padding: 5px;
 }
 
 .MuiSvgIcon-root{
+
   transition: 0.4s;
 }
 
@@ -28,3 +31,8 @@
   background: #fff;
   border-radius: 50%;
 }
+
+transition: 0.4s;
+}
+
+

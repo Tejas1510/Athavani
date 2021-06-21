@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import YouTubeIcon from "@material-ui/icons/YouTube";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
 import discordIcon from "../../assets/discordIcon.png";
 import "./style.css"
+import zIndex from "@material-ui/core/styles/zIndex";
 
 function Footer() {
   const [footerStyle, setFooterStyle] = useState({})
@@ -26,9 +24,8 @@ function Footer() {
   }, [window.location.pathname])
 
   return (
-    <div>
       <footer>
-        <div>
+        <div style={{height:'350' ,zIndex:1}}>
           
           <div
             class="footer-row"
@@ -43,25 +40,27 @@ function Footer() {
                 class="text-uppercase"
                 style={{ textAlign: "center" }}
               >
-                <b class="footer-class">About Athvani</b>
+                <b class="footer-class" style={{fontSize:'30px',color:'crimson'}}>About Athavani</b>
               </h1>
-              <p style={{ textAlign: "center" }}>
-                😻 Athavani/Memories is a place to save all your memories in a
-                single place and rejoice them through the years.
+              <p style={{ textAlign: "center",color:'gray',fontSize:'18px' }}>
+                Athavani/Memories is a place to save all your memories in a
+                single place and rejoice them through the years. We assures you that your data will remain safe in Athavani. 
               </p>
              
-              <hr style={{ width: "20%", alignItems: "center", marginBottom: "20px", marginTop: "20px" }}></hr>
+              <hr style={{ width: "20%", alignItems: "center"}}></hr>
               <h2
                 style={{
                   textAlign: "center",
                   marginBottom: "0px",
                   marginTop: "0px",
+                  marginBottom:'-32px',
+                  color:'maroon'
                 }}
               >
-                Contact us at
+                Contact Us:
               </h2>
               <p style={{ textAlign: "center" }}>
-                <div className="swipeButton">
+                <div className="swipeButton" style={{marginBottom:'-15px'}}>
                   <IconButton
                     style={{ color: "#00acee" }}
                     onClick={() => window.open('')}
@@ -72,7 +71,7 @@ function Footer() {
                    style={{ color: "#7289d9" }}
                    onClick={() => window.open('https://discord.gg/gEqSYzc5Yu')}
                   >
-                    <img src={discordIcon} width="35px" height="35px"/>
+                    <img src={discordIcon} alt="" width="35px" height="35px"/>
                   </IconButton>
                 </div>
               </p>
@@ -80,7 +79,6 @@ function Footer() {
           </div>
         </div>
       </footer>
-    </div>
   );
 }
 

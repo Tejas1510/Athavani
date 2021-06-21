@@ -83,7 +83,9 @@ const useStyl = makeStyles((theme) => ({
   logo:{
     display:"inline-block",
     margin:"15px 0 10px 45px",
-  }
+  },
+ 
+
 }));
 
 function App(props) {
@@ -149,7 +151,7 @@ function App(props) {
   return (
     <div>
       {!logout && 
-      <AppBar className={classes.appBar} position="fixed" style={{background: "radial-gradient(orange 40%,transparent)"}} color="inherit">
+      <AppBar className={classes.appBar} position="fixed" style={{background: "#fff",borderRadius:'10px'}} color="inherit">
       {logout && <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -160,8 +162,8 @@ function App(props) {
             <MenuIcon />
           </IconButton>}
       
-        <Typography className={classes.heading} variant="h4" align="center">Memories</Typography>
-        <img className={classes.image} height="50" src={memories} alt="Memories"></img>
+        <Typography className={classes.heading} variant="h4" style={{textAlign:'left'}} >Memories</Typography>
+        <img className={classes.image} height="20" src={memories} alt="Memories"></img>
       </AppBar>}
       <div className={classs.root}>
       <CssBaseline />
@@ -203,7 +205,7 @@ function App(props) {
           >
             <div>
       
-      <List>
+      <List style={{background:'#f2f2f2'}}>
       <Typography className={classes.heading} variant="h6" align="center">Memories</Typography>
         <img className={classes.image} height="30" src={memories} alt="Memories"></img>
         <ListItem button component={Link} to="/" onClick={() => {
@@ -355,8 +357,11 @@ function App(props) {
           aria-labelledby="responsive-dialog-title"
         >
             <div style={{
-              background: "#FF7F50",
-              padding: "40px 20px 20px"
+              background: "#gray",
+              padding: "40px 20px 20px",
+              backgroundColor:"white"
+             
+
             }}>
             <CloseIcon onClick={() => setOpenCreatePost(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }}/>
             <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost}/>
@@ -380,3 +385,5 @@ function App(props) {
 }
 
 export default App;
+
+

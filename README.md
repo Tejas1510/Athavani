@@ -1,17 +1,16 @@
 ![Athavani](https://socialify.git.ci/Tejas1510/Athavani/image?description=1&forks=1&issues=1&language=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark)
 
 <p align="center">
-<img src="https://img.shields.io/github/stars/Tejas1510/Athavani?style=for-the-badge" >
-<img src="https://img.shields.io/github/forks/Tejas1510/Athavani?style=for-the-badge" >  
-<img src="https://img.shields.io/github/issues-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
-<img src="https://img.shields.io/github/issues-pr-closed-raw/Tejas1510/Athavani?style=for-the-badge" >
+<a href="https://github.com/Tejas1510/Athavani/stargazers"><img src="https://img.shields.io/github/stars/Tejas1510/Athavani?style=for-the-badge" ></a>
+<a href="https://github.com/Tejas1510/Athavani/network/members"><img src="https://img.shields.io/github/forks/Tejas1510/Athavani?style=for-the-badge" >  </a>
+<a href="https://github.com/Tejas1510/Athavani/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/Tejas1510/Athavani?style=for-the-badge" ></a>
+<a href="https://github.com/Tejas1510/Athavani/pulls?q=is%3Apr+is%3Aclosed"><img src="https://img.shields.io/github/issues-pr-closed-raw/Tejas1510/Athavani?style=for-the-badge" ></a>
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge">
+<a href="https://github.com/Tejas1510/Athavani/graphs/contributors"><img src="https://img.shields.io/github/contributors/Tejas1510/Athavani?style=for-the-badge"></a>
 </p>
 
-## 📢 Join Discord channel for discussion about the project : [Athavani](https://discord.gg/gEqSYzc5Yu)
 
 <p align="center">
   <img width="400" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/athavani.gif"></img>
@@ -19,12 +18,12 @@
 
 ## 📌 Motive of the Project
 
-<b>Athavani or Memories</b> is a full-stack MERN tool built in order to save all your memories in a single place and rejoice them through the year.
+<b>Athavani or Memories</b> is a full-stack MERN tool built which is used to save all your memories in a single place so that you can enjoy them throughout the year.
 
 ## 💡 Project Background
 
-The Project is built with the help of Reactjs and Material-Ui at Frontend and backed by Nodejs and Expressjs at Backend using MongoDB as a Database. The user has the following
-ability
+The Project's Frontend is built with the help of Reactjs and Material-Ui  and it is backed by Nodejs. Its Backend is built using Expressjs using MongoDB as a Database. The user has the following
+abilites:
 
 - Create a Memory
 - Update a Memory
@@ -46,7 +45,7 @@ ability
 <img align="center" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/heroku.png"></img>
 </p>
 
-## A sneak peeks into what we have here🙈 :
+## A sneak peek into what we have here🙈 :
 
 <p align="center">
   <img width="650" height="400" src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Athavani-GIF.gif"></img>
@@ -161,15 +160,45 @@ npm start
 To open the web app directly from CLI use:-
 ```explorer "https://memoriestejastapas.netlify.app/"```
 
-if you have cloned this repo, then open git in this directory and use 
+If you have cloned this repo, then open git in this directory and use 
 ``` ./script.sh ```
 
 ## 📢  Open Source Program
 
-### This Project is a part of the following Open Source Program
+### This Project is a part of the following Open Source Programs
 
-<img src ="https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt ="Devscript Winter of Code"></img>
+<img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/devscriptcode.png" alt = "Devscript Winter of Code"></img>
 <img src = "https://github.com/Tejas1510/Athavani/blob/master/assets/Images/gssoc.png" alt = "GirlScript Summer of Code"></img>
+<img src = "https://user-images.githubusercontent.com/60106112/121303829-28c07900-c919-11eb-8cf2-afd39b5c54ab.png" alt = "Lets Grow More Summer of Code"></img>
+
+## Levels & Points
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Points</th> 
+  </tr>
+  <tr>
+    <td>Level 0</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Level 1</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Level 2</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Level 3</td>
+    <td>30</td>
+  </tr>
+<tr>
+    <td>Level 4</td>
+    <td>45</td>
+  </tr>
+</table>  
 
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
@@ -198,7 +227,7 @@ For major changes, you are welcomed to open an issue and discuss what you would 
 
 ## 🔔 Credits
 
-The project is built by learning from [JavaScript Mastery](https://www.youtube.com/watch?v=ngc9gnGgUdA) and various resource available on the internet.
+The project is built by learnings from [JavaScript Mastery](https://www.youtube.com/watch?v=ngc9gnGgUdA) and various resources available on the internet.
 
 
 

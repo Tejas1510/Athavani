@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const mainUrl = "https://memories-mern-stack.herokuapp.com/";
 // const mainUrl = "https://athavani-sanjay-backend.herokuapp.com/"
-const mainUrl = "http://localhost:5000/";
+const mainUrl = process.env.REACT_APP_API;
 
 const postUrl = mainUrl + "posts";
 const userUrl = mainUrl + "auth";

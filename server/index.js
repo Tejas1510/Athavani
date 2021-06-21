@@ -7,7 +7,7 @@ import authRoutes from './routes/authentication.js';
 import dotenv from 'dotenv';
 import { sendMail } from './scripts/mailSender.js';
 import cron from 'node-cron';
-
+import path from 'path';
 const app = express();
 
 app.use(express.json({ limit: '30mb', extended: true }))
@@ -33,7 +33,9 @@ mongoose.connection.on('error', error => {
   console.log(error.message);
 });
 
+
 // sends the mail every sunday
 cron.schedule('* * * * Sun', () => {
     sendMail();
 });
+

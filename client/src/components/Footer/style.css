@@ -22,3 +22,9 @@
 .MuiSvgIcon-root{
   transition: 0.4s;
 }
+
+.MuiButtonBase-root:hover{
+  transform: scale(1.06);
+  background: #fff;
+  border-radius: 50%;
+}

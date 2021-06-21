@@ -121,16 +121,18 @@ function App(props) {
     }
   },[history])
 
-  useEffect(async () => {
-    try {
-        const {data} = await api.verify({token : localStorage.getItem('token')});
-        const response = await api.getProfileById(data.id);
-        setUserImg(response.data.user.img)
-    } catch (error) {
-        console.log(error);
-        setUserImg(noProfilePhoto)
-    }
-}, []);
+  useEffect(()=>{
+    (async () => {
+      try {
+          const {data} = await api.verify({token : localStorage.getItem('token')});
+          const response = await api.getProfileById(data.id);
+          setUserImg(response.data.user.img)
+      } catch (error) {
+          console.log(error);
+          setUserImg(noProfilePhoto)
+      }
+  })();
+  }, []);
 
   const [logout, setLogout] = useState(true);
 
@@ -142,9 +144,9 @@ function App(props) {
     toast.success('Logged out successfully.');
   }
 
-  const toggleMenu = () => {
-    document.querySelector("#menuBox").classList.toggle("active");
-  };
+  // const toggleMenu = () => {
+  //   document.querySelector("#menuBox").classList.toggle("active");
+  // };
 
   return (
     <div>

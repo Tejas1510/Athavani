@@ -10,20 +10,23 @@ const requireLogin = (req, res, next) => {
     
   }
   const token = authorization.replace("Bearer ", "");
-  jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
-    console.log(err);
-    if (err) {
-      console.log("you must be logged in");
-      return res.status(401).json({ error: "you must be logged in" });
-    }
+  //console.log("token:",token);
+  if(token&&token!="null"){
+    jwt.verify(token, process.env.JWT_KEY, (err, payload) => {
+      console.log(err);
+      if (err) {
+        console.log("you must be logged in");
+        return res.status(401).json({ error: "you must be logged in" });
+      }
 
-    const { _id } = payload;
-    User.findById(_id).then((userData) => {
-      delete userData._doc.password;
-      req.user = userData;
-      next();
+      const { _id } = payload;
+      User.findById(_id).then((userData) => {
+        delete userData._doc.password;
+        req.user = userData;
+        next();
+      });
     });
-  });
+  }
 };
 
 export default requireLogin

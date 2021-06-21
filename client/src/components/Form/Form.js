@@ -4,12 +4,10 @@ import * as api from "../../api/index";
 import useStyles from "./style";
 import {
   TextField,
-  Button,
   Typography,
   Paper,
   LinearProgress,
 } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
@@ -26,19 +24,21 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(async () => {
-    try {
-      const { data } = await api.verify({
-        token: localStorage.getItem("token"),
-      });
-      // console.log(data);
-      setCreatorID(data.id);
-      setCreatorName(data.name);
-    } catch (error) {
-      toast.error("Token Expired or Invalid. Sign In again.");
-      localStorage.removeItem("token");
-      history.push("/signin");
-    }
+  useEffect(()=>{
+    (async () => {
+      try {
+        const { data } = await api.verify({
+          token: localStorage.getItem("token"),
+        });
+        // console.log(data);
+        setCreatorID(data.id);
+        setCreatorName(data.name);
+      } catch (error) {
+        toast.error("Token Expired or Invalid. Sign In again.");
+        localStorage.removeItem("token");
+        history.push("/signin");
+      }
+    })();
   }, []);
 
   const [postData, setPostData] = useState({
@@ -145,7 +145,23 @@ const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
           </Alert>
         )} */}
         <div className={classes.contents}>
-          
+
+          <Typography
+            style={{
+              fontSize: "1.5em",
+              fontWeight: "500",
+              borderRadius: "12px",
+              padding: "2px 15px",
+              width: "fit-content",
+              textAlign: "center",
+              margin: "10px auto",
+              color: "#101820ff",
+              background: "#f2aa4cff",
+            }}
+          >
+            {creatorName}
+          </Typography>
+
 
           <TextField
             name="title"

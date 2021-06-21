@@ -1,27 +1,31 @@
 import React, {useState,useEffect} from 'react'
 import Post from './Post/Post';
 import useStyles from './style';
-import {Link, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import * as api from '../../api/index';
-import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography, TextField} from '@material-ui/core';
+import {Grid,CircularProgress, Button, Menu, MenuItem, FormControlLabel, Switch, Typography} from '@material-ui/core';
 
 const Posts = ({setCurrentId, setOpenCreatePost}) =>{
 
     const history = useHistory();
     const [creatorID, setCreatorID] = useState("");
     const [isFavoritePosts, setIsFavoritePosts] = useState(false);
-    const [searchTagPosts, setSearchTagPosts] = useState([]);
-    const [searchTag, setSearchTag] = useState("");
+    //const [searchTagPosts, setSearchTagPosts] = useState([]);
+    //const [searchTag, setSearchTag] = useState("");
+    const searchTagPosts = [];
+    const searchTag = "";
     
-    useEffect(async () => {
-        try {
-            const {data} = await api.verify({token : localStorage.getItem('token')});
-            setCreatorID(data.id);
-        } catch(error) {
-            localStorage.removeItem('token');
-            history.push('/signin');
-        }
+    useEffect(()=>{
+        (async () => {
+            try {
+                const {data} = await api.verify({token : localStorage.getItem('token')});
+                setCreatorID(data.id);
+            } catch(error) {
+                localStorage.removeItem('token');
+                history.push('/signin');
+            }
+        })();
     }, [isFavoritePosts]);
 
     const posts = useSelector((state) => state.posts)
@@ -46,14 +50,14 @@ const Posts = ({setCurrentId, setOpenCreatePost}) =>{
         }
     }
     
-    const searchForTag = (e) => {
-        setSearchTagPosts([])
+    // const searchForTag = (e) => {
+    //     setSearchTagPosts([])
 
-        let a = posts.filter(
-                (p, i) => p.tags.includes(e.target.value)
-            )
-        setSearchTagPosts(a);
-    }
+    //     let a = posts.filter(
+    //             (p, i) => p.tags.includes(e.target.value)
+    //         )
+    //     setSearchTagPosts(a);
+    // }
    
     return(
         !posts.length ? <CircularProgress/> : (

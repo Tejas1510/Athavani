@@ -15,8 +15,8 @@
     line-height: 1.2;
 }
 
-.number:hover {
-    color: orange;
+.number {
+    color: white;
     text-shadow: 3px 3px 0 black, -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black;
 }
 
@@ -58,15 +58,15 @@
     background-color: #ffa500;
     color: white;
     padding: 0.5rem 1rem;
-    margin-top: 2.5rem;
+    margin: 2.5rem 2rem;
     border-radius: 25px;
     font-size: 1.3rem;
     font-weight: bold;
-    border: none;
+    border: 3px solid black;
     outline: none;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: #f59f00;
+    background-color: purple;
 }

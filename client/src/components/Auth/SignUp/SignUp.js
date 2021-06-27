@@ -148,9 +148,13 @@ function SignUp(props) {
     
     return (
         <div className={styles.SignUp}>
-            <div className={styles.title}>Sign Up</div>
+            <div className={styles.SignImage}>
+                <img className={styles.Sign_image} src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_129714169_970647970450099_67857.jpg" alt="Memories Image"></img>
+                <div className={styles.bg_color}></div>
+            </div>
+            <div className={styles.title}>SIGN UP</div>
             <div className={styles.body}>
-                <form onSubmit={isOtpSent ? resetHandle : sendOtpHandle}>
+                <form className={styles.form} onSubmit={isOtpSent ? resetHandle : sendOtpHandle}>
                 <input type="text" name="email" placeholder="Email Address"
                     value={email} onChange={(e) => setEmail(e.target.value)}
                     disabled={isOtpSent}
@@ -165,7 +169,7 @@ function SignUp(props) {
                         </button>
                     </div>
                     :
-                    <div style={{display: "flex", justifyContent: "center"}}>
+                    <div style={{display: "flex", justifyContent: "center",width: "80%",margin:"auto"}}>
                         <button 
                             type="submit"
                             className={styles.send_otp}
@@ -176,7 +180,7 @@ function SignUp(props) {
                             Send OTP
                             {
                                 isLoading &&
-                                <LinearProgress color="secondary" />
+                                <LinearProgress display="none" color="secondary" />
                             }
                         </button>
                     </div>

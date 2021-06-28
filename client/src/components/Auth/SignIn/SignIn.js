@@ -80,7 +80,7 @@ function SignIn(props) {
     return (
         <div className={styles.SignIn}>
             <div className={styles.SignImage}>
-                <img className={styles.Sign_image} src={"memories.jpg"} alt="Memories Image"></img>
+                <img className={styles.Sign_image} src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_129714169_970647970450099_67857.jpg" alt="Memories Image"></img>
                 <div className={styles.bg_color}></div>
             </div>
             <div className={styles.title}>SIGN IN</div>

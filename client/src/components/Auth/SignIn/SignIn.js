@@ -79,21 +79,20 @@ function SignIn(props) {
 
     return (
         <div className={styles.SignIn}>
-            <div className={styles.title}>Sign In</div>
+            <div className={styles.SignImage}>
+                <img className={styles.Sign_image} src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_129714169_970647970450099_67857.jpg" alt="Memories Image"></img>
+                <div className={styles.bg_color}></div>
+            </div>
+            <div className={styles.title}>SIGN IN</div>
 
             <div className={styles.body}>
-                <form onSubmit={submitHandle}>
-                    <input type="text" className={styles.email} name="email" placeholder="Email Address"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
-                    />
-                    
+                <form className={styles.form} onSubmit={submitHandle}>
+                    <input type="text" className={styles.email} name="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <div className={styles.password_container}>
-                        <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password"
-                            value={password} onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <div className={styles.eye} onClick={tooglePassword}>
                             {
-                                passwordHide ? <FiEyeOff /> : <FiEye/>
+                                passwordHide ? <FiEyeOff/> : <FiEye/>
                             }
                         </div>
                     </div>
@@ -115,19 +114,18 @@ function SignIn(props) {
                                 isLoading &&
                                 <LinearProgress color="secondary" />
                             }
-                        </button>
-                        
+                        </button>                       
                     </div>
                     <div id = "signerror" style={{textAlign:'center',color:'coral',fontSize:19}}>{signing_error}</div>
                 </form>
                 <GoogleSignin />
                 <div className={styles.already}>
-                {!isLoading && (
-                    <>
-                        <div className={styles.text}>New to Realate?</div>
-                        <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
-                    </>
-                )}
+                    {!isLoading && (
+                        <>
+                            <div className={styles.text}>New to Realate?</div>
+                            <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

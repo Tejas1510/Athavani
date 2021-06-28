@@ -17,6 +17,7 @@ import AvatarButtons from "../Buttons/AvatarButtons";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ClearIcon from "@material-ui/icons/Clear";
 import AddAPhotoRoundedIcon from '@material-ui/icons/AddAPhotoRounded';
+
 const Form = ({ currentId, setCurrentId, setOpenCreatePost }) => {
   const history = useHistory();
   const [creatorID, setCreatorID] = useState("");

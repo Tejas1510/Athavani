@@ -1,25 +1,61 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 .SignUp {
   background-color: white;
-  width: fit-content;
-  margin: auto;
-  padding: 2rem;
-  padding-bottom: 1rem;
-  border-radius: 10px;
-  font-family: Poppins;
-  box-shadow: 0 5px 15px grey;
-  height:490px
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fit-content;
+    width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: Poppins;
+    box-shadow: 0 5px 15px grey;
+    height: 490px;
+    position: relative;
 }
+
+.SignImage{
+  width: 100%;
+  z-index: 1;
+  height: 25%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+}
+
+.Sign_image{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 10px 10px 0px 0px;
+} 
+
+.bg_color{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #457b9d;
+  opacity: 70%;
+  border-radius: 10px 10px 0px 0px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+} 
 
 .title {
   text-align: center;
-  font-size: 1.7rem;
-  font-weight: bold;
-  color: maroon;
-  font-size: 42px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 2;
+  font-size: 2.0rem;
+  color: #fff;
+  font-weight: 900;
+  position: relative;
 }
 
 .body {
+  margin-top: 8%;
   padding: 1rem;
   padding-top: 2rem;
   display: flex;
@@ -31,29 +67,30 @@
 .body input {
   padding: 1rem 1rem;
   width: 350px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 1rem;
   outline: none;
   border: none;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #457b9d;
 }
 
 .send_otp {
   margin-top: 2em;
   padding: 0.7rem 0;
-  font-size: 1rem;
+  font-size: 100%;
   border-radius: 20px;
   border: none;
   outline: none;
   cursor: pointer;
   color: white;
   width: 50%;
-  background: rgb(221, 39, 28);
+  /* background: rgb(221, 39, 28); */
   background: linear-gradient(
-    90deg,
-    rgba(221, 39, 28, 1) 0%,
-    rgba(248, 249, 7, 1) 100%
+    315deg,
+    #fb7ba2 24%,
+    #fce043 100%
   );
+  font-weight: 900;
   transition: all 0.4s;
 }
 
@@ -72,13 +109,14 @@
   
 }
 .send_otp:hover {
-  box-shadow: 0 5px 15px orange;
-  background: rgb(255, 165, 38);
+  box-shadow: 0 5px 15px #fb7ba2;
+  /* background: rgb(255, 165, 38); */
   background: linear-gradient(
-    90deg,
-    rgba(255, 165, 38, 1) 0%,
-    rgba(242, 227, 2, 1) 100%
+    315deg,
+     #fce043 0%,
+     #fb7ba2 74%
   );
+  transition: 0.5s ease-in-out;
 }
 
 .password_container {
@@ -99,7 +137,7 @@
 
 .already {
   display: flex;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   justify-content: center;
   align-items: center;
 }
@@ -138,12 +176,35 @@
   }
 }
 
-@media only screen and (max-width: 360px) {
-  .signUp {
-    padding: 0.8rem;
-    width: 80%;
+@media only screen and (max-width: 430px) {
+  .SignUp {
+    margin-top: 17%;
+    width: 90%;
+    padding: 0%;
+    padding-top: 5%;
+    /* height: max-content; */
+  }
+  .body{
+    margin: auto;
+    margin-top: 8%;
+    width: 100%;
+  }
+  .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .send_otp{
+    width: 60%;
+  }
+  .title{
+    margin-top: 6%;
   }
   .body input {
     width: 90%;
+    font-size: 0.8rem;
+    margin-top: 6%;
   }
 }

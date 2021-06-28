@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 .SignIn {
   background-color: white;
-  
+  display: flex;
+  flex-direction: column;
   width: fit-content;
   margin: auto;
   padding: 2rem;
@@ -9,35 +10,89 @@
   font-family: Poppins;
   box-shadow: 0 5px 15px grey;
   height:490px;
+  position: relative;
+}
+
+.colo{
+  background-image: linear-gradient(
+    315deg,
+     #fce043 0%,
+     #fb7ba2 74%
+    );
+}
+
+.SignImage{
+  width: 100%;
+  z-index: 1;
+  height: 25%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+}
+
+.Sign_image{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.bg_color{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #457b9d;
+  opacity: 70%;
+  border-radius: 10px 10px 0px 0px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
 }
 
 .title {
   text-align: center;
-  font-size: 2.7rem;
-  color: maroon;
-  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 2;
+  font-size: 2.0rem;
+  color: #fff;
+  font-weight: 900;
 }
 
 .body {
   padding: 1rem;
   padding-top: 2rem;
+  margin-top: 5%;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.email,
-.password {
+.email{
   padding: 1rem 1rem;
   width: 350px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 1.3rem;
   outline: none;
   border: none;
   background-color: #fff;
   padding-right: 1.5rem;
-  border-bottom: 1px solid #eee;
+  border-bottom:  2px solid #457b9d;
+}
+
+.password{
+  padding: 1rem 1rem;
+  width: 350px;
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  padding-right: 1.5rem;
+  border-bottom: 2px solid #457b9d;
 }
 
 .password_container {
@@ -74,11 +129,12 @@
 .login {
   background: rgb(221, 39, 28);
   background: linear-gradient(
-    90deg,
-    rgba(221, 39, 28, 1) 0%,
-    rgba(248, 249, 7, 1) 100%
+    315deg,
+    #fb7ba2 24%,
+    #fce043 100%
   );
   color: white;
+  font-weight: 900;
   padding: 0.7rem 1rem;
   font-size: 1.1rem;
   outline: none;
@@ -94,18 +150,19 @@
 }
 
 .login:hover {
-  box-shadow: 0 5px 15px orange;
-  background: rgb(255, 165, 38);
+  box-shadow: 0 5px 15px #fb7ba2 ;
   background: linear-gradient(
-    90deg,
-    rgba(255, 165, 38, 1) 0%,
-    rgba(242, 227, 2, 1) 100%
+    315deg,
+     #fce043 0%,
+     #fb7ba2 74%
   );
+  transition: 0.5s ease-in-out;
 }
 
 .already {
   display: flex;
-  margin-top: 3.5rem;
+  /* margin-top: 3.5rem; */
+  margin-top: 10%;
   justify-content: center;
   align-items: center;
 }
@@ -145,13 +202,25 @@
   }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 430px) {
   .SignIn {
+    margin-top: 17%;
     width: 80%;
+  }
+  .title{
+    margin: 10%;
+  }
+  .body{
+    padding: 0 0.3rem 1rem 0.3rem;
+    width: 100%;
+  }
+  .form{
+    width: 90%;
   }
 
   .email,
   .password {
-    width: 80%;
+    width: 100%;
+    font-size: 0.8rem;
   }
 }

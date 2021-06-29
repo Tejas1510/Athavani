@@ -52,6 +52,14 @@ const useStyl = makeStyles((theme) => ({
     background: "radial-gradient(orange 100%,transparent)",
     color: "black",
   },
+  drawer: {
+    minHeight: "100vh",
+    height: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    }
+  },
   menuButton: {
     margin: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {

@@ -32,7 +32,7 @@ const drawerWidth = 240;
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   logo: {
     display: "flex",
@@ -48,20 +48,14 @@ const useStyle = makeStyles((theme) => ({
     fontSize: '1.5rem',
     fontWeight: "bold",
   },
-  drawer: {
-    [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    }
-  },
   drawerPaper: {
+    minHeight: "100vh",
     height: "100%",
     width: drawerWidth,
     zIndex: "1",
     top: "0",
     bottom: "0",
     left: "0",
-    position: "fixed",
     background: "radial-gradient(orange 100%,transparent)",
   },
   list: {
@@ -94,7 +88,7 @@ const Sidebar = (props) => {
   const theme = useTheme();
 
   return (
-    <div>
+    <div className={classes.root}>
       <Hidden smUp implementation="css">
         <Drawer
           container={window.document.body}
@@ -125,35 +119,54 @@ const Sidebar = (props) => {
 
               <Divider />
 
-              <ListItem button component={Link} to="/" onClick={() => {
-                props.setPageName("Home")
-              }}>
+              <ListItem
+                button
+                className={classes.listItem}
+                component={Link}
+                to="/"
+                onClick={() => {
+                  props.setPageName("Home")
+                }}>
                 <ListItemIcon><HomeOutlinedIcon /></ListItemIcon>
                 <ListItemText primary="Home" />
               </ListItem>
 
-              <ListItem button onClick={() => {
-                props.setOpenCreatePost(true)
-              }}>
+              <ListItem
+                button
+                className={classes.listItem}
+                onClick={() => {
+                  props.setOpenCreatePost(true)
+                }}>
                 <ListItemIcon><PostAddOutlinedIcon /></ListItemIcon>
                 <ListItemText primary="Create Post" />
               </ListItem>
 
-              <ListItem button component={Link} to="/profile" onClick={() => {
-                props.setPageName("Profile")
-              }}>
+              <ListItem
+                button
+                className={classes.listItem}
+                component={Link}
+                to="/profile"
+                onClick={() => {
+                  props.setPageName("Profile")
+                }}>
                 <ListItemIcon><PersonOutlineOutlinedIcon /></ListItemIcon>
                 <ListItemText primary="Profile" />
               </ListItem>
 
-              <ListItem button onClick={() => {
-                props.setOpenSubscription(true)
-              }}>
+              <ListItem
+                button
+                className={classes.listItem}
+                onClick={() => {
+                  props.setOpenSubscription(true)
+                }}>
                 <ListItemIcon><CardMembershipOutlinedIcon /></ListItemIcon>
                 <ListItemText primary="Subscribe" />
               </ListItem>
 
-              <ListItem button onClick={() => props.logoutHandle()}>
+              <ListItem
+                button
+                className={classes.listItem}
+                onClick={() => props.logoutHandle()}>
                 <ListItemIcon><ExitToAppOutlinedIcon /></ListItemIcon>
                 <ListItemText primary="Logout" />
               </ListItem>

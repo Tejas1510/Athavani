@@ -4,20 +4,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 7rem;
+    margin: 3rem auto;
 }
 
 .text_404 {
     color: white;
     margin: 2rem;
-    font-size: 10rem;
+    font-size: 8rem;
     font-weight: bold;
     text-shadow: 3px 3px 5px black, -3px -3px 5px orange;
-    line-height: 1.2;
+    line-height: 1.2; 
 }
 
 .number {
     color: white;
     margin: 0 1rem;
-    text-shadow: 3px 3px 0 black, -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black;
+    text-shadow: 3px 3px 0 black, -3px -3px 0 black, 3px -3px 0 black, -3px 3px 0 black; 
+}
+
+@media screen and (max-width: 800px) {
+    .Error404{
+        margin: 2rem auto;
+        height: 80%;
+    }
+    .text_404 {
+        font-size: 5rem;
+    }     
 }

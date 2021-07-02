@@ -8,8 +8,9 @@ Below you will find the process and workflow used to review and merge your chang
 ## Step 0 : Find an issue  🔍
 - Take a look at the Existing Issues or create your **own** Issues!  
 - Wait for the Issue to be assigned to you after which you can start working on it.  
-- Note : Every change in this project should/must have an associated issue.   
-![issue](https://github.com/kanishkaa24/Athavani/blob/master/Untitled%20design%20(2).png)  
+- Note : Every change in this project should/must have an associated issue. 
+  
+![issue](https://github.com/Tejas1510/Athavani/blob/master/assets/CONTRIBUTING.md%20Images/Issue%20aasign.png)  
   
 ## Step 1 : Fork the Project 🍴
 - Fork this Repository. This will create a Local Copy of this Repository on your Github Profile. Keep a reference to the original project in `upstream` remote.  
@@ -18,7 +19,8 @@ $ git clone https://github.com/<your-username>/<repo-name>
 $ cd <repo-name>  
 $ git remote add upstream https://github.com/<upstream-owner>/<repo-name>  
 ```  
-![fork](https://github.com/kanishkaa24/Athavani/blob/master/Untitled%20design%20(3).png)  
+![fork](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/CONTRIBUTING.md%20Images/Fork%20Repo.png)  
+![clone](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/CONTRIBUTING.md%20Images/clone%20repo.png)
   
 - If you have already forked the project, update your copy before working.  
 ```  
@@ -61,11 +63,11 @@ $ git commit -m "message"
 $ git push -u origin Branch_Name  
 ```  
 - Here is how your branch will look.  
-![br](https://github.com/kanishkaa24/Athavani/blob/master/Untitled%20design%20(4).png)  
+![br](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/CONTRIBUTING.md%20Images/WorkRemotely.png)  
   
 ## Step 6 : Pull Request  🎣
 - Go to your repository in browser and click on compare and pull requests. Then add a title and description to your pull request that explains your contribution.  
-![pullrequest](https://github.com/kanishkaa24/Athavani/blob/master/Untitled%20design%20(5).png) 
+![pullrequest](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/CONTRIBUTING.md%20Images/Pull%20request.png) 
 - Voila! Your Pull Request has been submitted and will be reviewed by the moderators and merged.🥳  
   
 ## Need more help?🤔  

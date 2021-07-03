@@ -122,7 +122,7 @@ function SignIn(props) {
                 <div className={styles.already}>
                     {!isLoading && (
                         <>
-                            <div className={styles.text}>New to Realate?</div>
+                            <div className={styles.text}>New to Athavani?</div>
                             <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
                         </>
                     )}

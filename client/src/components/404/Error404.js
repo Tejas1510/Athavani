@@ -11,9 +11,16 @@ import { CircularProgress, Typography, Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     loader: {
         margin: '0 1rem',
+        "@media screen and (max-width: 800px)": {
+            height: '0',
+        }
     },
     errorText: {
         margin: '3rem',
+        fontSize: '2.5rem',
+        "@media screen and (max-width: 800px)": {
+            fontSize: '1.7rem',
+        }
     },
     goHomeButton: {
         padding: '1.2rem',
@@ -24,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
             color: 'white',
             backgroundColor: '#ffa500',
             borderRadius: '25px',
-        }
+        },
+        "@media screen and (max-width: 800px)": {
+            padding: '0.8rem',
+            margin: '0.8rem auto',
+            borderRadius: '20px',
+        },
     }
 }))
 
@@ -32,6 +44,7 @@ function Error404() {
 
     const classes = useStyles();
     const history = useHistory();
+
 
     return (
         <div className={styles.Error404}>
@@ -41,8 +54,8 @@ function Error404() {
                     variant='indeterminate'
                     color='secondary'
                     className={classes.loader}
-                    size='8rem'
-                    thickness={5}
+                    size={100}
+                    thickness={7}
                 />
                 <span className={styles.number}>4</span>
             </div>

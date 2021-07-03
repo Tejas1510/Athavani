@@ -5,7 +5,7 @@ import {Link, Redirect, useHistory} from 'react-router-dom';
 import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
-import {LinearProgress} from '@material-ui/core';
+//import {LinearProgress} from '@material-ui/core';
 import GoogleSignin from '../gapiFrontend';
 
 function SignIn(props) {

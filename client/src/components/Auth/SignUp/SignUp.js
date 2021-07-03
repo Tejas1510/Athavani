@@ -248,10 +248,10 @@ function SignUp(props) {
                                 style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                             >
                                 Sign Up
-                                {
+                                {/* {
                                     isLoading &&
                                     <LinearProgress color="secondary" />
-                                }
+                                } */}
                             </button>
                         </div>
                     </form>

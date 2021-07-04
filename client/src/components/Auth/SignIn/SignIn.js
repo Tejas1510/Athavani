@@ -110,10 +110,6 @@ function SignIn(props) {
                             style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                         >
                             Log In
-                            {/* {
-                                isLoading &&
-                                <LinearProgress color="secondary" />
-                            } */}
                         </button>                       
                     </div>
                     <div id = "signerror" style={{textAlign:'center',color:'coral',fontSize:19}}>{signing_error}</div>

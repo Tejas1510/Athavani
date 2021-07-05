@@ -9,4 +9,6 @@
 5. Change the current working directory to the location where you want the cloned directory.
 
 6. Type git clone, and then paste the URL you copied earlier.
- $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY 
+```

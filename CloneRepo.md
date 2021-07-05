@@ -8,15 +8,15 @@ Steps to follow are:
 
 2. Above the list of files, click  Code.
 
-![code](https://raw.githubusercontent.com/NancyNegi23/Athavani/master/assets/images%20CloneRepo/code-button.png)
+![code](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/images%20CloneRepo/code-button.png)
 
 3. To clone the repository using HTTPS, under "Clone with HTTPS", click copy to clipboad button or directly copy the link.
 
-![Copy](https://raw.githubusercontent.com/NancyNegi23/Athavani/master/assets/images%20CloneRepo/CloneOrDownloadGitHub.png)
+![Copy](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/images%20CloneRepo/CloneOrDownloadGitHub.png)
 
 4. Now in your local machine open Git Bash.
 
-![GitBash](https://raw.githubusercontent.com/NancyNegi23/Athavani/master/assets/images%20CloneRepo/Gitbash.png)
+![GitBash](https://raw.githubusercontent.com/Tejas1510/Athavani/master/assets/images%20CloneRepo/Gitbash.png)
 
 5. Change the current working directory to the location where you want the cloned directory.
 

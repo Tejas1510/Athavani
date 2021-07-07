@@ -33,14 +33,15 @@ function SignUp(props) {
     const [isOtpVerified, setIsOtpVerified] = useState(false);
 
     const [isLoading, setIsLoading] = useState(false);
+    const [error_signup,setError_signup] = useState('')
 
     async function sendOtpHandle(e) {
         e.preventDefault()
         if(validator.empty(email)) {
-            return toast.error("Email Field is Empty!");
+            return setError_signup("Email Field is Empty!");
         }
         if(!validator.email(email)) {
-            return toast.error("Invalid Email!");
+            return setError_signup("Invalid Email!");
         }
 
         setIsLoading(true);
@@ -48,18 +49,18 @@ function SignUp(props) {
         try {
             const {data} = await api.sendOtp({email});
             console.log(data);
-            toast.success(data.message);
+            setError_signup(data.message);
             setIsOtpSent(true);
             setIsLoading(false);
             
         } catch(error) {
             if(error.response) {
-                toast.error(error.response.data.message);
+                setError_signup(error.response.data.message);
             } else if(error.request) {
-                toast.error("Server is not Responding!");
+                setError_signup("Server is not Responding!");
                 // console.log(error.request);
             } else {
-                toast.error(error.message);
+                setError_signup(error.message);
                 // console.log(error.message);
             }
             setIsLoading(false);
@@ -69,7 +70,7 @@ function SignUp(props) {
     async function verifyOtpHandle(e) {
         e.preventDefault()
         if(validator.empty(otp)) {
-            return toast.error("OTP Field is Empty!");
+            return setError_signup("OTP Field is Empty!");
         }
 
         setIsLoading(true);
@@ -77,17 +78,17 @@ function SignUp(props) {
         try {
             const {data} = await api.verifyOtp({email, otp});
             // console.log(data);
-            toast.success(data.message);
+            setError_signup(data.message);
             setIsOtpVerified(true);
             setIsLoading(false);
         } catch (error) {
             if(error.response) {
-                toast.error(error.response.data.message);
+                setError_signup(error.response.data.message);
             } else if(error.request) {
-                toast.error("Server is not Responding!");
+                setError_signup("Server is not Responding!");
                 // console.log(error.request);
             } else {
-                toast.error(error.message);
+                setError_signup(error.message);
                 // console.log(error.message);
             }
             setIsLoading(false);
@@ -97,20 +98,20 @@ function SignUp(props) {
     async function submitHandle(e) {
         e.preventDefault()
         if(validator.empty(name)) {
-            return toast.error("Name Field is Empty!");
+            return setError_signup("Name Field is Empty!");
         }
         if(validator.empty(password)) {
-            return toast.error("Password Field is Empty!");
+            return setError_signup("Password Field is Empty!");
         }
         if(validator.empty(password2)) {
-            return toast.error("Confirm Password Field is Empty!");
+            return setError_signup("Confirm Password Field is Empty!");
         }
         
         if(!validator.password(password)) {
-            return toast.error("Password length must be more than 6.");
+            return setError_signup("Password length must be more than 6.");
         }
         if(!validator.match(password, password2)) {
-            return toast.error("Password and Confirm Password are not matching!");
+            return setError_signup("Password and Confirm Password are not matching!");
         }
 
         setIsLoading(true);
@@ -118,17 +119,17 @@ function SignUp(props) {
         try {
             const {data} = await api.signUp({name, email, password});
             // console.log(data);
-            toast.success(data.message);
+            setError_signup(data.message);
             setIsLoading(false);
             history.push('/signin');
         } catch(error) {
             if(error.response) {
-                toast.error(error.response.data.message);
+                setError_signup(error.response.data.message);
             } else if(error.request) {
-                toast.error("Server is not Responding!");
+                setError_signup("Server is not Responding!");
                 // console.log(error.request);
             } else {
-                toast.error(error.message);
+                setError_signup(error.message);
                 // console.log(error.message);
             }
             setIsLoading(false);
@@ -147,9 +148,13 @@ function SignUp(props) {
     
     return (
         <div className={styles.SignUp}>
-            <div className={styles.title}>Sign Up</div>
+            <div className={styles.SignImage}>
+                <img className={styles.Sign_image} src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_129714169_970647970450099_67857.jpg" alt="Memories Image"></img>
+                <div className={styles.bg_color}></div>
+            </div>
+            <div className={styles.title}>SIGN UP</div>
             <div className={styles.body}>
-                <form onSubmit={isOtpSent ? resetHandle : sendOtpHandle}>
+                <form className={styles.form} onSubmit={isOtpSent ? resetHandle : sendOtpHandle}>
                 <input type="text" name="email" placeholder="Email Address"
                     value={email} onChange={(e) => setEmail(e.target.value)}
                     disabled={isOtpSent}
@@ -164,7 +169,7 @@ function SignUp(props) {
                         </button>
                     </div>
                     :
-                    <div style={{display: "flex", justifyContent: "center"}}>
+                    <div style={{display: "flex", justifyContent: "center",width: "80%",margin:"auto"}}>
                         <button 
                             type="submit"
                             className={styles.send_otp}
@@ -175,12 +180,13 @@ function SignUp(props) {
                             Send OTP
                             {
                                 isLoading &&
-                                <LinearProgress color="secondary" />
+                                <LinearProgress display="none" color="secondary" />
                             }
                         </button>
                     </div>
 
                 }
+                <div style={{textAlign:'center',fontSize:19,color:'coral',marginTop:15}}>{error_signup}</div>
                 </form>
                 {
                     isOtpSent && !isOtpVerified &&

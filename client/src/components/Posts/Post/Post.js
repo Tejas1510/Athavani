@@ -12,10 +12,7 @@ import {
   Typography,
   Modal,
   TextField,
-  Snackbar,
   IconButton,
-  withStyles,
-  Backdrop,
   Dialog,
   DialogTitle,
 } from "@material-ui/core";
@@ -34,7 +31,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import CommentIcon from "@material-ui/icons/Comment";
 import SendIcon from "@material-ui/icons/Send";
 import moment from "moment";
-import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import {
   deletePost,
@@ -60,33 +56,37 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
   const [creatorID, setCreatorID] = useState("");
   const [postImage, setpostImage] = useState()
 
-  useEffect(async () => {
-    try {
-      const { data } = await api.verify({
-        token: localStorage.getItem("token"),
-      });
-      setCreatorID(data.id);
-    } catch (error) {
-      toast.error("Token Expired or Invalid. Sign In again.");
-      localStorage.removeItem("token");
-      history.push("/signin");
-    }
+  useEffect(()=>{
+    (async () => {
+      try {
+        const { data } = await api.verify({
+          token: localStorage.getItem("token"),
+        });
+        setCreatorID(data.id);
+      } catch (error) {
+        toast.error("Token Expired or Invalid. Sign In again.");
+        localStorage.removeItem("token");
+        history.push("/signin");
+      }
+    })();
   }, []);
 
-  useEffect(async () => {
-    try {
-      const imgResponse = await api.getPostPhotoById(post._id);
-      const { img } = imgResponse.data;
-      setpostImage(img);
-    } catch (error) {
-      if(error.response) {
-        toast.error(error.response.data.message);
-    } else if(error.request) {
-        toast.error("Server is not Responding!");
-    } else {
-        toast.error(error.message);
-    }
-    }
+  useEffect(()=>{
+    (async () => {
+      try {
+        const imgResponse = await api.getPostPhotoById(post._id);
+        const { img } = imgResponse.data;
+        setpostImage(img);
+      } catch (error) {
+        if(error.response) {
+          toast.error(error.response.data.message);
+      } else if(error.request) {
+          toast.error("Server is not Responding!");
+      } else {
+          toast.error(error.message);
+      }
+      }
+    })();
   }, [])
 
   const classes = useStyles();
@@ -103,7 +103,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
 
   // function to open delete post option
   const handleOpen = () => {
-    if (post.creator._id == creatorID) {
+    if (post.creator._id === creatorID) {
       setOpenDelete(true);
     } else {
       toast.info("You are trying to delete other's post!");
@@ -121,7 +121,7 @@ const Post = ({ post, setCurrentId, fromProfile, setOpenCreatePost }) => {
   const handleCommentOpen = (comment) => {
     console.log(comment);
     console.log(creatorID);
-    if (comment.postedBy == creatorID) {
+    if (comment.postedBy === creatorID) {
       console.log(true);
       setOpenDeleteComment(true);
     } else {

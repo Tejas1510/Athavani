@@ -33,17 +33,19 @@ function SignIn(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [signing_error,setSigning_error] = useState("");
+
     async function submitHandle(e) {
         e.preventDefault()
         if(validator.empty(email)) {
-            return toast.error("Email Field is Empty!");
+            return setSigning_error("Email Field is Empty!");
         }
         if(validator.empty(password)) {
-            return toast.error("Password Field is Empty!");
+            return setSigning_error("Password Field is Empty!");
         }
 
         if(!validator.email(email)) {
-            return toast.error("Invalid Email!");
+            return setSigning_error("Invalid Email!");
         }
 
         setIsLoading(true);
@@ -51,7 +53,7 @@ function SignIn(props) {
         try {
             const {data} = await api.signIn({email, password});
             console.log(data);
-            toast.success(data.message);
+            setSigning_error(data.message);
             // console.log(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
@@ -59,12 +61,12 @@ function SignIn(props) {
             history.push('/');
         } catch(error) {
             if(error.response) {
-                toast.error(error.response.data.message);
+                setSigning_error(error.response.data.message);
             } else if(error.request) {
-                toast.error("Server is not Responding!");
+                setSigning_error("Server is not Responding!");
                 // console.log(error.request);
             } else {
-                toast.error(error.message);
+                setSigning_error(error.message);
                 // console.log(error.message);
             }
             setIsLoading(false);
@@ -77,20 +79,20 @@ function SignIn(props) {
 
     return (
         <div className={styles.SignIn}>
-            <div className={styles.title}>Sign In</div>
+            <div className={styles.SignImage}>
+                <img className={styles.Sign_image} src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_129714169_970647970450099_67857.jpg" alt="Memories Image"></img>
+                <div className={styles.bg_color}></div>
+            </div>
+            <div className={styles.title}>SIGN IN</div>
 
             <div className={styles.body}>
-                <form onSubmit={submitHandle}>
-                    <input type="text" className={styles.email} name="email" placeholder="Email Address"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
-                    />
+                <form className={styles.form} onSubmit={submitHandle}>
+                    <input type="text" className={styles.email} name="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <div className={styles.password_container}>
-                        <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password"
-                            value={password} onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <input type={`${passwordHide ? 'text': 'password'}`} className={styles.password} name="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <div className={styles.eye} onClick={tooglePassword}>
                             {
-                                passwordHide ? <FiEyeOff /> : <FiEye/>
+                                passwordHide ? <FiEyeOff/> : <FiEye/>
                             }
                         </div>
                     </div>
@@ -112,17 +114,18 @@ function SignIn(props) {
                                 isLoading &&
                                 <LinearProgress color="secondary" />
                             }
-                        </button>
+                        </button>                       
                     </div>
+                    <div id = "signerror" style={{textAlign:'center',color:'coral',fontSize:19}}>{signing_error}</div>
                 </form>
                 <GoogleSignin />
                 <div className={styles.already}>
-                {!isLoading && (
-                    <>
-                        <div className={styles.text}>New to Realate?</div>
-                        <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
-                    </>
-                )}
+                    {!isLoading && (
+                        <>
+                            <div className={styles.text}>New to Athavani?</div>
+                            <div className={styles.link} disabled><Link to="/signup">Sign Up</Link></div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 body {
   background-color: #fce043;
-background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
+  background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
@@ -9,4 +9,18 @@ background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(#c882ff, #ebd2ff);
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  border-radius: #ffffff;
+  border-radius: 4px;
 }

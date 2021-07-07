@@ -1,48 +1,64 @@
 // import logo from './logo.svg';
-import React, { Suspense, useState, useEffect } from 'react';
-import { Switch, Route, useHistory, BrowserRouter as Router } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { AppBar, Typography, Grid, Grow, Dialog, CircularProgress } from '@material-ui/core';
-import memories from './Images/memories.png'
-import Form from './components/Form/Form';
-import useStyles from './style';
-import { useDispatch } from 'react-redux';
-import { getPosts } from './actions/posts';
-import MailForm from './components/MailForm/MailForm';
-import Error404 from "./components/404/Error404"
-import * as api from './api/index';
-import Footer from './components/Footer/Footer';
+import React, { Suspense, useState, useEffect } from "react";
+import {
+  Switch,
+  Route,
+  useHistory,
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  AppBar,
+  Typography,
+  Grid,
+  Grow,
+  Dialog,
+  CircularProgress,
+} from "@material-ui/core";
+import memories from "./Images/memories.png";
+import Form from "./components/Form/Form";
+import useStyles from "./style";
+import { useDispatch } from "react-redux";
+import { getPosts } from "./actions/posts";
+import MailForm from "./components/MailForm/MailForm";
+import Error404 from "./components/404/Error404";
+import * as api from "./api/index";
+import Footer from "./components/Footer/Footer";
 import noProfilePhoto from "./assets/noProfilePhoto.jpg";
-import { SignOutGoogle } from '../src/components/Auth/gapiFrontend';
+import { SignOutGoogle } from "../src/components/Auth/gapiFrontend";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from "@material-ui/core/IconButton";
 
 // material ui icons
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 import MenuIcon from "@material-ui/icons/Menu";
 
-// material ui styles 
+// material ui styles
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 // material ui components
-import Toolbar from '@material-ui/core/Toolbar';
+import Toolbar from "@material-ui/core/Toolbar";
 import Sidebar from "./components/Sidebar/sidebar.component";
 
 //Lazy Loading.
 const SignUp = React.lazy(() => import("./components/Auth/SignUp/SignUp"));
 const SignIn = React.lazy(() => import("./components/Auth/SignIn/SignIn"));
 const Forgot = React.lazy(() => import("./components/Auth/Forgot/Forgot"));
-const ResetPassword = React.lazy(() => import("./components/Auth/ResetPassword/ResetPassword"));
+const ResetPassword = React.lazy(() =>
+  import("./components/Auth/ResetPassword/ResetPassword")
+);
 const Profile = React.lazy(() => import("./components/Profile/Profile"));
 const Posts = React.lazy(() => import("./components/Posts/Posts"));
-const PrivateRoutes = React.lazy(() => import("./components/Auth/PrivateRoutes"));
+const PrivateRoutes = React.lazy(() =>
+  import("./components/Auth/PrivateRoutes")
+);
 
 const drawerWidth = 240;
 
-const useStyl = makeStyles((theme) => ({
+const useStyl = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   appBar: {
     [theme.breakpoints.up("sm")]: {
@@ -58,24 +74,22 @@ const useStyl = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0,
-    }
+    },
   },
   menuButton: {
     margin: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
-      display: "none"
-    }
+      display: "none",
+    },
   },
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-
 }));
 
 function App(props) {
-
   let history = useHistory();
   toast.configure();
 
@@ -95,27 +109,28 @@ function App(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getPosts())
-  }, [dispatch])
-
-  useEffect(() => {
-    if (!localStorage.getItem('token') && window.location.pathname === '/') {
+    if (!localStorage.getItem("token") && window.location.pathname === "/") {
       toast.info("Login before accesing home page!");
-      history.push('/signin');
+      history.push("/signin");
     }
-  }, [history])
+  }, [history]);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.verify({ token: localStorage.getItem('token') });
+        const { data } = await api.verify({
+          token: localStorage.getItem("token"),
+        });
         const response = await api.getProfileById(data.id);
-        setUserImg(response.data.user.img)
+        setUserImg(response.data.user.img);
       } catch (error) {
         console.log(error);
-        setUserImg(noProfilePhoto)
+        setUserImg(noProfilePhoto);
       }
     })();
   }, []);
@@ -124,10 +139,10 @@ function App(props) {
 
   function logoutHandle() {
     SignOutGoogle(); //this is called when the user signs out from our website
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    history.push('/signin');
-    toast.success('Logged out successfully.');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    history.push("/signin");
+    toast.success("Logged out successfully.");
   }
 
   // const toggleMenu = () => {
@@ -136,26 +151,49 @@ function App(props) {
 
   return (
     <div>
-      {!logout &&
-        <AppBar className={classes.appBar} position="fixed" style={{ background: "#fff", borderRadius: '10px' }} color="inherit">
-          {logout && <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classs.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>}
+      {!logout && (
+        <AppBar
+          className={classes.appBar}
+          position="fixed"
+          style={{ background: "#fff" }}
+          color="inherit"
+        >
+          {logout && (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classs.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
 
-          <Typography className={classes.heading} variant="h4" style={{ textAlign: 'left' }} >Memories</Typography>
-          <img className={classes.image} height="20" src={memories} alt="Memories"></img>
-        </AppBar>}
+          <Typography
+            className={classes.heading}
+            variant="h4"
+            style={{ textAlign: "left" }}
+          >
+            Memories
+          </Typography>
+          <img
+            className={classes.image}
+            height="20"
+            src={memories}
+            alt="Memories"
+          ></img>
+        </AppBar>
+      )}
       <div className={classs.root}>
         <CssBaseline />
-        {logout &&
+        {logout && (
           <nav className={classs.drawer}>
-            <AppBar position="fixed" className={classs.appBar} style={{ display: "flex", flexDirection: "row" }}>
+            <AppBar
+              position="fixed"
+              className={classs.appBar}
+              style={{ display: "flex", flexDirection: "row" }}
+            >
               {logout && (
                 <IconButton
                   color="inherit"
@@ -181,7 +219,8 @@ function App(props) {
               setOpenSubscription={setOpenSubscription}
               logoutHandle={logoutHandle}
             />
-          </nav>}
+          </nav>
+        )}
         <main className={classs.content}>
           <div className={classs.toolbar} />
           <Grow in>
@@ -190,9 +229,18 @@ function App(props) {
                 <Router>
                   <Switch>
                     <PrivateRoutes path="/" exact>
-                      <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
+                      <Grid
+                        container
+                        className={classes.mainContainer}
+                        justify="space-between"
+                        alignItems="stretch"
+                        spacing={3}
+                      >
                         <Grid item xs={12} sm={12}>
-                          <Posts setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost} />
+                          <Posts
+                            setCurrentId={setCurrentId}
+                            setOpenCreatePost={setOpenCreatePost}
+                          />
                         </Grid>
                       </Grid>
                     </PrivateRoutes>
@@ -217,7 +265,6 @@ function App(props) {
               </Suspense>
             </div>
           </Grow>
-
         </main>
         <Dialog
           fullWidth={false}
@@ -226,15 +273,28 @@ function App(props) {
           onClose={() => setOpenCreatePost(false)}
           aria-labelledby="responsive-dialog-title"
         >
-          <div style={{
-            background: "#gray",
-            padding: "40px 20px 20px",
-            backgroundColor: "white"
-
-
-          }}>
-            <CloseIcon onClick={() => setOpenCreatePost(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }} />
-            <Form currentId={currentId} setCurrentId={setCurrentId} setOpenCreatePost={setOpenCreatePost} />
+          <div
+            style={{
+              background: "#gray",
+              padding: "40px 20px 20px",
+              backgroundColor: "white",
+            }}
+          >
+            <CloseIcon
+              onClick={() => setOpenCreatePost(false)}
+              style={{
+                fontSize: "2em",
+                position: "absolute",
+                right: "5px",
+                top: "5px",
+                cursor: "pointer",
+              }}
+            />
+            <Form
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              setOpenCreatePost={setOpenCreatePost}
+            />
           </div>
         </Dialog>
         <Dialog
@@ -244,7 +304,16 @@ function App(props) {
           onClose={() => setOpenSubscription(false)}
           aria-labelledby="responsive-dialog-title"
         >
-          <CloseIcon onClick={() => setOpenSubscription(false)} style={{ fontSize: "2em", position: "absolute", right: "5px", top: "5px", cursor: "pointer" }} />
+          <CloseIcon
+            onClick={() => setOpenSubscription(false)}
+            style={{
+              fontSize: "2em",
+              position: "absolute",
+              right: "5px",
+              top: "5px",
+              cursor: "pointer",
+            }}
+          />
           <MailForm />
         </Dialog>
       </div>
@@ -255,5 +324,3 @@ function App(props) {
 }
 
 export default App;
-
-

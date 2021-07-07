@@ -178,7 +178,8 @@
 
 @media only screen and (max-width: 430px) {
   .SignUp {
-    margin-top: 17%;
+    /* margin-top: 17%; */
+    margin-top: 4%;
     width: 90%;
     padding: 0%;
     padding-top: 5%;

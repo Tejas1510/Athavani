@@ -178,10 +178,7 @@ function SignUp(props) {
                             style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                         >
                             Send OTP
-                            {
-                                isLoading &&
-                                <LinearProgress display="none" color="secondary" />
-                            }
+                            
                         </button>
                     </div>
 
@@ -203,10 +200,7 @@ function SignUp(props) {
                                 style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                             >
                                 Verifiy OTP
-                                {
-                                    isLoading &&
-                                    <LinearProgress color="secondary" />
-                                }
+                                
                             </button>
                         </div>
                     </form>

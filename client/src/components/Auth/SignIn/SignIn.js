@@ -5,7 +5,7 @@ import {Link, Redirect, useHistory} from 'react-router-dom';
 import styles from './SignIn.module.css';
 import * as validator from '../../../utils/validator';
 import * as api from '../../../api/index';
-import {LinearProgress} from '@material-ui/core';
+//import {LinearProgress} from '@material-ui/core';
 import GoogleSignin from '../gapiFrontend';
 
 function SignIn(props) {
@@ -110,10 +110,6 @@ function SignIn(props) {
                             style={{cursor: `${isLoading ? "not-allowed" : "pointer"}`}}
                         >
                             Log In
-                            {
-                                isLoading &&
-                                <LinearProgress color="secondary" />
-                            }
                         </button>                       
                     </div>
                     <div id = "signerror" style={{textAlign:'center',color:'coral',fontSize:19}}>{signing_error}</div>

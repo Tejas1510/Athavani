@@ -203,6 +203,14 @@ If you have cloned this repo, then open git in this directory and use
 ## ⭐ Issues:
 For major changes, you are welcomed to open an issue and discuss what you would like to contribute. Enhancements will be appreciated.
 
+## ✨ Hall of Fame
+
+<a href="https://github.com/Tejas1510/Athavani/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Tejas1510/Athavani" />
+</a>
+
+
+
 ## ❤️ Project Admin
 <table>
     <tr>
@@ -215,14 +223,40 @@ For major changes, you are welcomed to open an issue and discuss what you would 
         </td>
  </tr>
  </table>
-
-## ✨ Contributors
-
-<a href="https://github.com/Tejas1510/Athavani/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Tejas1510/Athavani" />
-</a>
-
-
+ 
+ ## ❤️ Mentors
+ ### A special thanks to these awesome people who are really working hard for the project and helping the participants
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/sanjay270899">
+            <img src="https://avatars.githubusercontent.com/u/43892590?v=4" width="150px;" alt="" style="border-radius:50%"/>                 <br />
+            <b>sanjay270899</b>
+            </a><br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/AmeyaJain-25">
+            <img src="https://avatars.githubusercontent.com/u/66305085?v=4" width="150px;" alt="" style="border-radius:50%"/>                 <br />
+            <b>AmeyaJain-25</b>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Hacking-Scripts/commits?author=Tejas1510" title="Coding">💻</a>
+        </td>
+        <td align="center">
+            <a href="https://github.com/Jassi10000">
+            <img src="https://avatars.githubusercontent.com/u/64856348?v=4" width="150px;" alt="" style="border-radius:50%"/>                 <br />
+            <b>Jassi10000</b>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Hacking-Scripts/commits?author=Tejas1510" title="Coding">💻</a>
+        </td>
+        <td align="center">
+            <a href="https://github.com/ChitvanRamani22">
+            <img src="https://avatars.githubusercontent.com/u/68965499?v=4" width="150px;" alt="" style="border-radius:50%"/>                 <br />
+            <b>ChitvanRamani22</b>
+            </a><br />
+            <a href="https://github.com/Tejas1510/Hacking-Scripts/commits?author=Tejas1510" title="Coding">💻</a>
+        </td>
+    </tr>
+ </table>
 
 
 ## 🔔 Credits

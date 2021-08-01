@@ -1,35 +1,285 @@
+.footer {
+  display: flex;
+  /* flex-flow: row wrap; */
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  background-image: linear-gradient(315deg, #ffffffd2 0%, #ffffff 74%);
+}
 
-.footer-row {
-  background-color: #f2f2f2;
-  margin-top: 0%;
-  bottom: -350px;
-  width: 100%;
+.footer-dark {
+  background: #ffffff;
+}
+.info {
+  font-size: 1rem;
+  padding: 5px 0px;
+  width: 50%;
   text-align: center;
-  z-index: 2;
+  color: #385a64;
+  font-weight: 700;
 }
 
-@media only screen and (max-width: 600px) {
-.footer-row div {
-  padding-left: 0px ;
-} 
+.footer > * {
+  flex: 1 100%;
 }
 
-.MuiSvgIcon-root:hover{
-transform: scale(1.06);
-background: #fff;
-border-radius: 50%;
-padding: 5px;
+.footer-addr {
+  margin-right: 1.25em;
+  /* margin-bottom: 2em; */
+  font-size: 0.92rem;
+  /* padding: 20px 0px; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
-.MuiSvgIcon-root{
-
-  transition: 0.4s;
+.footer-logo {
+  font-weight: 600;
+  /* font-size: 1.7rem; */
+  color: #ff4f5a;
+  margin: 10px;
 }
 
-.MuiButtonBase-root:hover{
-  transform: scale(1.06);
-  background: #fff;
-  border-radius: 50%;
+.footer-addr h2 {
+  margin-top: 1.3em;
+  font-size: 15px;
+  font-weight: 400;
 }
 
+.title {
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  /* font-size: 20px; */
+  color: #ff4f5a;
+}
 
+.footer a {
+  font-style: normal;
+  color: rgb(0, 0, 0);
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.social-box {
+  padding: 0px;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer-nav {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.ul-links a {
+  color: rgb(0, 0, 0);
+  /* font-size: 0.92rem; */
+}
+
+/* .ul-links a:hover {
+  color: #7af7d8;
+} */
+
+.fa-twitter,
+.fa-discord,
+.fa-github {
+  padding: 5px;
+  font-size: 2.2em;
+}
+
+.fa-twitter:hover {
+  color: #0088cc;
+  /* transform: scale(1.35); */
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition: all 0.4s ease-in-out;
+}
+
+/* .fa-slack-own:hover {
+  color: #e03381;
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition: all 0.4s ease-in-out;
+} */
+
+.fa-github:hover {
+  color: #ff4f5a;
+  /* transform: scale(1.35); */
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition: all 0.4s ease-in-out;
+}
+
+.fa-discord:hover {
+  color: #8d9fff;
+  /* transform: scale(1.35); */
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition: all 0.4s ease-in-out;
+}
+
+.footer-dash {
+  text-align: center;
+  /* padding-top: 2px; */
+  /* width: 100%; */
+  height: 2px;
+  margin-top: -52px;
+
+  /* margin-right: 80px; */
+  /* margin-left: 40px; */
+  /* margin-bottom: 12px; */
+}
+
+/* .footer-dash-dark {
+  background: linear-gradient(45deg, #626d70 0%, #5c6c70 90%);
+} */
+
+.footer-text {
+  padding-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  background: none;
+}
+
+.footer-text-dark {
+  background: none;
+}
+
+.item {
+  margin-bottom: 1.5rem;
+  padding: 50px 0px;
+}
+
+/* Social Icons styles */
+:root {
+  --r: 12px;
+  /* corner radius */
+  --w: 4px;
+  /* width of the border */
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.col .social li {
+  color: #ffffff00;
+}
+
+.col .social li a {
+  position: relative;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0px;
+  margin-right: 20px;
+  margin-left: 0px;
+  margin-bottom: 30px;
+  transition: 0.5s;
+  float: left;
+}
+.ul-links {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 40.375em) {
+  .footer-nav > * {
+    flex: 1;
+  }
+
+  .item-extra {
+    flex-grow: 2;
+  }
+
+  /* .social-box {
+    padding: 0px;
+  } */
+
+  .footer-addr {
+    flex: 1 0px;
+  }
+
+  .footer-nav {
+    flex: 2 0px;
+  }
+
+  .validation-new {
+    display: none;
+  }
+
+  a {
+    font-size: 1rem;
+  }
+
+  /* .info {
+    font-size: 0.78rem;
+  } */
+}
+
+@media screen and (max-width: 510px) {
+  .footer {
+    padding: 0px 10px 10px 15px;
+  }
+
+  .col .social li a {
+    position: relative;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: 20px;
+    margin-left: 0px;
+    margin-bottom: 30px;
+    transition: 0.5s;
+    float: left;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .ul-links a {
+    font-size: 0.86rem;
+  }
+
+  .item {
+    margin-bottom: 0.5rem;
+    padding: 0px;
+  }
+
+  .footer-logo {
+    font-size: 2em;
+    letter-spacing: 1px;
+    padding: 5px 0px;
+  }
+
+  a {
+    font-size: 0.78rem;
+  }
+
+  .info {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0px 15px;
+  }
+
+  /* .footer li {
+    width: 100%;
+  } */
+
+  /* .footer-addr {
+    padding: 20px 0px;
+  } */
+
+  /* .social-box {
+    padding: 20px 0px;
+  } */
+}

@@ -1,27 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+.parent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#desc {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 10px 0px;
+  font-family: "Nunito";
+  color: #1a2e35;
+}
+
 .SignIn {
   background-color: white;
   display: flex;
   flex-direction: column;
   width: fit-content;
-  margin: auto;
+  /* margin: auto; */
   padding: 2rem;
   border-radius: 10px;
   font-family: Poppins;
   box-shadow: 0 5px 15px grey;
-  height:490px;
+  height: 490px;
   position: relative;
 }
 
-.colo{
-  background-image: linear-gradient(
-    315deg,
-     #fce043 0%,
-     #fb7ba2 74%
-    );
+.colo {
+  background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
 }
 
-.SignImage{
+.SignImage {
   width: 100%;
   z-index: 1;
   height: 25%;
@@ -31,14 +42,14 @@
   right: 0%;
 }
 
-.Sign_image{
+.Sign_image {
   width: 100%;
   height: 100%;
   z-index: 1;
   border-radius: 10px 10px 0px 0px;
 }
 
-.bg_color{
+.bg_color {
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -55,7 +66,7 @@
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   z-index: 2;
-  font-size: 2.0rem;
+  font-size: 2rem;
   color: #fff;
   font-weight: 900;
 }
@@ -71,7 +82,7 @@
   flex-direction: column;
 }
 
-.email{
+.email {
   padding: 1rem 1rem;
   width: 350px;
   font-size: 1rem;
@@ -80,10 +91,10 @@
   border: none;
   background-color: #fff;
   padding-right: 1.5rem;
-  border-bottom:  2px solid #457b9d;
+  border-bottom: 2px solid #457b9d;
 }
 
-.password{
+.password {
   padding: 1rem 1rem;
   width: 350px;
   font-size: 1rem;
@@ -128,11 +139,7 @@
 }
 .login {
   background: rgb(221, 39, 28);
-  background: linear-gradient(
-    315deg,
-    #fb7ba2 24%,
-    #fce043 100%
-  );
+  background: linear-gradient(315deg, #fb7ba2 24%, #fce043 100%);
   color: white;
   font-weight: 900;
   padding: 0.7rem 1rem;
@@ -150,12 +157,8 @@
 }
 
 .login:hover {
-  box-shadow: 0 5px 15px #fb7ba2 ;
-  background: linear-gradient(
-    315deg,
-     #fce043 0%,
-     #fb7ba2 74%
-  );
+  box-shadow: 0 5px 15px #fb7ba2;
+  background: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
   transition: 0.5s ease-in-out;
 }
 
@@ -184,15 +187,14 @@
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 930px) {
+  .parent {
+    flex-direction: column;
+    align-items: inherit;
+  }
+
   .SignIn {
-    padding: 1rem;
-    margin: 0;
-    margin-top: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 2rem;
   }
 
   .email,
@@ -206,16 +208,16 @@
   .SignIn {
     /* margin-top: 17%; */
     margin-top: 4%;
-    width: 80%;
+    width: 100%;
   }
-  .title{
+  .title {
     margin: 10%;
   }
-  .body{
+  .body {
     padding: 0 0.3rem 1rem 0.3rem;
     width: 100%;
   }
-  .form{
+  .form {
     width: 90%;
   }
 

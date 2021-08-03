@@ -1,96 +1,97 @@
-import React, { useEffect, useState } from "react";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import IconButton from "@material-ui/core/IconButton";
-import discordIcon from "../../assets/discordIcon.png";
+import React from "react";
+import { FaGithubAlt, FaTwitter, FaDiscord } from "react-icons/fa";
 import "./style.css";
-import zIndex from "@material-ui/core/styles/zIndex";
 
-function Footer() {
-  const [footerStyle, setFooterStyle] = useState({});
-  const [url, setUrl] = useState("");
+// const styles = {
+//   textDecoration: "none",
+//   paddingLeft: "0.5em",
+//   color: "#fac87b",
+// };
 
-  useEffect(() => {
-    const url = window.location.pathname;
-    setUrl(url);
-    if (url === "/" || url === "/profile") {
-      setFooterStyle({
-        position: "relative",
-      });
-    } else {
-      setFooterStyle({
-        position: "absolute",
-      });
-    }
-  }, [window.location.pathname]);
+const Footer = () => {
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer>
-      <div style={{ height: "350", zIndex: 1 }}>
-        <div class="footer-row" style={footerStyle}>
-          <div
-            class="col-lg-12 col-md-12 col-sm-12 footer-row-1"
-            align="left"
-            style={{
-              marginTop: "0%",
-              marginBottom: "0%",
-              paddingLeft:
-                (url === "/" || url === "/profile") && window.innerWidth > 600
-                  ? "240px"
-                  : "0px",
-              padding: "30px",
-            }}
-          >
-            <h1 class="text-uppercase" style={{ textAlign: "center" }}>
-              <b
-                class="footer-class"
+    <React.Fragment>
+      <footer className="footer">
+        <div className="footer-addr">
+          <h1 className="footer-logo">About Athavani</h1>
+          <div className="info">
+            Athavani/Memories is a place to save all your memories in a single
+            place and rejoice them through the years. We assures you that your
+            data will remain safe in Athavani.
+          </div>
+        </div>
+        <ul className="footer-nav">
+          <li className="social-box" style={{ width: "100%" }}>
+            <h2 className="title">Social</h2>
+            <ul className="ul-links">
+              <p
                 style={{
-                  fontSize: "30px",
-                  color: "crimson",
-                  fontFamily: "monospace",
+                  fontSize: "1.1rem",
+                  margin: "0",
+                  fontWeight: "600",
                 }}
               >
-                About Athavani
-              </b>
-            </h1>
-            <p style={{ textAlign: "center", color: "gray", fontSize: "18px" }}>
-              Athavani/Memories is a place to save all your memories in a single
-              place and rejoice them through the years. We assures you that your
-              data will remain safe in Athavani.
-            </p>
-
-            <hr style={{ width: "20%", alignItems: "center" }}></hr>
-            <h2
-              style={{
-                textAlign: "center",
-                // marginBottom: "0px",
-                marginTop: "0px",
-                marginBottom: "-5px",
-                color: "maroon",
-              }}
-            >
-              Contact Us:
-            </h2>
-            <p style={{ textAlign: "center" }}>
-              <div className="swipeButton" style={{ marginBottom: "-15px" }}>
-                <IconButton
-                  style={{ color: "#00acee" }}
-                  onClick={() => window.open("")}
-                >
-                  <TwitterIcon fontSize="large" />
-                </IconButton>
-                <IconButton
-                  style={{ color: "#7289d9" }}
-                  onClick={() => window.open("https://discord.gg/gEqSYzc5Yu")}
-                >
-                  <img src={discordIcon} alt="" width="35px" height="35px" />
-                </IconButton>
-              </div>
+                Do follow us on social platforms
+              </p>
+            </ul>
+            <div className="col col">
+              <ul className="social">
+                <li>
+                  <a href="#" rel="noopener noreferrer">
+                    <div className="outer">
+                      <FaTwitter
+                        className="fab fa-twitter"
+                        style={{ fontSize: "2.2em" }}
+                      />
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Tejas1510/Athavani"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="outer">
+                      <FaGithubAlt
+                        className="fab fa-github"
+                        style={{ fontSize: "2.2em" }}
+                      />
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://discord.gg/gEqSYzc5Yu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="outer">
+                      <FaDiscord
+                        className="fab fa-discord"
+                        style={{ fontSize: "2.2em" }}
+                      />
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <div className="footer-dash footer-dash-dark">
+          <div className="footer-text footer-text-dark">
+            <p style={{ margin: "10px 0px", fontWeight: "700" }}>
+              Copyright © Athavani 2021
             </p>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </React.Fragment>
   );
-}
+};
 
 export default Footer;

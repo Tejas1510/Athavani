@@ -194,6 +194,7 @@
 .leftChildSection{
   display: none;
 }
+
 @media only screen and (max-width: 930px) {
 
 
@@ -230,6 +231,9 @@
   .password {
     width: 100%;
     font-size: 0.8rem;
+  }
+  .rightChildSection{
+    width: 95%;
   }
 }
 

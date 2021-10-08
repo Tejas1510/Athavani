@@ -162,7 +162,7 @@ function SignUp(props) {
           </div>
         </div>
       </div>
-      <div className="right-child-section">
+      <div className={styles.rightChildSection}>
         <div className={styles.SignUp} style={{ marginTop: "5%" }}>
           <div className={styles.SignImage}>
             <img

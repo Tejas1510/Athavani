@@ -146,7 +146,7 @@ function SignUp(props) {
 
   return (
     <div className={styles.parent}>
-      <div className="left-child-section">
+      <div className={styles.leftChildSection}>
         <div>
           {/* <p id={styles.desc}>
               Athavani/Memories is a place to save all

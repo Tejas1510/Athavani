@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 .parent {
+  position: absolute;
+  top:0;
+  left: 0;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  width:100%;
 }
 
 #desc {
@@ -186,12 +191,11 @@
 .link:hover {
   text-decoration: underline;
 }
-
+.leftChildSection{
+  display: none;
+}
 @media only screen and (max-width: 930px) {
-  .parent {
-    flex-direction: column;
-    align-items: inherit;
-  }
+
 
   .SignIn {
     padding: 2rem;
@@ -203,6 +207,7 @@
     font-size: 1rem;
   }
 }
+
 
 @media only screen and (max-width: 430px) {
   .SignIn {
@@ -225,5 +230,15 @@
   .password {
     width: 100%;
     font-size: 0.8rem;
+  }
+}
+
+
+@media screen and (min-width : 1024px) {
+  .parent{ 
+     justify-content: space-evenly;
+  }
+  .leftChildSection{
+    display: block;
   }
 }

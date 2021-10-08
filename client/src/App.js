@@ -88,6 +88,10 @@ const useStyl = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  growDiv: {
+    height: "100%",
+    width: "100%"
+  }
 }));
 
 function App(props) {
@@ -225,7 +229,7 @@ function App(props) {
         <main className={classs.content}>
           <div className={classs.toolbar} />
           <Grow in>
-            <div>
+            <div className={classs.growDiv}>
               <Suspense fallback={<CircularProgress />}>
                 <Router>
                   <Switch>

@@ -84,6 +84,7 @@ const useStyl = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
   content: {
+    minHeight: "100vh",
     flexGrow: 1,
     padding: theme.spacing(3),
   },

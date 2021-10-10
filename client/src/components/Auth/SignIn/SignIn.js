@@ -78,7 +78,7 @@ function SignIn(props) {
   return (
     <>
       <div className={styles.parent}>
-        <div className="left-child-section">
+        <div className={styles.leftChildSection}>
           <div>
             {/* <p id={styles.desc}>
               Athavani/Memories is a place to save all
@@ -94,7 +94,7 @@ function SignIn(props) {
             </div>
           </div>
         </div>
-        <div className="right-child-section">
+        <div className={styles.rightChildSection}>
           <div className={styles.SignIn} style={{ marginTop: "5%" }}>
             <div className={styles.SignImage}>
               <img

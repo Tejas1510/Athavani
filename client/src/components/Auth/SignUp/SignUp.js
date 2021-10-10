@@ -146,7 +146,7 @@ function SignUp(props) {
 
   return (
     <div className={styles.parent}>
-      <div className="left-child-section">
+      <div className={styles.leftChildSection}>
         <div>
           {/* <p id={styles.desc}>
               Athavani/Memories is a place to save all
@@ -162,7 +162,7 @@ function SignUp(props) {
           </div>
         </div>
       </div>
-      <div className="right-child-section">
+      <div className={styles.rightChildSection}>
         <div className={styles.SignUp} style={{ marginTop: "5%" }}>
           <div className={styles.SignImage}>
             <img

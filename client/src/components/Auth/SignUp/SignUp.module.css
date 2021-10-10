@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 .parent {
+  position: absolute;
+  top:0;
+  left: 0;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  width:100%;
 }
 
 .SignUp {
@@ -156,6 +161,9 @@
 .link:hover {
   text-decoration: underline;
 }
+  .leftChildSection{
+    display: none;
+  }
 
 @media only screen and (max-width: 630px) {
   .SignUp {
@@ -170,10 +178,6 @@
 }
 
 @media only screen and (max-width: 430px) {
-  .parent {
-    flex-direction: column;
-    align-items: inherit;
-  }
 
   .SignUp {
     /* margin-top: 17%; */
@@ -205,5 +209,19 @@
     width: 90%;
     font-size: 0.8rem;
     margin-top: 6%;
+  }
+   .rightChildSection{
+    width: 95%;
+  }
+}
+
+
+
+@media screen and (min-width : 1024px) {
+  .parent{ 
+     justify-content: space-evenly;
+  }
+  .leftChildSection{
+    display: block;
   }
 }

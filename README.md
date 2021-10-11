@@ -140,7 +140,14 @@ git push
 cd Athavani
 ```
 
-**2.** Navigate to the Client directory.
+**2.** The Server is in the root directory itself 
+
+```bash
+npm install
+npm start 
+```
+
+**3.** Navigate to the Client directory.
 
 ```bash
 cd client
@@ -148,13 +155,6 @@ npm install
 npm start / yarn start
 ```
 
-**3.** Navigate to the Server directory.
-
-```bash
-cd server
-npm install
-npm start 
-```
 🛈**IMPORTANT**🛈
 
 To open the web app directly from CLI use:-

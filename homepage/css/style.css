@@ -1,3 +1,22 @@
+::-webkit-scrollbar {
+  width: 10px;
+  border: 10px solid ;
+}
+
+::-webkit-scrollbar-button:single-button {
+  background-color: rgb(32, 39, 39);
+  height:50 px;
+  width: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:rgb(43, 19, 43);
+  height: 50px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: black;
+}
 body {
     overflow-x: hidden;
     font-family: 'Lato', sans-serif;
